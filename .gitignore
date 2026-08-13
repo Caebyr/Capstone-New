@@ -1,0 +1,34 @@
+# Personal Claude Code settings
+.claude/settings.local.json
+
+# Raw and processed datasets (multi-GB, fetched separately — see README)
+data/raw/**
+!data/raw/**/.gitkeep
+data/processed/**
+!data/processed/**/.gitkeep
+
+# Model checkpoints/weights
+models/**
+!models/**/.gitkeep
+
+# Embeddings (large numpy arrays, regenerable from notebooks)
+embeddings/**
+!embeddings/**/.gitkeep
+
+# Archives and checkpoints wherever they show up
+*.zip
+*.tar.gz
+*.tar
+*.pt
+*.pth
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# OS cruft
+.DS_Store
+Thumbs.db

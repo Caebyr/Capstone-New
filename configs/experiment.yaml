@@ -1,0 +1,75 @@
+# Phase-1 reproduction (notebooks/01_phase1_reproduction.ipynb)
+# Mirrors the pipeline documented in results/phase1_lightning/Capstone_v1.ipynb,
+# run locally instead of on Lightning AI Studio.
+
+phase1_reproduction:
+  dota:
+    images_dir: data/raw/DOTA/images
+    labels_dir: data/raw/DOTA/labelTxt
+    n_images: 300          # matches historical cell (image_files[:300])
+    classes:                # raw DOTA vocabulary used for the initial 5-class pass
+      - plane
+      - ship
+      - vehicle
+      - building
+      - harbor
+
+  visdrone:
+    base_dir: data/raw/VisDrone/VisDrone2019-DET-train
+    images_dir: data/raw/VisDrone/VisDrone2019-DET-train/images
+    annotations_dir: data/raw/VisDrone/VisDrone2019-DET-train/annotations
+    n_images: 300          # matches historical cell (image_files[:300])
+    class_id_map:            # VisDrone numeric id -> class name
+      1: pedestrian
+      2: person
+      3: bicycle
+      4: car
+      5: van
+      6: truck
+      7: tricycle
+      8: awning-tricycle
+      9: bus
+      10: motor
+
+  shared_vocabulary:        # class_mapping used to compare DOTA vs VisDrone in a common space
+    plane: aircraft
+    helicopter: aircraft
+    small-vehicle: vehicle
+    large-vehicle: vehicle
+    ship: watercraft
+    harbor: infrastructure
+    bridge: infrastructure
+    storage-tank: industrial
+    roundabout: infrastructure
+    baseball-diamond: sports-field
+    tennis-court: sports-field
+    basketball-court: sports-field
+    soccer-ball-field: sports-field
+    ground-track-field: sports-field
+    swimming-pool: recreational
+
+  model:
+    name: openai/clip-vit-base-patch32
+    source: huggingface-transformers   # CLIPModel + CLIPProcessor
+    embedding_dim: 512
+    normalize: true
+
+  crop_test:                # small object-crop sanity check (openai/CLIP package, not HF)
+    n_images_per_dataset: 5
+    model_name: ViT-B/32
+    source: openai-clip
+
+  device: cuda               # RTX 3050 Laptop, ~4GB VRAM
+  batch_size: 1               # images processed one at a time, matches historical loop
+  random_seed: 42             # used for t-SNE (random_state=42)
+
+  outputs:
+    embeddings_dir: embeddings/phase1_local
+    results_dir: results/phase1_local
+
+  historical_reference:
+    notebook: results/phase1_lightning/Capstone_v1.ipynb
+    embeddings_dir: embeddings/phase1_lightning
+    figures:
+      - results/phase1_lightning/drift_scores.png
+      - results/phase1_lightning/tsne_drift.png
