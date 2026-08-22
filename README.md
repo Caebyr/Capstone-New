@@ -13,21 +13,22 @@ Open-vocabulary object detectors (CLIP, GroundingDINO, etc.) assume the relation
 
 This project quantifies that drift between satellite (DOTA) and UAV (VisDrone) imagery using CLIP-family vision-language embeddings, and works toward an altitude-aware alignment mechanism that reduces it. See `PROJECT_CONTEXT.md` for the detailed working log and standing project rules. (The submitted proposal PDF — overview, literature survey, methodology, six-month work plan — isn't in this repo yet; drop it in as `Capstone Proposal.pdf` if you want it version-controlled alongside the code.)
 
-## Status (as of 2026-08-13)
+## Status (as of 2026-08-20)
 
 **Done:**
-- Phase-1 semantic-drift experiment (50 → 300 images/domain) originally run on Lightning AI Studio using CLIP ViT-B/32 zero-shot whole-image classification against a shared 7-class vocabulary. Found non-trivial drift across every shared class.
-- Project migrated from Lightning AI Studio to a local Windows/RTX 3050 setup (conda env `hf`: Python 3.9, PyTorch 2.5.1 + CUDA 11.8, `transformers` pinned to 4.49.0 for local checkpoint-loading compatibility).
-- DOTA (part 1, 469 images) and VisDrone (full, 6,471 images) extracted locally.
-- Phase-1 reproduced locally end-to-end (`notebooks/01_phase1_reproduction.ipynb`) — drift magnitudes replicate the historical Lightning run at the right order (0.46–0.82 locally vs. 0.53–0.72 historically), though per-class ranking shifts somewhat, which is expected given the labels used are the model's own zero-shot predictions rather than ground truth.
-- A separate, larger Lightning-side experiment (`results/phase1_lightning/`) attempted to compare RemoteCLIP embeddings (DOTA) against a fine-tuned CLIP (VisDrone) — **this comparison is currently invalid** (see Known issues below) and its numbers should not be cited yet.
+- Phase-1 semantic-drift experiment (Lightning AI Studio, CLIP ViT-B/32 zero-shot, 7-class vocabulary) reproduced locally end-to-end (`notebooks/01_phase1_reproduction.ipynb`) — confirms the base phenomenon isn't a fluke of the original cloud environment.
+- A separate Lightning-side attempt to compare RemoteCLIP (DOTA) against a fine-tuned CLIP (VisDrone) via two independently-fit PCA projections was found invalid (two different models, no shared space) and **redone correctly**: same frozen encoder applied to both domains, ground-truth labels, no PCA.
+- **DOTA vs. VisDrone, 3-way comparison** (CLIP / RemoteCLIP / a CLIP fine-tuned on VisDrone) — `notebooks/04_finetune_visdrone_clip.ipynb`. Two more issues found and fixed before trusting the numbers: a bicycle→small-vehicle mapping bug, and train/eval leakage in the fine-tuned arm (it had been evaluated on images it was trained on). Fixed via a held-out VisDrone split; corrected results: RemoteCLIP and the fine-tuned model both show consistently lower drift than plain CLIP, on genuinely unseen data. See `PROJECT_CONTEXT.md` §7c for the full numbers.
+- **xView vs. VisDrone/UAVid, 4-class comparison** — DOTA structurally caps out at 2 shared classes with VisDrone (small/large-vehicle only), so xView (streamed from Hugging Face, no local download) was integrated for a richer vehicle taxonomy (car/bus/truck), and UAVid (via Kaggle) for a `building` class VisDrone doesn't have at all. RemoteCLIP beats CLIP on all 4 classes; building shows the largest drift and the largest reduction (30%) of anything measured in the project. See `PROJECT_CONTEXT.md` §7d.
+- Mid-semester presentation materials written: `PROGRESS_SUMMARY.md` (plain-language writeup) and `PRESENTATION_SCRIPT.md` (spoken script), both kept in sync with the corrected/expanded results above.
 
 **Known issues / open questions:**
-- The large-scale RemoteCLIP-vs-fine-tuned-CLIP drift numbers compare two *different* models via two *independently fit* PCA projections — there is no shared embedding space underlying that comparison, so it conflates real drift with model-identity and PCA-basis artifacts. Needs to be redone with the *same* frozen encoder applied to both domains (matching the proposal's own Phase 6 design: compare "CLIP drift" vs. "RemoteCLIP drift", never mix models across domains within one drift score).
-- Phase-1's drift scores currently group images by the model's own predicted class, not ground-truth DOTA/VisDrone annotations — a first-pass estimate, not final evidence.
-- PCA/t-SNE visualizations from the historical run haven't been fully audited for whether projections were fit jointly or per-domain (matters for whether the coordinates are comparable).
+- All drift numbers so far are validation-scale (300 crops/class, one seed) — need a seed/sample-size sensitivity check before being treated as final.
+- `van` (xView↔VisDrone) measured but excluded — only 25 samples in a 5,000-image xView scan, below the reliability threshold; needs a bigger scan.
+- Phase-1's own whole-image drift scores still group images by the model's predicted class, not ground truth (separate from the RemoteCLIP/CLIP work above, which already uses ground truth).
+- PCA/t-SNE visualizations from the historical Lightning run haven't been fully audited for whether projections were fit jointly or per-domain.
 
-**Not yet started:** full-dataset DOTA/VisDrone runs, standardized CLIP-vs-RemoteCLIP comparison at scale, the altitude-conditioned alignment adapter (Phase 5 of the proposal), final evaluation metrics (mAP, cross-altitude gap, semantic confusion rate).
+**Not yet started:** full-dataset DOTA (parts 2–3)/VisDrone/xView scale-up, the altitude-conditioned alignment adapter, final evaluation metrics (mAP, cross-altitude gap), SAM-based detection integration with a teammate's work.
 
 ## Repository structure
 
@@ -39,19 +40,26 @@ data/
 models/
   RemoteCLIP/            RemoteCLIP-ViT-L-14.pt checkpoint (not committed)
 embeddings/
-  phase1_lightning/      Historical Lightning-run embeddings (not committed, large)
+  phase1_lightning/       Historical Lightning-run embeddings (not committed, large)
   phase1_local/           Local Phase-1 reproduction embeddings (not committed, large)
-  clip/ remoteclip/ finetuned/   Reserved for future extraction runs
+  remoteclip_vs_clip/     RemoteCLIP-vs-CLIP validation-scale embeddings (not committed, large)
+  clip/ remoteclip/ finetuned/   Reserved for future full-scale extraction runs
 results/
   phase1_lightning/       Historical reference notebook + figures (committed — small)
   phase1_local/           Local reproduction figures + drift scores (committed — small)
+  remoteclip_vs_clip/     RemoteCLIP-vs-CLIP drift comparison + figure (committed — small)
   full_dataset/ figures/  Reserved for later phases
 notebooks/
-  01_phase1_reproduction.ipynb   Local reproduction of the Lightning Phase-1 pipeline
+  01_phase1_reproduction.ipynb   Local reproduction of the Lightning Phase-1 pipeline (done)
   02_full_dataset.ipynb           Full DOTA/VisDrone extraction + embedding (planned)
-  03_remoteclip.ipynb             RemoteCLIP vs. CLIP comparison, done properly (planned)
+  03_remoteclip.ipynb             RemoteCLIP vs. CLIP comparison, done properly (done, validation-scale)
   04_drift_analysis.ipynb         Final drift analysis across all embeddings (planned)
-src/                    Shared pipeline code (dataset/embeddings/metrics/visualization — to be filled in as notebooks stabilize)
+src/
+  dataset.py              DOTA/VisDrone ground-truth crop extraction + class mapping + subsampling
+  embeddings.py            RemoteCLIP/CLIP loading + batched encoding with progress logging
+  centroids.py metrics.py visualization.py   Reserved for later phases
+run_remoteclip_vs_clip.py  Standalone driver for the RemoteCLIP-vs-CLIP comparison (run directly with
+                           the hf env's python for real streaming progress -- see note below)
 configs/
   experiment.yaml        Recorded configuration for the Phase-1 reproduction run
 PROJECT_CONTEXT.md       Detailed working log / standing rules for how this project should be developed
@@ -95,13 +103,29 @@ jupyter nbconvert --to notebook --execute --inplace ^
 
 Outputs land in `embeddings/phase1_local/` and `results/phase1_local/`.
 
+## Reproducing the RemoteCLIP-vs-CLIP comparison
+
+```
+conda activate hf
+python run_remoteclip_vs_clip.py
+```
+
+Run this as a plain script, not through `jupyter nbconvert` — an earlier attempt driving the same
+extraction/encoding logic through a notebook cell hung for a full 30-minute cell timeout despite
+isolated benchmarks showing it should take ~4 minutes, and `nbconvert` gives zero progress
+visibility until the whole notebook finishes (see `PROJECT_CONTEXT.md` Section 7b). The script
+streams real per-batch throughput to stdout instead. Once it finishes, `notebooks/03_remoteclip.ipynb`
+just loads the saved embeddings/results for analysis and plotting (fast, no GPU needed) — rerun
+that notebook any time without repeating the encoding step.
+
 ## Next steps
 
 Following the proposal's phase order (see `PROJECT_CONTEXT.md` §15 for the full progression):
 
-1. Resolve the RemoteCLIP-vs-fine-tuned-CLIP methodology gap — redo the large-scale comparison with a single shared encoder per comparison.
-2. Reproduce Phase-1 with ground-truth labels instead of model-predicted labels, to separate real drift from classification noise.
-3. Scale to the full DOTA (parts 2–3) and VisDrone datasets once disk space allows.
-4. Run a proper CLIP-vs-RemoteCLIP drift comparison at scale (does domain specialization reduce drift?).
+1. ~~Resolve the RemoteCLIP-vs-fine-tuned-CLIP methodology gap~~ — done, and hardened further (bicycle-mapping + train/eval-leakage fixes, see §7c); check robustness across seeds/sample sizes before treating as final.
+2. ~~Expand beyond DOTA's 2-class ceiling~~ — done via xView + UAVid, 4 shared classes now (§7d); recover `van` as a 5th with a bigger xView scan.
+3. Reproduce Phase-1's own whole-image drift scores with ground-truth labels instead of model-predicted labels (the RemoteCLIP-vs-CLIP comparison already uses ground truth; Phase-1's original numbers don't yet).
+4. Scale to the full DOTA (parts 2–3), VisDrone, and xView datasets once disk space allows.
 5. Implement the altitude-conditioned alignment adapter (Phase 5) and evaluate mAP / cross-altitude gap / drift reduction (Phase 6).
-6. Final figures, tables, and report writeup.
+6. Integrate with the teammate's SAM-based detection pipeline (real detection, not just classification of pre-cropped regions) to test whether drift predicts detection failures.
+7. Final figures, tables, and report writeup.

@@ -104,15 +104,13 @@ Current local structure:
 data/
 └── raw/
     └── DOTA/
-        ├── images/
-        ├── labelTxt/
-        ├── labelTxt.zip
-        ├── part1.zip
+        ├── images/     (469 images, from part1.zip -- already extracted, zip deleted to reclaim space)
+        ├── labelTxt/   (1,411 label files -- already extracted, zip deleted)
         ├── part2.zip
         └── part3.zip
 ```
 
-Do not unnecessarily re-download DOTA. Only `part1.zip` + `labelTxt.zip` have been extracted so far (469 images) — matches the historical Lightning Phase-1 subset. `part2.zip`/`part3.zip` remain unextracted pending disk space for the full-dataset stage.
+Do not unnecessarily re-download DOTA. Only `part1.zip` + `labelTxt.zip` have been extracted so far (469 images) — matches the historical Lightning Phase-1 subset; those two zips were deleted after extraction to reclaim disk space (content is on disk, nothing lost). `part2.zip`/`part3.zip` remain unextracted pending disk space for the full-dataset stage.
 
 The previous pipeline used DOTA object annotations/bounding boxes and extracted object crops before embedding.
 
@@ -127,6 +125,25 @@ data/raw/VisDrone/VisDrone2019-DET-train/
 ├── images/         (6,471 images)
 └── annotations/    (6,471 annotation files)
 ```
+
+## xView (2026-08-20)
+
+**Not stored locally at all** — streamed on demand from the `HichTala/xview` Hugging Face mirror
+via `src.dataset.get_xview_crops()`. The official source requires DIUx xView-challenge
+registration and a ~20GB download; streaming avoids both. See Section 7d.
+
+## UAVid (2026-08-20)
+
+```text
+data/raw/UAVid/modified_uavid_dataset/
+├── train_data/{Images,Labels}/  (200 images + pixel-level RGB masks)
+├── val_data/{Images,Labels}/    (70 images + masks)
+└── test_data/Images/            (30 images, no labels -- held out by the dataset authors)
+```
+
+Obtained via Kaggle (`giavuongnguyen/modified-uavid-dataset`) — the official DLR/UTwente direct
+download links were unreachable from this environment. See Section 7d for why UAVid was needed
+(VisDrone has no `building` class) and how crops are derived from its pixel masks.
 
 ---
 
@@ -249,6 +266,123 @@ Do not assume these checkpoints are required for the next experiment. Retrieve t
 5. A later cell attempts a real fix — fine-tuning CLIP ViT-L/14 (matching RemoteCLIP's dimensionality, avoiding the need for PCA) — but is cut off at epoch 3, 70% through. No checkpoint or embeddings were produced from this attempt.
 
 **This comparison is methodologically invalid as-is** (see Section 14) and its numbers should not be cited in the report until redone properly.
+
+## 7b. RemoteCLIP vs. CLIP, done correctly (2026-08-14, validation-scale)
+
+Fixes Section 14a/14b in one pass: `run_remoteclip_vs_clip.py` (driver script; extraction/encoding
+logic lives in `src/dataset.py` / `src/embeddings.py`) embeds **both** DOTA and VisDrone
+ground-truth crops with **RemoteCLIP ViT-L/14**, and separately with **CLIP ViT-B/32** — same
+encoder, both domains, no PCA, no cross-model mixing. Scope: 300 crops/class/domain, randomly
+sampled (seed 42) from a full scan of both datasets (all 469 local DOTA images, all 6,471 VisDrone
+images — extraction itself reproduced the exact historical crop counts: 9,570 DOTA and 153,406
+VisDrone crops for small-vehicle/large-vehicle before subsampling).
+
+**Result:**
+
+| class | CLIP L2 | RemoteCLIP L2 | reduction |
+|---|---|---|---|
+| small-vehicle | 0.2366 | 0.1720 | ~27% lower |
+| large-vehicle | 0.2615 | 0.2260 | ~14% lower |
+
+RemoteCLIP shows lower drift than CLIP on both classes, both L2 and cosine distance. On the
+intra-class-variance-normalized `drift_ratio`, the gap holds for small-vehicle (0.51 vs 0.62) but
+nearly disappears for large-vehicle (0.622 vs 0.623) — so part of the raw-distance improvement
+there is RemoteCLIP's embeddings simply being more tightly clustered per-domain, not necessarily
+cleaner cross-domain alignment. Full numbers: `results/remoteclip_vs_clip/drift_comparison.json`;
+embeddings: `embeddings/remoteclip_vs_clip/`; notebook: `notebooks/03_remoteclip.ipynb` (loads
+these precomputed results rather than recomputing them — see the runtime note below).
+
+**Treat as validation-scale evidence, not a final claim** — one random seed, 300 crops/class, only
+two classes. Before reporting: rerun at full scale (Notebook 02), check seed/sample-size
+sensitivity, extend to more classes once DOTA parts 2–3 are extracted.
+
+**Runtime note:** the first attempt ran this pipeline inside a notebook cell via
+`jupyter nbconvert --execute` and it hung for the full 1800s cell timeout without finishing
+~3,200 crops, despite isolated benchmarks showing ~14–15 crops/s for RemoteCLIP on this GPU
+(should take ~4 minutes). The slowdown was specific to running inside that long-lived
+`nbconvert`/Jupyter kernel process — re-running the identical logic as a plain script reproduced
+full benchmark speed with no slowdown. `nbconvert` also only serializes cell output once the
+*entire* notebook finishes, so a hung cell gives zero visibility into progress from inside a
+notebook run. **For any further GPU-heavy extraction, prefer a plain script with `print(...,
+flush=True)` progress logging over driving it through `nbconvert`**, and keep notebooks for the
+fast load/analyze/visualize side once embeddings are on disk.
+
+## 7c. Two more fixes to the 3-way comparison: bicycle mapping and train/eval leakage (2026-08-19–20)
+
+Found while preparing the mid-semester presentation, before the Section 7b numbers went in the
+report:
+
+1. **Bicycle mapping.** `VISDRONE_TO_COMMON` mapped VisDrone's `bicycle` class into
+   `small-vehicle` alongside `car`. DOTA's `small-vehicle` label is satellite-altitude and can
+   only resolve cars, not bicycles (~5.8% of the pre-fix bucket was bicycles, checked directly).
+   Fixed in `src/dataset.py` — `bicycle` no longer maps to `small-vehicle`.
+2. **Train/eval leakage.** The fine-tuned-CLIP arm (`notebooks/04_finetune_visdrone_clip.ipynb`)
+   was fine-tuned on *every* VisDrone image, then evaluated on a sample drawn from that same
+   pool — the originally reported 63% drift reduction (large-vehicle) was measured on data the
+   model had already seen during training. Fixed by splitting VisDrone 80/20 by image
+   (`src/dataset.py`'s `split_visdrone_images`, holdout fraction 0.2, seed 1234) *before* any
+   crop extraction — fine-tuning only ever sees the 80% pool, and **all three arms** (not just
+   the fine-tuned one) are evaluated only on the untouched 20% held-out pool, so the comparison
+   stays fair. `run_remoteclip_vs_clip.py` was updated to use the identical split, so its 2-way
+   numbers match the 3-way notebook's numbers exactly (verified: they do, to 4 decimal places).
+
+**Corrected results** (300 crops/class, held-out, bicycle-fixed — supersedes Section 7b's table):
+
+| class | CLIP L2 | RemoteCLIP L2 | Fine-tuned-CLIP L2 |
+|---|---|---|---|
+| small-vehicle | 0.246 | 0.189 | 0.159 |
+| large-vehicle | 0.260 | 0.228 | 0.096 |
+
+Large-vehicle's fine-tuned number barely moved after the leakage fix (0.0964 → 0.0955) — that
+result wasn't inflated by memorization. Small-vehicle moved more (0.1412 → 0.1585) — some genuine
+inflation there, as expected. The core finding (fine-tuned-CLIP < RemoteCLIP < CLIP) held up
+under both fixes. Files: `results/remoteclip_vs_clip/drift_comparison_3way_heldout.json`,
+`three_way_drift_comparison_heldout.png`.
+
+## 7d. Richer vocabulary: xView and UAVid, expanding beyond DOTA's 2-class ceiling (2026-08-20)
+
+DOTA only ever distinguishes `small-vehicle`/`large-vehicle` — no amount of extra scanning raises
+that ceiling, since the coarseness is in DOTA's own annotations. To get more shared classes, two
+new datasets were integrated, both compared against off-the-shelf CLIP and RemoteCLIP (no
+fine-tuning here, so no leakage concern):
+
+- **xView** (satellite, 60 fine-grained classes including per-vehicle-type labels) — streamed
+  live from the `HichTala/xview` Hugging Face mirror, no local download (the official source
+  requires DIUx challenge registration and a ~20GB download). `get_xview_crops()` in
+  `src/dataset.py`. `EXPANDED_VOCAB = ["car", "bus", "truck", "van", "building"]`, with
+  `XVIEW_TO_EXPANDED`/`VISDRONE_TO_EXPANDED` mapping dicts — kept separate from `COMMON_VOCAB`
+  above, not a replacement for it.
+- **UAVid** (UAV, semantic segmentation with a `building` class — VisDrone has none at all, it's
+  a pure traffic/pedestrian dataset). The official DLR/UTwente direct-download links
+  (`eostore.itc.utwente.nl:5001`) were unreachable from this environment (connection refused);
+  obtained instead via Kaggle (`giavuongnguyen/modified-uavid-dataset`, 422MB, 200 train + 70 val
+  images with real ground-truth masks, verified against the official RGB-to-class scheme).
+  UAVid provides **pixel-level masks, not bounding boxes** — `get_uavid_crops()` derives crop
+  boxes via `scipy.ndimage.label` connected-component analysis on same-color mask regions, the
+  only extraction function in this project that doesn't read boxes directly from a label file.
+
+Two runs: `run_xview_vs_visdrone.py` (car/bus/truck vs. VisDrone; `van` measured but excluded —
+only 25 samples in a 5,000-image xView scan, xView's closest match "Pickup Truck" is genuinely
+rare, below the 30-sample `MIN_SAMPLES_FOR_DRIFT` threshold) and `run_uavid_building.py`
+(building vs. UAVid, merged into the same results file as a 4th class).
+
+**Results** (300 crops/class):
+
+| class | CLIP L2 | RemoteCLIP L2 | reduction | UAV-side source |
+|---|---|---|---|---|
+| car | 0.356 | 0.302 | 15% | VisDrone |
+| bus | 0.326 | 0.280 | 14% | VisDrone |
+| truck | 0.284 | 0.237 | 17% | VisDrone |
+| building | 0.542 | 0.378 | 30% | UAVid |
+
+RemoteCLIP beats CLIP on every class measured across the whole project so far (2 from DOTA, 4
+from xView/UAVid — 6 total). Building has both the highest absolute drift and the largest
+reduction of anything measured — a large, oblique-vs-nadir viewpoint change plausibly explains
+why buildings drift more than vehicles, which keep a roughly consistent silhouette across
+altitude. **Caveat to keep visible:** building compares xView against UAVid, not VisDrone — a
+deliberate substitution (VisDrone has no building class), not a full dataset swap; car/bus/truck
+still compare against VisDrone. Files: `results/xview_vs_visdrone/drift_comparison_4class.json`,
+`four_class_drift_comparison.png`.
 
 ---
 
@@ -531,15 +665,15 @@ This is particularly important because the local GPU has only ~4 GB VRAM.
 
 # 14. Methodological Issues To Resolve
 
-## 14a. Cross-model PCA mismatch (confirmed, Section 7a)
+## 14a. Cross-model PCA mismatch (confirmed, Section 7a) — FIXED, see Section 7b
 
 `model.ipynb`'s large-scale drift comparison embeds DOTA with RemoteCLIP and VisDrone with a separately fine-tuned CLIP, then fits **two independent PCA models** (one per domain) to force both into 256-dim before differencing centroids. There is no shared embedding space underlying this comparison — the reported numbers conflate real drift with (a) the fact that the two sides come from different model weights entirely, and (b) arbitrary PCA basis/rotation mismatch between the two independent fits. The VisDrone-side model was also actively fine-tuned to pull its classes toward text prompts while the DOTA side was untouched, which alone would manufacture apparent "drift" regardless of any real domain effect.
 
-**Fix:** never mix models across domains in a single drift score. Run the *same* frozen encoder over both DOTA and VisDrone crops to get one drift number per encoder, then compare encoders against each other (e.g. "CLIP drift" vs. "RemoteCLIP drift"), matching the proposal's own Phase 6 design.
+**Fix (implemented 2026-08-14):** never mix models across domains in a single drift score. Run the *same* frozen encoder over both DOTA and VisDrone crops to get one drift number per encoder, then compare encoders against each other (e.g. "CLIP drift" vs. "RemoteCLIP drift"), matching the proposal's own Phase 6 design. See Section 7b for the validation-scale result.
 
-## 14b. Predicted vs. ground-truth labels
+## 14b. Predicted vs. ground-truth labels — FIXED for the RemoteCLIP/CLIP comparison, still open for Phase-1
 
-The Phase-1 (`Capstone_v1.ipynb` / `01_phase1_reproduction.ipynb`) drift scores group images by the model's own zero-shot predicted class, not ground-truth annotations. This conflates real cross-domain drift with zero-shot misclassification noise. Treat as a first-pass estimate; redo with ground-truth labels + the Section 5 class mapping before treating as final evidence.
+The Phase-1 (`Capstone_v1.ipynb` / `01_phase1_reproduction.ipynb`) drift scores group images by the model's own zero-shot predicted class, not ground-truth annotations. This conflates real cross-domain drift with zero-shot misclassification noise. Treat as a first-pass estimate; redo with ground-truth labels + the Section 5 class mapping before treating as final evidence. **The Section 7b comparison already uses ground-truth box annotations**, so this is resolved there — but Phase-1's own whole-image zero-shot numbers (Section 2) still carry this caveat and haven't been redone.
 
 ## 14c. Joint vs. separate PCA/t-SNE fits generally
 
@@ -561,7 +695,7 @@ STEP 1
 Inspect old notebook(s) + saved embeddings                   [DONE — see Section 7a]
         ↓
 STEP 2
-Test local RemoteCLIP on one image                           [NOT YET DONE]
+Test local RemoteCLIP on one image                           [DONE]
         ↓
 STEP 3
 Reproduce 300-image Phase-1 locally                           [DONE]
@@ -570,16 +704,16 @@ STEP 4
 Compare local vs Lightning results                            [DONE]
         ↓
 STEP 5
-Fix the RemoteCLIP-vs-fine-tuned-CLIP methodology (14a)        [NOT YET DONE]
+Fix the RemoteCLIP-vs-fine-tuned-CLIP methodology (14a)        [DONE — see Section 7b]
         ↓
 STEP 6
-Reproduce drift with ground-truth labels (14b)                 [NOT YET DONE]
+Reproduce drift with ground-truth labels (14b)                 [DONE — see Section 7b]
         ↓
 STEP 7
 Run full DOTA/VisDrone dataset                                 [NOT YET DONE]
         ↓
 STEP 8
-Run specialized-model comparison (proper, single-encoder)       [NOT YET DONE]
+Run specialized-model comparison (proper, single-encoder)       [DONE at validation-scale (Section 7b); full-scale NOT YET DONE]
         ↓
 STEP 9
 Perform final drift analysis + alignment module (Phase 5/6)     [NOT YET DONE]
@@ -764,23 +898,31 @@ The final conclusion must follow the actual results.
 - [x] Historical embeddings/notebook inspected
 - [x] `model.ipynb` (RemoteCLIP/fine-tuned-VisDrone pipeline) recovered and inspected
 - [x] Phase-1 reproduced locally end-to-end
+- [x] Test local RemoteCLIP on one image (loads cleanly, 0 missing/unexpected keys, ~3.4GB VRAM)
+- [x] Fix the RemoteCLIP-vs-fine-tuned-CLIP methodology (Section 14a) — see Section 7b
+- [x] Reproduce drift with ground-truth labels (Section 14b) — see Section 7b
+- [x] `src/dataset.py` and `src/embeddings.py` populated with reusable extraction/encoding code
+- [x] Bicycle-mapping fix + train/eval held-out split fix for the 3-way comparison — see Section 7c
+- [x] xView integrated (streamed, no download) — car/bus/truck vs. VisDrone, RemoteCLIP lower drift on all 3 — see Section 7d
+- [x] UAVid integrated (Kaggle) — building vs. xView (VisDrone has no building class), largest drift + largest reduction of anything measured — see Section 7d
+- [x] Mid-semester presentation materials (`PROGRESS_SUMMARY.md`, `PRESENTATION_SCRIPT.md`) written and kept in sync with corrected/expanded results
 
 ## In progress / next up
 
-- [ ] Test local RemoteCLIP on one image
-- [ ] Fix the RemoteCLIP-vs-fine-tuned-CLIP methodology (Section 14a)
-- [ ] Reproduce drift with ground-truth labels (Section 14b)
+- [ ] Decide whether the Section 7c/7d results (RemoteCLIP shows lower drift than CLIP across all 6 classes measured so far) are robust — sensitivity check across random seeds/sample sizes before treating as final
+- [ ] Recover `van` as a usable xView<->VisDrone class (needs a larger xView scan — only 25/300 samples in the current 5,000-image pass, below the 30-sample threshold)
 
 ## Not yet completed
 
 - [ ] Full DOTA experiment (parts 2–3)
-- [ ] Full VisDrone experiment at full scale with a fixed methodology
+- [ ] Full VisDrone experiment at full scale with the now-fixed methodology
 - [ ] Rigorous final drift metrics
-- [ ] Standard CLIP vs RemoteCLIP comparison at full scale (single shared encoder)
+- [ ] Standard CLIP vs RemoteCLIP comparison at full scale (single shared encoder — done at validation-scale, Sections 7b/7d)
 - [ ] Altitude-conditioned alignment module (Phase 5)
 - [ ] Final evaluation metrics (mAP, cross-altitude gap, semantic drift reduction)
 - [ ] Final visualizations
 - [ ] Final report/paper
+- [ ] SAM-based detection integration with teammate's work (see PROGRESS_SUMMARY.md item 9)
 
 ---
 
@@ -792,7 +934,7 @@ The first milestone is:
 
 > **A local run reproduces the Phase-1 pipeline and produces results that are reasonably consistent with the existing Lightning experiment under the same configuration.**
 
-This milestone has been reached (Section 21). The next milestone is resolving the cross-model methodology gap (Section 14a) before scaling further.
+This milestone has been reached (Section 21), and so has the next one (resolving the cross-model methodology gap, Section 14a/7b). The current milestone is deciding whether the validation-scale RemoteCLIP-vs-CLIP result is robust enough to scale up (Section 21, "In progress / next up") before committing to a full-dataset run.
 
 ---
 
