@@ -1,0 +1,65 @@
+{
+  "clip_vit_b32": {
+    "small-vehicle": {
+      "l2_drift": 0.2366,
+      "cosine_drift": 0.0318,
+      "drift_ratio": 0.6175,
+      "sat_samples": 300,
+      "uav_samples": 300,
+      "sat_intra_var": 0.3286,
+      "uav_intra_var": 0.4376
+    },
+    "large-vehicle": {
+      "l2_drift": 0.2615,
+      "cosine_drift": 0.0413,
+      "drift_ratio": 0.6226,
+      "sat_samples": 300,
+      "uav_samples": 300,
+      "sat_intra_var": 0.3855,
+      "uav_intra_var": 0.4544
+    }
+  },
+  "remoteclip_vit_l14": {
+    "small-vehicle": {
+      "l2_drift": 0.172,
+      "cosine_drift": 0.0164,
+      "drift_ratio": 0.5144,
+      "sat_samples": 300,
+      "uav_samples": 300,
+      "sat_intra_var": 0.3019,
+      "uav_intra_var": 0.367
+    },
+    "large-vehicle": {
+      "l2_drift": 0.226,
+      "cosine_drift": 0.0295,
+      "drift_ratio": 0.6222,
+      "sat_samples": 300,
+      "uav_samples": 300,
+      "sat_intra_var": 0.3444,
+      "uav_intra_var": 0.3821
+    }
+  },
+  "finetuned_clip_visdrone": {
+    "small-vehicle": {
+      "l2_drift": 0.1412,
+      "cosine_drift": 0.0102,
+      "drift_ratio": 0.7486,
+      "sat_samples": 300,
+      "uav_samples": 300
+    },
+    "large-vehicle": {
+      "l2_drift": 0.0964,
+      "cosine_drift": 0.0049,
+      "drift_ratio": 0.4467,
+      "sat_samples": 300,
+      "uav_samples": 300
+    }
+  },
+  "eval_max_crops_per_class": 300,
+  "eval_seed": 42,
+  "train_max_crops_per_class": null,
+  "train_num_epochs": 3,
+  "train_batch_size": 8,
+  "train_lr": 1e-05,
+  "prompt_template": "a drone photo of a {}"
+}

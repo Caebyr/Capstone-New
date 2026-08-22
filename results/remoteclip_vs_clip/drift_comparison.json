@@ -1,0 +1,46 @@
+{
+  "clip_vit_b32": {
+    "small-vehicle": {
+      "l2_drift": 0.246,
+      "cosine_drift": 0.0346,
+      "drift_ratio": 0.6498,
+      "sat_samples": 300,
+      "uav_samples": 300,
+      "sat_intra_var": 0.3286,
+      "uav_intra_var": 0.4286
+    },
+    "large-vehicle": {
+      "l2_drift": 0.2596,
+      "cosine_drift": 0.0406,
+      "drift_ratio": 0.6235,
+      "sat_samples": 300,
+      "uav_samples": 300,
+      "sat_intra_var": 0.3855,
+      "uav_intra_var": 0.4471
+    }
+  },
+  "remoteclip_vit_l14": {
+    "small-vehicle": {
+      "l2_drift": 0.1892,
+      "cosine_drift": 0.0199,
+      "drift_ratio": 0.5627,
+      "sat_samples": 300,
+      "uav_samples": 300,
+      "sat_intra_var": 0.3019,
+      "uav_intra_var": 0.3707
+    },
+    "large-vehicle": {
+      "l2_drift": 0.2276,
+      "cosine_drift": 0.03,
+      "drift_ratio": 0.6252,
+      "sat_samples": 300,
+      "uav_samples": 300,
+      "sat_intra_var": 0.3444,
+      "uav_intra_var": 0.3837
+    }
+  },
+  "max_crops_per_class": 300,
+  "random_seed": 42,
+  "holdout_fraction": 0.2,
+  "split_seed": 1234
+}

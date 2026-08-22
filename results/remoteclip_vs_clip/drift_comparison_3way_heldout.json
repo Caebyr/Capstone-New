@@ -1,0 +1,59 @@
+{
+  "clip_vit_b32": {
+    "small-vehicle": {
+      "l2_drift": 0.246,
+      "cosine_drift": 0.0346,
+      "drift_ratio": 0.6498,
+      "sat_samples": 300,
+      "uav_samples": 300
+    },
+    "large-vehicle": {
+      "l2_drift": 0.2596,
+      "cosine_drift": 0.0406,
+      "drift_ratio": 0.6235,
+      "sat_samples": 300,
+      "uav_samples": 300
+    }
+  },
+  "remoteclip_vit_l14": {
+    "small-vehicle": {
+      "l2_drift": 0.1892,
+      "cosine_drift": 0.0199,
+      "drift_ratio": 0.5627,
+      "sat_samples": 300,
+      "uav_samples": 300
+    },
+    "large-vehicle": {
+      "l2_drift": 0.2276,
+      "cosine_drift": 0.03,
+      "drift_ratio": 0.6252,
+      "sat_samples": 300,
+      "uav_samples": 300
+    }
+  },
+  "finetuned_clip_visdrone_heldout": {
+    "small-vehicle": {
+      "l2_drift": 0.1585,
+      "cosine_drift": 0.0129,
+      "drift_ratio": 0.8165,
+      "sat_samples": 300,
+      "uav_samples": 300
+    },
+    "large-vehicle": {
+      "l2_drift": 0.0955,
+      "cosine_drift": 0.0048,
+      "drift_ratio": 0.4132,
+      "sat_samples": 300,
+      "uav_samples": 300
+    }
+  },
+  "eval_max_crops_per_class": 300,
+  "eval_seed": 42,
+  "holdout_fraction": 0.2,
+  "split_seed": 1234,
+  "train_num_epochs": 3,
+  "train_batch_size": 8,
+  "train_lr": 1e-05,
+  "prompt_template": "a drone photo of a {}",
+  "notes": "Fixes vs first run: (1) bicycle removed from small-vehicle mapping, (2) VisDrone split 80/20 train/held-out by image before any crop extraction, fine-tuning only sees the 80% pool, all three arms evaluated only on the 20% held-out pool."
+}
