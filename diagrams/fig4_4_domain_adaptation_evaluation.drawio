@@ -1,0 +1,56 @@
+<mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="820" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <mxCell id="clip" value="CLIP ViT-B/32&#10;(Pretrained)" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="60" y="30" width="300" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="remoteclip" value="RemoteCLIP ViT-L/14&#10;(Pretrained)" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="410" y="30" width="300" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="clip2" value="CLIP&#10;(Pretrained)" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="940" y="30" width="300" height="80" as="geometry" />
+    </mxCell>
+
+    <mxCell id="visdrone_train" value="VisDrone Training" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="940" y="150" width="300" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="finetuned" value="Fine-Tuned CLIP&#10;(UAV-Adapted)" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="940" y="260" width="300" height="70" as="geometry" />
+    </mxCell>
+
+    <mxCell id="protocol" value="Common Evaluation Protocol" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="410" y="360" width="480" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="crops" value="Satellite + UAV Crops" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="410" y="450" width="480" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="calc" value="Drift Calculation" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="410" y="530" width="480" height="60" as="geometry" />
+    </mxCell>
+
+    <mxCell id="l2" value="L2 Drift" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="430" y="620" width="200" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="cos" value="Cosine Drift" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="670" y="620" width="200" height="70" as="geometry" />
+    </mxCell>
+
+    <mxCell id="compare" value="Model Comparison" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=#305496;strokeColor=#1f3864;fontColor=#ffffff;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="490" y="720" width="320" height="70" as="geometry" />
+    </mxCell>
+
+    <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="clip2" target="visdrone_train"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="visdrone_train" target="finetuned"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;exitX=0.3;exitY=1;" edge="1" parent="1" source="clip" target="protocol"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="remoteclip" target="protocol"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;entryX=0.7;entryY=0;" edge="1" parent="1" source="finetuned" target="protocol"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="protocol" target="crops"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="crops" target="calc"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;exitX=0.25;exitY=1;" edge="1" parent="1" source="calc" target="l2"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;exitX=0.75;exitY=1;" edge="1" parent="1" source="calc" target="cos"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="l2" target="compare"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="cos" target="compare"><mxGeometry relative="1" as="geometry" /></mxCell>
+  </root>
+</mxGraphModel>
