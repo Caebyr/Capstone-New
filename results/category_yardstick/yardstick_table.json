@@ -1,0 +1,110 @@
+{
+  "dota_vs_visdrone": {
+    "CLIP ViT-B/32": {
+      "small-vehicle": {
+        "cross_altitude_cosine": 0.0346,
+        "cross_category_cosine": 0.0199,
+        "ratio": 1.7361
+      },
+      "large-vehicle": {
+        "cross_altitude_cosine": 0.0406,
+        "cross_category_cosine": 0.0199,
+        "ratio": 2.0404
+      }
+    },
+    "RemoteCLIP ViT-L/14": {
+      "small-vehicle": {
+        "cross_altitude_cosine": 0.0199,
+        "cross_category_cosine": 0.0177,
+        "ratio": 1.1249
+      },
+      "large-vehicle": {
+        "cross_altitude_cosine": 0.03,
+        "cross_category_cosine": 0.0177,
+        "ratio": 1.6916
+      }
+    }
+  },
+  "xview_vs_visdrone": {
+    "CLIP ViT-B/32": {
+      "car": {
+        "cross_altitude_cosine": 0.0718,
+        "cross_category_cosine": 0.0134,
+        "ratio": 5.3446
+      },
+      "bus": {
+        "cross_altitude_cosine": 0.0603,
+        "cross_category_cosine": 0.0104,
+        "ratio": 5.7743
+      },
+      "truck": {
+        "cross_altitude_cosine": 0.0451,
+        "cross_category_cosine": 0.0087,
+        "ratio": 5.1582
+      }
+    },
+    "RemoteCLIP ViT-L/14": {
+      "car": {
+        "cross_altitude_cosine": 0.0503,
+        "cross_category_cosine": 0.0121,
+        "ratio": 4.1473
+      },
+      "bus": {
+        "cross_altitude_cosine": 0.0434,
+        "cross_category_cosine": 0.0094,
+        "ratio": 4.624
+      },
+      "truck": {
+        "cross_altitude_cosine": 0.0303,
+        "cross_category_cosine": 0.0082,
+        "ratio": 3.6866
+      }
+    }
+  },
+  "xview_visdrone_uavid": {
+    "CLIP ViT-B/32": {
+      "car": {
+        "cross_altitude_cosine": 0.0718,
+        "cross_category_cosine": 0.0368,
+        "ratio": 1.9505
+      },
+      "bus": {
+        "cross_altitude_cosine": 0.0603,
+        "cross_category_cosine": 0.0334,
+        "ratio": 1.8065
+      },
+      "truck": {
+        "cross_altitude_cosine": 0.0451,
+        "cross_category_cosine": 0.0301,
+        "ratio": 1.4966
+      },
+      "building": {
+        "cross_altitude_cosine": 0.1822,
+        "cross_category_cosine": 0.0786,
+        "ratio": 2.3189
+      }
+    },
+    "RemoteCLIP ViT-L/14": {
+      "car": {
+        "cross_altitude_cosine": 0.0503,
+        "cross_category_cosine": 0.0241,
+        "ratio": 2.0908
+      },
+      "bus": {
+        "cross_altitude_cosine": 0.0434,
+        "cross_category_cosine": 0.0188,
+        "ratio": 2.3023
+      },
+      "truck": {
+        "cross_altitude_cosine": 0.0303,
+        "cross_category_cosine": 0.0168,
+        "ratio": 1.8081
+      },
+      "building": {
+        "cross_altitude_cosine": 0.0847,
+        "cross_category_cosine": 0.0399,
+        "ratio": 2.1233
+      }
+    }
+  }
+}
