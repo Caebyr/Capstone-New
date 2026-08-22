@@ -1,0 +1,53 @@
+{
+  "clip_vit_b32": {
+    "car": {
+      "l2_drift": 0.3564,
+      "cosine_drift": 0.0718,
+      "drift_ratio": 0.9931,
+      "xview_samples": 300,
+      "visdrone_samples": 300
+    },
+    "bus": {
+      "l2_drift": 0.3256,
+      "cosine_drift": 0.0603,
+      "drift_ratio": 0.8443,
+      "xview_samples": 300,
+      "visdrone_samples": 300
+    },
+    "truck": {
+      "l2_drift": 0.2837,
+      "cosine_drift": 0.0451,
+      "drift_ratio": 0.755,
+      "xview_samples": 300,
+      "visdrone_samples": 300
+    }
+  },
+  "remoteclip_vit_l14": {
+    "car": {
+      "l2_drift": 0.3024,
+      "cosine_drift": 0.0503,
+      "drift_ratio": 0.9719,
+      "xview_samples": 300,
+      "visdrone_samples": 300
+    },
+    "bus": {
+      "l2_drift": 0.2802,
+      "cosine_drift": 0.0434,
+      "drift_ratio": 0.8491,
+      "xview_samples": 300,
+      "visdrone_samples": 300
+    },
+    "truck": {
+      "l2_drift": 0.2366,
+      "cosine_drift": 0.0303,
+      "drift_ratio": 0.75,
+      "xview_samples": 300,
+      "visdrone_samples": 300
+    }
+  },
+  "max_xview_images": 5000,
+  "max_crops_per_class": 300,
+  "min_samples_for_drift": 30,
+  "random_seed": 42,
+  "notes": "xView has no dedicated van category (Pickup Truck is the closest match and is rare); van is measured but likely excluded here for insufficient samples. car/bus/truck are the real result of this pass."
+}
