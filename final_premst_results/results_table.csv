@@ -1,0 +1,15 @@
+comparison,class,satellite_source,uav_source,encoder,l2_drift,cosine_drift,drift_ratio,l2_pct_of_clip,cosine_pct_of_clip,n_satellite,n_uav
+DOTA vs VisDrone (held-out),small-vehicle,DOTA,VisDrone (held-out 20%),CLIP ViT-B/32,0.2460,0.0346,0.6498,100.0,100.0,300,300
+DOTA vs VisDrone (held-out),small-vehicle,DOTA,VisDrone (held-out 20%),RemoteCLIP ViT-L/14,0.1892,0.0199,0.5627,76.9,57.5,300,300
+DOTA vs VisDrone (held-out),small-vehicle,DOTA,VisDrone (held-out 20%),CLIP fine-tuned on VisDrone,0.1585,0.0129,0.8165,64.4,37.3,300,300
+DOTA vs VisDrone (held-out),large-vehicle,DOTA,VisDrone (held-out 20%),CLIP ViT-B/32,0.2596,0.0406,0.6235,100.0,100.0,300,300
+DOTA vs VisDrone (held-out),large-vehicle,DOTA,VisDrone (held-out 20%),RemoteCLIP ViT-L/14,0.2276,0.0300,0.6252,87.7,73.9,300,300
+DOTA vs VisDrone (held-out),large-vehicle,DOTA,VisDrone (held-out 20%),CLIP fine-tuned on VisDrone,0.0955,0.0048,0.4132,36.8,11.8,300,300
+xView vs VisDrone/UAVid,car,xView,VisDrone (all images),CLIP ViT-B/32,0.3564,0.0718,0.9931,100.0,100.0,300,300
+xView vs VisDrone/UAVid,car,xView,VisDrone (all images),RemoteCLIP ViT-L/14,0.3024,0.0503,0.9719,84.8,70.1,300,300
+xView vs VisDrone/UAVid,bus,xView,VisDrone (all images),CLIP ViT-B/32,0.3256,0.0603,0.8443,100.0,100.0,300,300
+xView vs VisDrone/UAVid,bus,xView,VisDrone (all images),RemoteCLIP ViT-L/14,0.2802,0.0434,0.8491,86.1,72.0,300,300
+xView vs VisDrone/UAVid,truck,xView,VisDrone (all images),CLIP ViT-B/32,0.2837,0.0451,0.7550,100.0,100.0,300,300
+xView vs VisDrone/UAVid,truck,xView,VisDrone (all images),RemoteCLIP ViT-L/14,0.2366,0.0303,0.7500,83.4,67.2,300,300
+xView vs VisDrone/UAVid,building,xView,UAVid,CLIP ViT-B/32,0.5417,0.1822,1.2219,100.0,100.0,300,300
+xView vs VisDrone/UAVid,building,xView,UAVid,RemoteCLIP ViT-L/14,0.3783,0.0847,0.9809,69.8,46.5,300,300
