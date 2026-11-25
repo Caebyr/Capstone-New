@@ -1,0 +1,13 @@
+# Recreate with:  conda env create -f environment.yml
+# Then register the notebook kernels:
+#   conda activate hf
+#   python -m ipykernel install --user --name hf --display-name "Python (hf)"
+#   python -m ipykernel install --user --name hf-capstone --display-name "Python (hf-capstone)"
+name: hf
+channels:
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - pip:
+      - -r requirements.txt

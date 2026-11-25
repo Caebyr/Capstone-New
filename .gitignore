@@ -21,6 +21,9 @@ embeddings/**
 *.tar
 *.pt
 *.pth
+*.ckpt
+*.bin
+*.safetensors
 
 # Python
 __pycache__/
@@ -28,6 +31,10 @@ __pycache__/
 .ipynb_checkpoints/
 .venv/
 venv/
+env/
+.conda/
+.cache/
+.pytest_cache/
 
 # OS cruft
 .DS_Store

@@ -1,0 +1,31 @@
+[03:21:49] Pillow 11.1.0 (libjpeg-turbo 3.1.0) from C:\Users\user\AppData\Local\Temp\claude\d--C-drive-data-Kabir-Oberoi-Desktop-Capstone\61c13b12-05fe-4ef2-a7ce-a6fce2aaaba8\scratchpad\pillow_11_1_0\PIL
+[03:22:14] p1_dota: 600
+[03:22:28] p1_visdrone_heldout: 600 (from 1294 held-out images)
+[03:23:42] p2_visdrone: 1200
+[03:23:42] streaming xView (5000 images)...
+[03:25:34] p2_xview: 925
+[03:25:51] p3_uavid_building: 300
+[03:26:17] p3_xview_building: 300
+WARNING:root:No pretrained weights loaded for model 'ViT-L-14'. Model initialized randomly.
+[03:27:02] p1_dota/clip: own-cos min 1.000000 median 1.000000 | exact(>0.999999) 100.0% | NN own 600/600 | assignment own 600/600 | misaligned-control median 0.8739
+[03:29:15] p1_dota/remoteclip: own-cos min 1.000000 median 1.000000 | exact(>0.999999) 100.0% | NN own 600/600 | assignment own 600/600 | misaligned-control median 0.9028
+[03:29:34] p1_dota/finetuned: own-cos min 1.000000 median 1.000000 | exact(>0.999999) 100.0% | NN own 600/600 | assignment own 600/600 | misaligned-control median 0.9559
+[03:29:34] p1_dota: raw counts replayed {'large-vehicle': 3033, 'small-vehicle': 6537} | equal to original log: True
+[03:29:52] p1_visdrone_heldout/clip: own-cos min 0.885595 median 0.994002 | exact(>0.999999) 0.0% | NN own 600/600 | assignment own 600/600 | misaligned-control median 0.8096
+[03:32:05] p1_visdrone_heldout/remoteclip: own-cos min 0.948248 median 0.995598 | exact(>0.999999) 0.0% | NN own 600/600 | assignment own 600/600 | misaligned-control median 0.8709
+[03:32:24] p1_visdrone_heldout/finetuned: own-cos min 0.978814 median 0.999185 | exact(>0.999999) 0.0% | NN own 592/600 | assignment own 600/600 | misaligned-control median 0.9734
+[03:32:24] p1_visdrone_heldout: raw counts replayed {'small-vehicle': 22368, 'large-vehicle': 7341} | equal to original log: True
+[03:33:00] p2_visdrone/clip: own-cos min 0.883326 median 0.993757 | exact(>0.999999) 0.0% | NN own 1198/1200 | assignment own 1200/1200 | misaligned-control median 0.8038
+[03:37:28] p2_visdrone/remoteclip: own-cos min 0.906302 median 0.995289 | exact(>0.999999) 0.0% | NN own 1196/1200 | assignment own 1200/1200 | misaligned-control median 0.8697
+[03:37:28] p2_visdrone: raw counts replayed {'car': 109567, 'van': 20534, 'truck': 11297, 'bus': 5233} | equal to original log: True
+[03:37:57] p2_xview/clip: own-cos min 0.957889 median 0.996743 | exact(>0.999999) 2.5% | NN own 918/925 | assignment own 925/925 | misaligned-control median 0.9187
+[03:41:23] p2_xview/remoteclip: own-cos min 0.970542 median 0.996564 | exact(>0.999999) 2.5% | NN own 919/925 | assignment own 925/925 | misaligned-control median 0.9362
+[03:41:23] p2_xview: raw counts replayed {'car': 1269, 'truck': 3694, 'bus': 903, 'van': 25} | equal to original log: True
+[03:41:33] p3_uavid_building/clip: own-cos min 1.000000 median 1.000000 | exact(>0.999999) 100.0% | NN own 300/300 | assignment own 300/300 | misaligned-control median 0.6993
+[03:42:40] p3_uavid_building/remoteclip: own-cos min 1.000000 median 1.000000 | exact(>0.999999) 100.0% | NN own 300/300 | assignment own 300/300 | misaligned-control median 0.7994
+[03:42:40] p3_uavid_building: raw counts replayed {'building': 1199} | equal to original log: True
+[03:42:50] p3_xview_building/clip: own-cos min 0.926665 median 0.997250 | exact(>0.999999) 9.3% | NN own 298/300 | assignment own 300/300 | misaligned-control median 0.8806
+[03:43:57] p3_xview_building/remoteclip: own-cos min 0.919159 median 0.997201 | exact(>0.999999) 9.3% | NN own 299/300 | assignment own 300/300 | misaligned-control median 0.9132
+[03:43:57] p3_xview_building: raw counts replayed {'building': 3711} | equal to original log: True
+[03:43:57] wrote results/paper_facts/crop_identity_pillow_11.1.0.json
+exit=0

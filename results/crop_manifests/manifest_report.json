@@ -1,0 +1,434 @@
+{
+  "settings": {
+    "max_crops_per_class": 300,
+    "random_seed": 42,
+    "holdout_fraction": 0.2,
+    "split_seed": 1234,
+    "max_xview_images": 5000,
+    "max_xview_images_for_building": 500
+  },
+  "lists": {
+    "p1_dota": {
+      "n": 600,
+      "labels": {
+        "small-vehicle": 300,
+        "large-vehicle": 300
+      },
+      "n_source_images": 149,
+      "n_sequences": null,
+      "manifest": "results/crop_manifests\\p1_dota.csv",
+      "label_check": {
+        "clip": true,
+        "remoteclip": true,
+        "finetuned": true
+      },
+      "reencode": {
+        "clip": {
+          "rows_matching_own_row": 600,
+          "n": 600,
+          "cosine_min": 0.999999,
+          "cosine_median": 1.0,
+          "frac_pixel_exact(cos>0.9999)": 1.0,
+          "passed": true
+        },
+        "remoteclip": {
+          "rows_matching_own_row": 600,
+          "n": 600,
+          "cosine_min": 1.0,
+          "cosine_median": 1.0,
+          "frac_pixel_exact(cos>0.9999)": 1.0,
+          "passed": true
+        },
+        "finetuned": {
+          "rows_matching_own_row": 600,
+          "n": 600,
+          "cosine_min": 0.999999,
+          "cosine_median": 1.0,
+          "frac_pixel_exact(cos>0.9999)": 1.0,
+          "passed": true
+        }
+      }
+    },
+    "p1_visdrone_heldout": {
+      "n": 600,
+      "labels": {
+        "small-vehicle": 300,
+        "large-vehicle": 300
+      },
+      "n_source_images": 435,
+      "n_sequences": 98,
+      "manifest": "results/crop_manifests\\p1_visdrone_heldout.csv",
+      "label_check": {
+        "clip": true,
+        "remoteclip": true,
+        "finetuned": true
+      },
+      "reencode": {
+        "clip": {
+          "rows_matching_own_row": 600,
+          "n": 600,
+          "cosine_min": 0.885595,
+          "cosine_median": 0.994003,
+          "frac_pixel_exact(cos>0.9999)": 0.0,
+          "passed": true
+        },
+        "remoteclip": {
+          "rows_matching_own_row": 600,
+          "n": 600,
+          "cosine_min": 0.948248,
+          "cosine_median": 0.995597,
+          "frac_pixel_exact(cos>0.9999)": 0.0017,
+          "passed": true
+        },
+        "finetuned": {
+          "rows_matching_own_row": 592,
+          "n": 600,
+          "cosine_min": 0.978814,
+          "cosine_median": 0.999185,
+          "frac_pixel_exact(cos>0.9999)": 0.0467,
+          "passed": true
+        }
+      }
+    },
+    "p2_visdrone": {
+      "n": 1200,
+      "labels": {
+        "truck": 300,
+        "car": 300,
+        "van": 300,
+        "bus": 300
+      },
+      "n_source_images": 1002,
+      "n_sequences": 120,
+      "manifest": "results/crop_manifests\\p2_visdrone.csv",
+      "label_check": {
+        "clip": true,
+        "remoteclip": true
+      },
+      "reencode": {
+        "clip": {
+          "rows_matching_own_row": 1198,
+          "n": 1200,
+          "cosine_min": 0.883326,
+          "cosine_median": 0.993758,
+          "frac_pixel_exact(cos>0.9999)": 0.0,
+          "passed": true
+        },
+        "remoteclip": {
+          "rows_matching_own_row": 1196,
+          "n": 1200,
+          "cosine_min": 0.906302,
+          "cosine_median": 0.995288,
+          "frac_pixel_exact(cos>0.9999)": 0.0,
+          "passed": true
+        }
+      }
+    },
+    "p2_xview": {
+      "n": 925,
+      "labels": {
+        "car": 300,
+        "truck": 300,
+        "bus": 300,
+        "van": 25
+      },
+      "n_source_images": 594,
+      "n_sequences": null,
+      "manifest": "results/crop_manifests\\p2_xview.csv",
+      "label_check": {
+        "clip": true,
+        "remoteclip": true
+      },
+      "reencode": {
+        "clip": {
+          "rows_matching_own_row": 918,
+          "n": 925,
+          "cosine_min": 0.957889,
+          "cosine_median": 0.996743,
+          "frac_pixel_exact(cos>0.9999)": 0.027,
+          "passed": true
+        },
+        "remoteclip": {
+          "rows_matching_own_row": 919,
+          "n": 925,
+          "cosine_min": 0.970542,
+          "cosine_median": 0.996565,
+          "frac_pixel_exact(cos>0.9999)": 0.0259,
+          "passed": true
+        }
+      }
+    },
+    "p3_uavid_building": {
+      "n": 300,
+      "labels": {
+        "building": 300
+      },
+      "n_source_images": 164,
+      "n_sequences": 27,
+      "manifest": "results/crop_manifests\\p3_uavid_building.csv",
+      "label_check": {
+        "clip": true,
+        "remoteclip": true
+      },
+      "reencode": {
+        "clip": {
+          "rows_matching_own_row": 300,
+          "n": 300,
+          "cosine_min": 0.999999,
+          "cosine_median": 1.0,
+          "frac_pixel_exact(cos>0.9999)": 1.0,
+          "passed": true
+        },
+        "remoteclip": {
+          "rows_matching_own_row": 300,
+          "n": 300,
+          "cosine_min": 1.0,
+          "cosine_median": 1.0,
+          "frac_pixel_exact(cos>0.9999)": 1.0,
+          "passed": true
+        }
+      }
+    },
+    "p3_xview_building": {
+      "n": 300,
+      "labels": {
+        "building": 300
+      },
+      "n_source_images": 127,
+      "n_sequences": null,
+      "manifest": "results/crop_manifests\\p3_xview_building.csv",
+      "label_check": {
+        "clip": true,
+        "remoteclip": true
+      },
+      "reencode": {
+        "clip": {
+          "rows_matching_own_row": 299,
+          "n": 300,
+          "cosine_min": 0.926665,
+          "cosine_median": 0.99725,
+          "frac_pixel_exact(cos>0.9999)": 0.13,
+          "passed": true
+        },
+        "remoteclip": {
+          "rows_matching_own_row": 299,
+          "n": 300,
+          "cosine_min": 0.91916,
+          "cosine_median": 0.997201,
+          "frac_pixel_exact(cos>0.9999)": 0.13,
+          "passed": true
+        }
+      }
+    }
+  },
+  "reencode_drift_sensitivity": {
+    "P1/clip/small-vehicle": {
+      "l2": [
+        0.246,
+        0.2458
+      ],
+      "cos": [
+        0.0346,
+        0.0345
+      ],
+      "ratio": [
+        0.6498,
+        0.6534
+      ]
+    },
+    "P1/clip/large-vehicle": {
+      "l2": [
+        0.2596,
+        0.2505
+      ],
+      "cos": [
+        0.0406,
+        0.0378
+      ],
+      "ratio": [
+        0.6235,
+        0.6058
+      ]
+    },
+    "P1/remoteclip/small-vehicle": {
+      "l2": [
+        0.1892,
+        0.1951
+      ],
+      "cos": [
+        0.0199,
+        0.0212
+      ],
+      "ratio": [
+        0.5627,
+        0.5876
+      ]
+    },
+    "P1/remoteclip/large-vehicle": {
+      "l2": [
+        0.2276,
+        0.2267
+      ],
+      "cos": [
+        0.03,
+        0.0297
+      ],
+      "ratio": [
+        0.6252,
+        0.6323
+      ]
+    },
+    "P1/finetuned/small-vehicle": {
+      "l2": [
+        0.1585,
+        0.1571
+      ],
+      "cos": [
+        0.0129,
+        0.0127
+      ],
+      "ratio": [
+        0.8165,
+        0.8113
+      ]
+    },
+    "P1/finetuned/large-vehicle": {
+      "l2": [
+        0.0955,
+        0.0939
+      ],
+      "cos": [
+        0.0048,
+        0.0047
+      ],
+      "ratio": [
+        0.4132,
+        0.4087
+      ]
+    },
+    "P2+P3/clip/car": {
+      "l2": [
+        0.3564,
+        0.3589
+      ],
+      "cos": [
+        0.0718,
+        0.0726
+      ],
+      "ratio": [
+        0.9931,
+        1.015
+      ]
+    },
+    "P2+P3/clip/bus": {
+      "l2": [
+        0.3256,
+        0.3268
+      ],
+      "cos": [
+        0.0603,
+        0.0607
+      ],
+      "ratio": [
+        0.8443,
+        0.8518
+      ]
+    },
+    "P2+P3/clip/truck": {
+      "l2": [
+        0.2837,
+        0.283
+      ],
+      "cos": [
+        0.0451,
+        0.0447
+      ],
+      "ratio": [
+        0.755,
+        0.7642
+      ]
+    },
+    "P2+P3/clip/building": {
+      "l2": [
+        0.5417,
+        0.5395
+      ],
+      "cos": [
+        0.1822,
+        0.1804
+      ],
+      "ratio": [
+        1.2219,
+        1.2191
+      ]
+    },
+    "P2+P3/remoteclip/car": {
+      "l2": [
+        0.3024,
+        0.3032
+      ],
+      "cos": [
+        0.0503,
+        0.0507
+      ],
+      "ratio": [
+        0.9719,
+        0.9738
+      ]
+    },
+    "P2+P3/remoteclip/bus": {
+      "l2": [
+        0.2802,
+        0.2726
+      ],
+      "cos": [
+        0.0434,
+        0.0411
+      ],
+      "ratio": [
+        0.8491,
+        0.8368
+      ]
+    },
+    "P2+P3/remoteclip/truck": {
+      "l2": [
+        0.2366,
+        0.2303
+      ],
+      "cos": [
+        0.0303,
+        0.0288
+      ],
+      "ratio": [
+        0.75,
+        0.7396
+      ]
+    },
+    "P2+P3/remoteclip/building": {
+      "l2": [
+        0.3783,
+        0.3797
+      ],
+      "cos": [
+        0.0847,
+        0.0846
+      ],
+      "ratio": [
+        0.9809,
+        0.9956
+      ]
+    }
+  },
+  "assets": {
+    "clip_hf_model": "openai/clip-vit-base-patch32",
+    "clip_hf_revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "xview_hf_dataset": "HichTala/xview",
+    "xview_hf_revision": "00a1b977dc16f6eda77cce0236ca2c2a13ac840b",
+    "remoteclip_checkpoint": "models/RemoteCLIP/RemoteCLIP-ViT-L-14.pt",
+    "remoteclip_sha256": "fcc2a7e21e171f4ffcb7a9c0206b8b74ac0c9eb83c67b576958b7a4ed6c8cecb",
+    "finetuned_checkpoint": "models/finetuned_clip_visdrone_heldout/finetuned_clip_visdrone_heldout_epoch3.pt",
+    "finetuned_sha256": "3c150faac15620b4edce39abfe50d4191f029df85e45ad4a03f17fb10be0ba2a"
+  },
+  "all_checks_passed": true,
+  "identity_criterion": ">=98% of re-encoded crops nearest to own cached row AND median own-row cosine >= 0.99 (labels must match exactly)"
+}

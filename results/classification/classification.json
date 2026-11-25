@@ -1,0 +1,962 @@
+{
+  "prompt": "a photo of a {}",
+  "prompts": {
+    "P1": [
+      "a photo of a small vehicle",
+      "a photo of a large vehicle"
+    ],
+    "P2+P3": [
+      "a photo of a car",
+      "a photo of a bus",
+      "a photo of a truck",
+      "a photo of a building"
+    ]
+  },
+  "note_finetuned": "supervised on the UAV side of P1 (held-out images); not zero-shot",
+  "tasks": {
+    "P1": {
+      "categories": [
+        "small-vehicle",
+        "large-vehicle"
+      ],
+      "models": [
+        "clip",
+        "remoteclip",
+        "finetuned"
+      ],
+      "n": {
+        "overhead": {
+          "small-vehicle": 300,
+          "large-vehicle": 300
+        },
+        "uav": {
+          "small-vehicle": 300,
+          "large-vehicle": 300
+        }
+      },
+      "point": {
+        "clip": {
+          "overhead": {
+            "accuracy": 0.5116666666666667,
+            "macro_f1": 0.36678540941033233,
+            "per_category": {
+              "small-vehicle": {
+                "precision": 0.5059625212947189,
+                "recall": 0.99,
+                "f1": 0.66967305524239,
+                "n": 300.0
+              },
+              "large-vehicle": {
+                "precision": 0.7692307692307693,
+                "recall": 0.03333333333333333,
+                "f1": 0.06389776357827476,
+                "n": 300.0
+              }
+            },
+            "confusion": [
+              [
+                297,
+                3
+              ],
+              [
+                290,
+                10
+              ]
+            ],
+            "text": {
+              "small-vehicle": {
+                "a": 0.2427607106375274,
+                "margin": 0.021043866957250357,
+                "nearest_other": "large-vehicle"
+              },
+              "large-vehicle": {
+                "a": 0.2199803424780061,
+                "margin": -0.01758441806826133,
+                "nearest_other": "small-vehicle"
+              }
+            }
+          },
+          "uav": {
+            "accuracy": 0.545,
+            "macro_f1": 0.4305361929362847,
+            "per_category": {
+              "small-vehicle": {
+                "precision": 0.523725834797891,
+                "recall": 0.9933333333333333,
+                "f1": 0.6858457997698504,
+                "n": 300.0
+              },
+              "large-vehicle": {
+                "precision": 0.9354838709677419,
+                "recall": 0.09666666666666666,
+                "f1": 0.17522658610271905,
+                "n": 300.0
+              }
+            },
+            "confusion": [
+              [
+                298,
+                2
+              ],
+              [
+                271,
+                29
+              ]
+            ],
+            "text": {
+              "small-vehicle": {
+                "a": 0.26600906086265025,
+                "margin": 0.0214446585304362,
+                "nearest_other": "large-vehicle"
+              },
+              "large-vehicle": {
+                "a": 0.2506318165503485,
+                "margin": -0.013725480821885128,
+                "nearest_other": "small-vehicle"
+              }
+            }
+          },
+          "gap": {
+            "accuracy_pp": -3.3333333333333326,
+            "macro_f1_pp": -6.375078352595237,
+            "recall_pp": {
+              "small-vehicle": -0.33333333333332993,
+              "large-vehicle": -6.333333333333332
+            },
+            "A": {
+              "small-vehicle": 0.023248350225122838,
+              "large-vehicle": 0.030651474072342394
+            },
+            "delta_m": {
+              "small-vehicle": -0.0004007915731858436,
+              "large-vehicle": -0.003858937246376204
+            }
+          }
+        },
+        "remoteclip": {
+          "overhead": {
+            "accuracy": 0.6683333333333333,
+            "macro_f1": 0.6612102794589578,
+            "per_category": {
+              "small-vehicle": {
+                "precision": 0.6304909560723514,
+                "recall": 0.8133333333333334,
+                "f1": 0.710334788937409,
+                "n": 300.0
+              },
+              "large-vehicle": {
+                "precision": 0.7370892018779343,
+                "recall": 0.5233333333333333,
+                "f1": 0.6120857699805068,
+                "n": 300.0
+              }
+            },
+            "confusion": [
+              [
+                244,
+                56
+              ],
+              [
+                143,
+                157
+              ]
+            ],
+            "text": {
+              "small-vehicle": {
+                "a": 0.23583820184050683,
+                "margin": 0.005536933060796223,
+                "nearest_other": "large-vehicle"
+              },
+              "large-vehicle": {
+                "a": 0.22706423855385474,
+                "margin": 0.006118511300622631,
+                "nearest_other": "small-vehicle"
+              }
+            }
+          },
+          "uav": {
+            "accuracy": 0.67,
+            "macro_f1": 0.6492305511922618,
+            "per_category": {
+              "small-vehicle": {
+                "precision": 0.6143497757847534,
+                "recall": 0.9133333333333333,
+                "f1": 0.7345844504021447,
+                "n": 300.0
+              },
+              "large-vehicle": {
+                "precision": 0.8311688311688312,
+                "recall": 0.4266666666666667,
+                "f1": 0.5638766519823789,
+                "n": 300.0
+              }
+            },
+            "confusion": [
+              [
+                274,
+                26
+              ],
+              [
+                172,
+                128
+              ]
+            ],
+            "text": {
+              "small-vehicle": {
+                "a": 0.2358105953004042,
+                "margin": 0.012619791818206216,
+                "nearest_other": "large-vehicle"
+              },
+              "large-vehicle": {
+                "a": 0.23484542622459165,
+                "margin": 0.0033303430515636834,
+                "nearest_other": "small-vehicle"
+              }
+            }
+          },
+          "gap": {
+            "accuracy_pp": -0.16666666666667052,
+            "macro_f1_pp": 1.1979728266696021,
+            "recall_pp": {
+              "small-vehicle": -9.999999999999998,
+              "large-vehicle": 9.666666666666663
+            },
+            "A": {
+              "small-vehicle": 2.7606540102614874e-05,
+              "large-vehicle": 0.007781187670736905
+            },
+            "delta_m": {
+              "small-vehicle": -0.007082858757409993,
+              "large-vehicle": 0.0027881682490589477
+            }
+          }
+        },
+        "finetuned": {
+          "overhead": {
+            "accuracy": 0.8483333333333334,
+            "macro_f1": 0.8482992006534804,
+            "per_category": {
+              "small-vehicle": {
+                "precision": 0.8381877022653722,
+                "recall": 0.8633333333333333,
+                "f1": 0.8505747126436782,
+                "n": 300.0
+              },
+              "large-vehicle": {
+                "precision": 0.8591065292096219,
+                "recall": 0.8333333333333334,
+                "f1": 0.8460236886632826,
+                "n": 300.0
+              }
+            },
+            "confusion": [
+              [
+                259,
+                41
+              ],
+              [
+                50,
+                250
+              ]
+            ],
+            "text": {
+              "small-vehicle": {
+                "a": 0.28736796324884245,
+                "margin": 0.03489684962761591,
+                "nearest_other": "large-vehicle"
+              },
+              "large-vehicle": {
+                "a": 0.30598869434012954,
+                "margin": 0.04150527228584283,
+                "nearest_other": "small-vehicle"
+              }
+            }
+          },
+          "uav": {
+            "accuracy": 0.8416666666666667,
+            "macro_f1": 0.8392876778761162,
+            "per_category": {
+              "small-vehicle": {
+                "precision": 0.774798927613941,
+                "recall": 0.9633333333333334,
+                "f1": 0.8588410104011888,
+                "n": 300.0
+              },
+              "large-vehicle": {
+                "precision": 0.9515418502202643,
+                "recall": 0.72,
+                "f1": 0.8197343453510436,
+                "n": 300.0
+              }
+            },
+            "confusion": [
+              [
+                289,
+                11
+              ],
+              [
+                84,
+                216
+              ]
+            ],
+            "text": {
+              "small-vehicle": {
+                "a": 0.29750042054717385,
+                "margin": 0.05350352825794852,
+                "nearest_other": "large-vehicle"
+              },
+              "large-vehicle": {
+                "a": 0.29991053732225564,
+                "margin": 0.02834838736919887,
+                "nearest_other": "small-vehicle"
+              }
+            }
+          },
+          "gap": {
+            "accuracy_pp": 0.666666666666671,
+            "macro_f1_pp": 0.9011522777364167,
+            "recall_pp": {
+              "small-vehicle": -10.000000000000009,
+              "large-vehicle": 11.33333333333334
+            },
+            "A": {
+              "small-vehicle": 0.010132457298331399,
+              "large-vehicle": 0.0060781570178738975
+            },
+            "delta_m": {
+              "small-vehicle": -0.018606678630332607,
+              "large-vehicle": 0.013156884916643963
+            }
+          }
+        }
+      }
+    },
+    "P2+P3": {
+      "categories": [
+        "car",
+        "bus",
+        "truck",
+        "building"
+      ],
+      "models": [
+        "clip",
+        "remoteclip"
+      ],
+      "n": {
+        "overhead": {
+          "car": 300,
+          "bus": 300,
+          "truck": 300,
+          "building": 300
+        },
+        "uav": {
+          "car": 300,
+          "bus": 300,
+          "truck": 300,
+          "building": 300
+        }
+      },
+      "point": {
+        "clip": {
+          "overhead": {
+            "accuracy": 0.32916666666666666,
+            "macro_f1": 0.25532806871244723,
+            "per_category": {
+              "car": {
+                "precision": 0.2967741935483871,
+                "recall": 0.92,
+                "f1": 0.44878048780487806,
+                "n": 300.0
+              },
+              "bus": {
+                "precision": 0.6,
+                "recall": 0.01,
+                "f1": 0.019672131147540985,
+                "n": 300.0
+              },
+              "truck": {
+                "precision": 0.1910828025477707,
+                "recall": 0.1,
+                "f1": 0.13129102844638948,
+                "n": 300.0
+              },
+              "building": {
+                "precision": 0.7962962962962963,
+                "recall": 0.2866666666666667,
+                "f1": 0.42156862745098045,
+                "n": 300.0
+              }
+            },
+            "confusion": [
+              [
+                276,
+                0,
+                19,
+                5
+              ],
+              [
+                280,
+                3,
+                13,
+                4
+              ],
+              [
+                257,
+                0,
+                30,
+                13
+              ],
+              [
+                117,
+                2,
+                95,
+                86
+              ]
+            ],
+            "text": {
+              "car": {
+                "a": 0.23480318162044225,
+                "margin": 0.008493137902727294,
+                "nearest_other": "truck"
+              },
+              "bus": {
+                "a": 0.2218779249412086,
+                "margin": -0.01193367607280299,
+                "nearest_other": "car"
+              },
+              "truck": {
+                "a": 0.22591950895617952,
+                "margin": -0.0073121515334333975,
+                "nearest_other": "car"
+              },
+              "building": {
+                "a": 0.22555253260081792,
+                "margin": -0.0038570182886289994,
+                "nearest_other": "car"
+              }
+            }
+          },
+          "uav": {
+            "accuracy": 0.6025,
+            "macro_f1": 0.5828746648902189,
+            "per_category": {
+              "car": {
+                "precision": 0.4816849816849817,
+                "recall": 0.8766666666666667,
+                "f1": 0.6217494089834515,
+                "n": 300.0
+              },
+              "bus": {
+                "precision": 0.6078431372549019,
+                "recall": 0.41333333333333333,
+                "f1": 0.4920634920634921,
+                "n": 300.0
+              },
+              "truck": {
+                "precision": 0.6408450704225352,
+                "recall": 0.30333333333333334,
+                "f1": 0.411764705882353,
+                "n": 300.0
+              },
+              "building": {
+                "precision": 0.7954545454545454,
+                "recall": 0.8166666666666667,
+                "f1": 0.8059210526315789,
+                "n": 300.0
+              }
+            },
+            "confusion": [
+              [
+                263,
+                14,
+                21,
+                2
+              ],
+              [
+                116,
+                124,
+                28,
+                32
+              ],
+              [
+                133,
+                47,
+                91,
+                29
+              ],
+              [
+                34,
+                19,
+                2,
+                245
+              ]
+            ],
+            "text": {
+              "car": {
+                "a": 0.2681173652989819,
+                "margin": 0.022685189660647892,
+                "nearest_other": "truck"
+              },
+              "bus": {
+                "a": 0.2611813186378907,
+                "margin": 0.009267149979053868,
+                "nearest_other": "car"
+              },
+              "truck": {
+                "a": 0.25585361466824,
+                "margin": 0.00276840220300395,
+                "nearest_other": "car"
+              },
+              "building": {
+                "a": 0.2836485855133915,
+                "margin": 0.031147997989138754,
+                "nearest_other": "car"
+              }
+            }
+          },
+          "gap": {
+            "accuracy_pp": -27.333333333333336,
+            "macro_f1_pp": -32.754659617777165,
+            "recall_pp": {
+              "car": 4.333333333333334,
+              "bus": -40.33333333333333,
+              "truck": -20.333333333333332,
+              "building": -53.0
+            },
+            "A": {
+              "car": 0.03331418367853964,
+              "bus": 0.03930339369668209,
+              "truck": 0.02993410571206051,
+              "building": 0.05809605291257358
+            },
+            "delta_m": {
+              "car": -0.014192051757920598,
+              "bus": -0.021200826051856858,
+              "truck": -0.010080553736437348,
+              "building": -0.03500501627776775
+            }
+          }
+        },
+        "remoteclip": {
+          "overhead": {
+            "accuracy": 0.2725,
+            "macro_f1": 0.14956081466892504,
+            "per_category": {
+              "car": {
+                "precision": 0.46296296296296297,
+                "recall": 0.08333333333333333,
+                "f1": 0.14124293785310735,
+                "n": 300.0
+              },
+              "bus": {
+                "precision": 0.5555555555555556,
+                "recall": 0.016666666666666666,
+                "f1": 0.032362459546925564,
+                "n": 300.0
+              },
+              "truck": {
+                "precision": 0.6666666666666666,
+                "recall": 0.006666666666666667,
+                "f1": 0.013201320132013201,
+                "n": 300.0
+              },
+              "building": {
+                "precision": 0.2601410934744268,
+                "recall": 0.9833333333333333,
+                "f1": 0.4114365411436541,
+                "n": 300.0
+              }
+            },
+            "confusion": [
+              [
+                25,
+                2,
+                0,
+                273
+              ],
+              [
+                12,
+                5,
+                1,
+                282
+              ],
+              [
+                12,
+                2,
+                2,
+                284
+              ],
+              [
+                5,
+                0,
+                0,
+                295
+              ]
+            ],
+            "text": {
+              "car": {
+                "a": 0.20617838119649362,
+                "margin": -0.011939945131858865,
+                "nearest_other": "building"
+              },
+              "bus": {
+                "a": 0.1979365720849359,
+                "margin": -0.025080918453228074,
+                "nearest_other": "building"
+              },
+              "truck": {
+                "a": 0.20465501753052656,
+                "margin": -0.016922391066360593,
+                "nearest_other": "building"
+              },
+              "building": {
+                "a": 0.23388093221368145,
+                "margin": 0.022831003942406947,
+                "nearest_other": "car"
+              }
+            }
+          },
+          "uav": {
+            "accuracy": 0.5183333333333333,
+            "macro_f1": 0.48247030422732434,
+            "per_category": {
+              "car": {
+                "precision": 0.6666666666666666,
+                "recall": 0.6333333333333333,
+                "f1": 0.6495726495726496,
+                "n": 300.0
+              },
+              "bus": {
+                "precision": 0.76875,
+                "recall": 0.41,
+                "f1": 0.5347826086956522,
+                "n": 300.0
+              },
+              "truck": {
+                "precision": 0.7954545454545454,
+                "recall": 0.11666666666666667,
+                "f1": 0.20348837209302326,
+                "n": 300.0
+              },
+              "building": {
+                "precision": 0.3853727144866385,
+                "recall": 0.9133333333333333,
+                "f1": 0.5420375865479723,
+                "n": 300.0
+              }
+            },
+            "confusion": [
+              [
+                190,
+                7,
+                0,
+                103
+              ],
+              [
+                36,
+                123,
+                3,
+                138
+              ],
+              [
+                49,
+                20,
+                35,
+                196
+              ],
+              [
+                10,
+                10,
+                6,
+                274
+              ]
+            ],
+            "text": {
+              "car": {
+                "a": 0.24283681122851658,
+                "margin": 0.017551911902045414,
+                "nearest_other": "building"
+              },
+              "bus": {
+                "a": 0.24562533330427752,
+                "margin": 0.0038144057868582937,
+                "nearest_other": "building"
+              },
+              "truck": {
+                "a": 0.22763482750535505,
+                "margin": -0.015173183333504425,
+                "nearest_other": "building"
+              },
+              "building": {
+                "a": 0.27126076791839526,
+                "margin": 0.039284158526776775,
+                "nearest_other": "car"
+              }
+            }
+          },
+          "gap": {
+            "accuracy_pp": -24.58333333333333,
+            "macro_f1_pp": -33.29094895583993,
+            "recall_pp": {
+              "car": -54.99999999999999,
+              "bus": -39.33333333333333,
+              "truck": -11.0,
+              "building": 6.999999999999995
+            },
+            "A": {
+              "car": 0.03665843003202296,
+              "bus": 0.047688761219341624,
+              "truck": 0.022979809974828486,
+              "building": 0.037379835704713815
+            },
+            "delta_m": {
+              "car": -0.02949185703390428,
+              "bus": -0.028895324240086367,
+              "truck": -0.0017492077328561673,
+              "building": -0.016453154584369828
+            }
+          }
+        }
+      }
+    }
+  },
+  "score_columns": {
+    "P1": [
+      "small-vehicle",
+      "large-vehicle"
+    ],
+    "P2+P3": [
+      "car",
+      "bus",
+      "truck",
+      "building"
+    ]
+  },
+  "checks": [
+    {
+      "check": "P1: fine-tuned text embeddings equal CLIP's (frozen text tower)",
+      "passed": true
+    },
+    {
+      "check": "P1 clip: text embeddings unit-norm",
+      "passed": true
+    },
+    {
+      "check": "P1 remoteclip: text embeddings unit-norm",
+      "passed": true
+    },
+    {
+      "check": "P1 finetuned: text embeddings unit-norm",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 clip: text embeddings unit-norm",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 remoteclip: text embeddings unit-norm",
+      "passed": true
+    },
+    {
+      "check": "P1 overhead clip: crop IDs match clip",
+      "passed": true
+    },
+    {
+      "check": "P1 overhead clip: image embeddings unit-norm",
+      "passed": true
+    },
+    {
+      "check": "P1 overhead clip: image/text dims match",
+      "passed": true
+    },
+    {
+      "check": "P1 overhead: every candidate category present",
+      "passed": true
+    },
+    {
+      "check": "P1 overhead remoteclip: crop IDs match clip",
+      "passed": true
+    },
+    {
+      "check": "P1 overhead remoteclip: image embeddings unit-norm",
+      "passed": true
+    },
+    {
+      "check": "P1 overhead remoteclip: image/text dims match",
+      "passed": true
+    },
+    {
+      "check": "P1 overhead: every candidate category present",
+      "passed": true
+    },
+    {
+      "check": "P1 overhead finetuned: crop IDs match clip",
+      "passed": true
+    },
+    {
+      "check": "P1 overhead finetuned: image embeddings unit-norm",
+      "passed": true
+    },
+    {
+      "check": "P1 overhead finetuned: image/text dims match",
+      "passed": true
+    },
+    {
+      "check": "P1 overhead: every candidate category present",
+      "passed": true
+    },
+    {
+      "check": "P1 uav clip: crop IDs match clip",
+      "passed": true
+    },
+    {
+      "check": "P1 uav clip: image embeddings unit-norm",
+      "passed": true
+    },
+    {
+      "check": "P1 uav clip: image/text dims match",
+      "passed": true
+    },
+    {
+      "check": "P1 uav: every candidate category present",
+      "passed": true
+    },
+    {
+      "check": "P1 uav remoteclip: crop IDs match clip",
+      "passed": true
+    },
+    {
+      "check": "P1 uav remoteclip: image embeddings unit-norm",
+      "passed": true
+    },
+    {
+      "check": "P1 uav remoteclip: image/text dims match",
+      "passed": true
+    },
+    {
+      "check": "P1 uav: every candidate category present",
+      "passed": true
+    },
+    {
+      "check": "P1 uav finetuned: crop IDs match clip",
+      "passed": true
+    },
+    {
+      "check": "P1 uav finetuned: image embeddings unit-norm",
+      "passed": true
+    },
+    {
+      "check": "P1 uav finetuned: image/text dims match",
+      "passed": true
+    },
+    {
+      "check": "P1 uav: every candidate category present",
+      "passed": true
+    },
+    {
+      "check": "P1 clip overhead: accuracy from predictions matches metric",
+      "passed": true
+    },
+    {
+      "check": "P1 clip uav: accuracy from predictions matches metric",
+      "passed": true
+    },
+    {
+      "check": "P1 remoteclip overhead: accuracy from predictions matches metric",
+      "passed": true
+    },
+    {
+      "check": "P1 remoteclip uav: accuracy from predictions matches metric",
+      "passed": true
+    },
+    {
+      "check": "P1 finetuned overhead: accuracy from predictions matches metric",
+      "passed": true
+    },
+    {
+      "check": "P1 finetuned uav: accuracy from predictions matches metric",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 overhead clip: crop IDs match clip",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 overhead clip: image embeddings unit-norm",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 overhead clip: image/text dims match",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 overhead: every candidate category present",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 overhead remoteclip: crop IDs match clip",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 overhead remoteclip: image embeddings unit-norm",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 overhead remoteclip: image/text dims match",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 overhead: every candidate category present",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 uav clip: crop IDs match clip",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 uav clip: image embeddings unit-norm",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 uav clip: image/text dims match",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 uav: every candidate category present",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 uav remoteclip: crop IDs match clip",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 uav remoteclip: image embeddings unit-norm",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 uav remoteclip: image/text dims match",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 uav: every candidate category present",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 clip overhead: accuracy from predictions matches metric",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 clip uav: accuracy from predictions matches metric",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 remoteclip overhead: accuracy from predictions matches metric",
+      "passed": true
+    },
+    {
+      "check": "P2+P3 remoteclip uav: accuracy from predictions matches metric",
+      "passed": true
+    }
+  ],
+  "all_checks_passed": true
+}

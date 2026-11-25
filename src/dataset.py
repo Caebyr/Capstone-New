@@ -28,6 +28,14 @@ COMMON_VOCAB = ["small-vehicle", "large-vehicle"]
 
 MIN_CROP_SIZE = 16
 
+
+def _tag(crop, **meta):
+    """Attach provenance (source image, box, ...) to a crop via PIL's per-image info dict.
+    Pure metadata: pixels, labels, ordering and RNG consumption are unchanged, so crop lists
+    (and the embeddings cached from them) stay identical to runs made before this was added."""
+    crop.info.update(meta)
+    return crop
+
 # --- Expanded vocabulary: xView <-> VisDrone (separate from COMMON_VOCAB above) ---
 # xView's fine-grained vehicle taxonomy lets car/bus/truck/van map 1:1 onto VisDrone's own
 # categories instead of being lumped into small-vehicle/large-vehicle. DOTA cannot use this
@@ -112,7 +120,8 @@ def get_dota_crops(img_dir, label_dir, class_map=DOTA_TO_COMMON, min_crop_size=M
             x2, y2 = min(W, x2), min(H, y2)
             if (x2 - x1) < min_crop_size or (y2 - y1) < min_crop_size:
                 continue
-            crops.append((image.crop((x1, y1, x2, y2)), mapped))
+            crop = _tag(image.crop((x1, y1, x2, y2)), dataset="DOTA", source=img_name, bbox=(x1, y1, x2, y2))
+            crops.append((crop, mapped))
     return crops
 
 
@@ -154,7 +163,11 @@ def get_visdrone_crops(img_dir, ann_dir, class_map=VISDRONE_TO_COMMON, min_crop_
                 continue
             x1, y1 = max(0, x), max(0, y)
             x2, y2 = min(W, x + w), min(H, y + h)
-            crops.append((image.crop((x1, y1, x2, y2)), mapped))
+            # VisDrone-DET names look like <clip>_<frame>_d_<id>.jpg; the first field is a probable
+            # source-video ID (208 distinct values over 6,471 train images), not documented as such.
+            crop = _tag(image.crop((x1, y1, x2, y2)), dataset="VisDrone", source=img_name,
+                        sequence=img_name.split("_")[0], bbox=(x1, y1, x2, y2))
+            crops.append((crop, mapped))
     return crops
 
 
@@ -196,7 +209,10 @@ def get_uavid_crops(img_dir, label_dir, class_map=None, min_crop_size=MIN_CROP_S
                 y1, y2 = int(ys.min()), int(ys.max())
                 if (x2 - x1) < min_crop_size or (y2 - y1) < min_crop_size:
                     continue
-                crops.append((image.crop((x1, y1, x2, y2)), cls))
+                split = os.path.basename(os.path.dirname(os.path.normpath(label_dir)))
+                crop = _tag(image.crop((x1, y1, x2, y2)), dataset="UAVid", source=f"{split}/{label_name}",
+                            sequence=label_name.split("_")[0], bbox=(x1, y1, x2, y2))
+                crops.append((crop, cls))
         if log is not None and n_images % 50 == 0:
             log(f"  [uavid] scanned {n_images} images, {len(crops)} mapped crops so far", flush=True)
 
@@ -240,7 +256,9 @@ def get_xview_crops(class_map=None, split="train", min_crop_size=MIN_CROP_SIZE, 
             x2, y2 = min(W, x + w), min(H, y + h)
             if (x2 - x1) < min_crop_size or (y2 - y1) < min_crop_size:
                 continue
-            crops.append((image.crop((x1, y1, x2, y2)), mapped))
+            crop = _tag(image.crop((x1, y1, x2, y2)), dataset="xView", source=f"xview_chip_{example['image_id']}",
+                        stream_index=n_images - 1, bbox=(x1, y1, x2, y2))
+            crops.append((crop, mapped))
         if log is not None and n_images % 200 == 0:
             log(f"  [xview] scanned {n_images} images, {len(crops)} mapped crops so far", flush=True)
 

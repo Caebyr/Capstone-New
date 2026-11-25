@@ -1,0 +1,30 @@
+[15:37:40] device: cuda
+[15:37:59] p1_dota: 600
+[15:38:11] p1_visdrone_heldout: 600 (from 1294 held-out images)
+[15:39:22] p2_visdrone: 1200
+[15:39:22] streaming xView (5000 images)...
+[15:41:07] p2_xview: 925
+[15:41:23] p3_uavid_building: 300
+[15:41:48] p3_xview_building: 300
+[15:41:48] p1_dota: n=600 images=149 labels-match={'clip': True, 'remoteclip': True, 'finetuned': True}
+[15:41:48] p1_visdrone_heldout: n=600 images=435 labels-match={'clip': True, 'remoteclip': True, 'finetuned': True}
+[15:41:48] p2_visdrone: n=1200 images=1002 labels-match={'clip': True, 'remoteclip': True}
+[15:41:48] p2_xview: n=925 images=594 labels-match={'clip': True, 'remoteclip': True}
+[15:41:48] p3_uavid_building: n=300 images=164 labels-match={'clip': True, 'remoteclip': True}
+[15:41:48] p3_xview_building: n=300 images=127 labels-match={'clip': True, 'remoteclip': True}
+[15:41:48] loading models for re-encoding check...
+[15:42:27]   p1_dota / clip: own-row match 600/600, cos median 1.0000 min 1.0000, pixel-exact 1.00
+[15:44:40]   p1_dota / remoteclip: own-row match 600/600, cos median 1.0000 min 1.0000, pixel-exact 1.00
+[15:44:58]   p1_dota / finetuned: own-row match 600/600, cos median 1.0000 min 1.0000, pixel-exact 1.00
+[15:45:16]   p1_visdrone_heldout / clip: own-row match 600/600, cos median 0.9940 min 0.8856, pixel-exact 0.00
+[15:47:29]   p1_visdrone_heldout / remoteclip: own-row match 600/600, cos median 0.9956 min 0.9482, pixel-exact 0.00
+[15:47:48]   p1_visdrone_heldout / finetuned: own-row match 592/600, cos median 0.9992 min 0.9788, pixel-exact 0.05
+[15:48:26]   p2_visdrone / clip: own-row match 1198/1200, cos median 0.9938 min 0.8833, pixel-exact 0.00
+[15:52:53]   p2_visdrone / remoteclip: own-row match 1196/1200, cos median 0.9953 min 0.9063, pixel-exact 0.00
+[15:53:22]   p2_xview / clip: own-row match 918/925, cos median 0.9967 min 0.9579, pixel-exact 0.03
+[15:56:48]   p2_xview / remoteclip: own-row match 919/925, cos median 0.9966 min 0.9705, pixel-exact 0.03
+[15:56:58]   p3_uavid_building / clip: own-row match 300/300, cos median 1.0000 min 1.0000, pixel-exact 1.00
+[15:58:05]   p3_uavid_building / remoteclip: own-row match 300/300, cos median 1.0000 min 1.0000, pixel-exact 1.00
+[15:58:14]   p3_xview_building / clip: own-row match 299/300, cos median 0.9972 min 0.9267, pixel-exact 0.13
+[15:59:21]   p3_xview_building / remoteclip: own-row match 299/300, cos median 0.9972 min 0.9192, pixel-exact 0.13
+[15:59:26] ALL CHECKS PASSED: False

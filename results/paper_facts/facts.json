@@ -1,0 +1,1535 @@
+{
+  "clip_cache_original": {
+    "refs_main": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "snapshots": {
+      "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268": {
+        "config.json": {
+          "bytes": 4186,
+          "sha256": "b575ef3c36f2a057fa19e221650105052d61cc9c1a972ec15019c6261ec98770"
+        },
+        "merges.txt": {
+          "bytes": 524657,
+          "sha256": null
+        },
+        "preprocessor_config.json": {
+          "bytes": 316,
+          "sha256": "910e70b3956ac9879ebc90b22fb3bc8a75b6a0677814500101a4c072bd7857bd"
+        },
+        "pytorch_model.bin": {
+          "bytes": 605247071,
+          "sha256": "a63082132ba4f97a80bea76823f544493bffa8082296d62d71581a4feff1576f"
+        },
+        "special_tokens_map.json": {
+          "bytes": 389,
+          "sha256": null
+        },
+        "tokenizer.json": {
+          "bytes": 2224041,
+          "sha256": null
+        },
+        "tokenizer_config.json": {
+          "bytes": 592,
+          "sha256": null
+        },
+        "vocab.json": {
+          "bytes": 862328,
+          "sha256": null
+        }
+      },
+      "c237dc49a33fc61debc9276459120b7eac67e7ef": {
+        "model.safetensors": {
+          "bytes": 605157884,
+          "sha256": "99d28a652e6ec46629ab7047a0ac82c69b1fe11e0ce672c43af65d3a9a3fc05d"
+        }
+      }
+    }
+  },
+  "clip_cache_current": {
+    "refs_main": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "snapshots": {
+      "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268": {
+        "config.json": {
+          "bytes": 4186,
+          "sha256": "b575ef3c36f2a057fa19e221650105052d61cc9c1a972ec15019c6261ec98770"
+        },
+        "merges.txt": {
+          "bytes": 524657,
+          "sha256": null
+        },
+        "preprocessor_config.json": {
+          "bytes": 316,
+          "sha256": "910e70b3956ac9879ebc90b22fb3bc8a75b6a0677814500101a4c072bd7857bd"
+        },
+        "pytorch_model.bin": {
+          "bytes": 605247071,
+          "sha256": "a63082132ba4f97a80bea76823f544493bffa8082296d62d71581a4feff1576f"
+        },
+        "special_tokens_map.json": {
+          "bytes": 389,
+          "sha256": null
+        },
+        "tokenizer.json": {
+          "bytes": 2224041,
+          "sha256": null
+        },
+        "tokenizer_config.json": {
+          "bytes": 592,
+          "sha256": null
+        },
+        "vocab.json": {
+          "bytes": 862328,
+          "sha256": null
+        }
+      },
+      "c237dc49a33fc61debc9276459120b7eac67e7ef": {
+        "model.safetensors": {
+          "bytes": 605157884,
+          "sha256": "99d28a652e6ec46629ab7047a0ac82c69b1fe11e0ce672c43af65d3a9a3fc05d"
+        }
+      }
+    }
+  },
+  "clip_preprocessor_config_json": {
+    "crop_size": 224,
+    "do_center_crop": true,
+    "do_normalize": true,
+    "do_resize": true,
+    "feature_extractor_type": "CLIPFeatureExtractor",
+    "image_mean": [
+      0.48145466,
+      0.4578275,
+      0.40821073
+    ],
+    "image_std": [
+      0.26862954,
+      0.26130258,
+      0.27577711
+    ],
+    "resample": 3,
+    "size": 224
+  },
+  "clip_image_processor_effective": {
+    "_processor_class": null,
+    "do_resize": true,
+    "size": {
+      "shortest_edge": 224
+    },
+    "resample": 3,
+    "do_center_crop": true,
+    "crop_size": {
+      "height": 224,
+      "width": 224
+    },
+    "do_rescale": true,
+    "rescale_factor": 0.00392156862745098,
+    "do_normalize": true,
+    "image_mean": [
+      0.48145466,
+      0.4578275,
+      0.40821073
+    ],
+    "image_std": [
+      0.26862954,
+      0.26130258,
+      0.27577711
+    ],
+    "do_convert_rgb": true,
+    "image_processor_type": "CLIPImageProcessor"
+  },
+  "clip_image_processor_class": "CLIPImageProcessor",
+  "remoteclip_open_clip": {
+    "create_call": "open_clip.create_model_and_transforms(\"ViT-L-14\", pretrained=None) then load_state_dict(torch.load(ckpt), strict=False) with missing/unexpected keys raising",
+    "visual_image_size": [
+      224,
+      224
+    ],
+    "preprocess_cfg": {
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "mean": [
+        0.48145466,
+        0.4578275,
+        0.40821073
+      ],
+      "std": [
+        0.26862954,
+        0.26130258,
+        0.27577711
+      ],
+      "interpolation": "bicubic",
+      "resize_mode": "shortest",
+      "fill_color": 0
+    },
+    "transforms": [
+      "Resize(size=224, interpolation=bicubic, max_size=None, antialias=True)",
+      "CenterCrop(size=(224, 224))",
+      "MaybeConvertMode()",
+      "MaybeToTensor()",
+      "Normalize(mean=(0.48145466, 0.4578275, 0.40821073), std=(0.26862954, 0.26130258, 0.27577711))"
+    ]
+  },
+  "remoteclip_official_release": {
+    "repo": "chendelong/RemoteCLIP",
+    "revision": "bf1d8a3ccf2ddbf7c875705e46373bfe542bce38",
+    "files": {
+      ".gitattributes": {
+        "size": 1519,
+        "sha256": null
+      },
+      "RemoteCLIP-RN50.pt": {
+        "size": 408397807,
+        "sha256": "11657d33a87fc197e19a7654a76a632415ebea42feb8a61025ef389f8990c0f9"
+      },
+      "RemoteCLIP-ViT-B-32.pt": {
+        "size": 605208421,
+        "sha256": "60014e395d930a3f2963d1d89c8522bf4ad56775571e4356e866864789af85c4"
+      },
+      "RemoteCLIP-ViT-L-14.pt": {
+        "size": 1710613765,
+        "sha256": "fcc2a7e21e171f4ffcb7a9c0206b8b74ac0c9eb83c67b576958b7a4ed6c8cecb"
+      }
+    }
+  },
+  "local_checkpoints": {
+    "remoteclip_checkpoint": "models/RemoteCLIP/RemoteCLIP-ViT-L-14.pt",
+    "remoteclip_sha256": "fcc2a7e21e171f4ffcb7a9c0206b8b74ac0c9eb83c67b576958b7a4ed6c8cecb",
+    "finetuned_checkpoint": "models/finetuned_clip_visdrone_heldout/finetuned_clip_visdrone_heldout_epoch3.pt",
+    "finetuned_sha256": "3c150faac15620b4edce39abfe50d4191f029df85e45ad4a03f17fb10be0ba2a",
+    "remoteclip_bytes": 1710613765
+  },
+  "xview_mirror": {
+    "revision_now": "00a1b977dc16f6eda77cce0236ca2c2a13ac840b",
+    "revision_in_original_cache": "00a1b977dc16f6eda77cce0236ca2c2a13ac840b",
+    "feature_columns": [
+      "image_id",
+      "image",
+      "width",
+      "height",
+      "objects"
+    ],
+    "object_fields": [
+      "bbox_id",
+      "category",
+      "bbox",
+      "area"
+    ]
+  },
+  "evaluated_crop_sizes": {
+    "p1_dota": {
+      "evaluated_crops": 600,
+      "min_width": 16,
+      "min_height": 16,
+      "crops_with_a_side_below_16": 0,
+      "below_16_detail": [],
+      "median_min_side": 34.0,
+      "per_label": {
+        "large-vehicle": {
+          "n": 300,
+          "images": 68,
+          "sequences": 0,
+          "max_crops_from_one_image": 42
+        },
+        "small-vehicle": {
+          "n": 300,
+          "images": 119,
+          "sequences": 0,
+          "max_crops_from_one_image": 43
+        }
+      }
+    },
+    "p1_visdrone_heldout": {
+      "evaluated_crops": 600,
+      "min_width": 16,
+      "min_height": 16,
+      "crops_with_a_side_below_16": 0,
+      "below_16_detail": [],
+      "median_min_side": 36.0,
+      "per_label": {
+        "large-vehicle": {
+          "n": 300,
+          "images": 241,
+          "sequences": 66,
+          "max_crops_from_one_image": 5
+        },
+        "small-vehicle": {
+          "n": 300,
+          "images": 244,
+          "sequences": 82,
+          "max_crops_from_one_image": 4
+        }
+      }
+    },
+    "p2_xview": {
+      "evaluated_crops": 900,
+      "min_width": 16,
+      "min_height": 16,
+      "crops_with_a_side_below_16": 0,
+      "below_16_detail": [],
+      "median_min_side": 18.0,
+      "per_label": {
+        "bus": {
+          "n": 300,
+          "images": 210,
+          "sequences": 0,
+          "max_crops_from_one_image": 5
+        },
+        "car": {
+          "n": 300,
+          "images": 233,
+          "sequences": 0,
+          "max_crops_from_one_image": 6
+        },
+        "truck": {
+          "n": 300,
+          "images": 220,
+          "sequences": 0,
+          "max_crops_from_one_image": 8
+        }
+      }
+    },
+    "p3_xview_building": {
+      "evaluated_crops": 300,
+      "min_width": 16,
+      "min_height": 16,
+      "crops_with_a_side_below_16": 0,
+      "below_16_detail": [],
+      "median_min_side": 37.0,
+      "per_label": {
+        "building": {
+          "n": 300,
+          "images": 127,
+          "sequences": 0,
+          "max_crops_from_one_image": 9
+        }
+      }
+    },
+    "p2_visdrone": {
+      "evaluated_crops": 900,
+      "min_width": 16,
+      "min_height": 16,
+      "crops_with_a_side_below_16": 0,
+      "below_16_detail": [],
+      "median_min_side": 37.0,
+      "per_label": {
+        "bus": {
+          "n": 300,
+          "images": 257,
+          "sequences": 47,
+          "max_crops_from_one_image": 3
+        },
+        "car": {
+          "n": 300,
+          "images": 289,
+          "sequences": 84,
+          "max_crops_from_one_image": 3
+        },
+        "truck": {
+          "n": 300,
+          "images": 272,
+          "sequences": 56,
+          "max_crops_from_one_image": 3
+        }
+      }
+    },
+    "p3_uavid_building": {
+      "evaluated_crops": 300,
+      "min_width": 32,
+      "min_height": 18,
+      "crops_with_a_side_below_16": 0,
+      "below_16_detail": [],
+      "median_min_side": 91.0,
+      "per_label": {
+        "building": {
+          "n": 300,
+          "images": 164,
+          "sequences": 27,
+          "max_crops_from_one_image": 9
+        }
+      }
+    }
+  },
+  "dota_metadata": {
+    "header_format": "first two lines of each labelTxt file: 'imagesource:<name>' and 'gsd:<metres per pixel or null>'",
+    "sampled_images": 149,
+    "sampled_images_by_imagesource": {
+      "GoogleEarth": 149
+    },
+    "sampled_crops_by_label_and_imagesource": {
+      "small-vehicle": {
+        "GoogleEarth": 300
+      },
+      "large-vehicle": {
+        "GoogleEarth": 300
+      }
+    },
+    "sampled_images_gsd_missing": 0,
+    "sampled_images_gsd_min_median_max": [
+      1.34110450745e-06,
+      0.130310363461,
+      0.50790386164
+    ],
+    "all_469_local_images_by_imagesource": {
+      "GoogleEarth": 469
+    }
+  },
+  "drift_stats_settings": {
+    "n_boot": 2000,
+    "n_perm": 2000,
+    "seed": 20261012,
+    "ci": "95% percentile"
+  },
+  "drift_valid_replicates": {
+    "P1/image/clip/small-vehicle": 2000,
+    "P1/image/clip/large-vehicle": 2000,
+    "P1/image/remoteclip/small-vehicle": 2000,
+    "P1/image/remoteclip/large-vehicle": 2000,
+    "P1/image/finetuned/small-vehicle": 2000,
+    "P1/image/finetuned/large-vehicle": 2000,
+    "P1/sequence/clip/small-vehicle": 2000,
+    "P1/sequence/clip/large-vehicle": 2000,
+    "P1/sequence/remoteclip/small-vehicle": 2000,
+    "P1/sequence/remoteclip/large-vehicle": 2000,
+    "P1/sequence/finetuned/small-vehicle": 2000,
+    "P1/sequence/finetuned/large-vehicle": 2000,
+    "P2+P3/image/clip/car": 2000,
+    "P2+P3/image/clip/bus": 2000,
+    "P2+P3/image/clip/truck": 2000,
+    "P2+P3/image/clip/building": 2000,
+    "P2+P3/image/remoteclip/car": 2000,
+    "P2+P3/image/remoteclip/bus": 2000,
+    "P2+P3/image/remoteclip/truck": 2000,
+    "P2+P3/image/remoteclip/building": 2000,
+    "P2+P3/sequence/clip/car": 2000,
+    "P2+P3/sequence/clip/bus": 2000,
+    "P2+P3/sequence/clip/truck": 2000,
+    "P2+P3/sequence/clip/building": 2000,
+    "P2+P3/sequence/remoteclip/car": 2000,
+    "P2+P3/sequence/remoteclip/bus": 2000,
+    "P2+P3/sequence/remoteclip/truck": 2000,
+    "P2+P3/sequence/remoteclip/building": 2000
+  },
+  "drift_valid_replicates_min": 2000,
+  "cluster_counts": {
+    "P1": {
+      "images": {
+        "overhead": 149,
+        "uav": 435
+      },
+      "uav_sequences": 98
+    },
+    "P2+P3": {
+      "images": {
+        "overhead": 689,
+        "uav": 931
+      },
+      "uav_sequences": 134
+    }
+  },
+  "image_vs_sequence_intervals": [
+    {
+      "task": "P1",
+      "model": "clip",
+      "category": "small-vehicle",
+      "point_l2": 0.24602650834456002,
+      "point_ratio": 0.6497878676191142,
+      "l2_image_ci": [
+        0.22401114095893224,
+        0.27984257694895537
+      ],
+      "l2_sequence_ci": [
+        0.22034000311919744,
+        0.2795520949716261
+      ],
+      "ratio_image_ci": [
+        0.5961799106194041,
+        0.7414948260043547
+      ],
+      "ratio_sequence_ci": [
+        0.584730222642705,
+        0.7405617237547906
+      ],
+      "recall_gap_pp_image_ci": [
+        -2.0342453867067745,
+        1.03830171171779
+      ],
+      "recall_gap_pp_sequence_ci": [
+        -1.9268830355386373,
+        1.1152755313907619
+      ],
+      "delta_m_image_ci": [
+        -0.00469335981949605,
+        0.003918646848494951
+      ],
+      "delta_m_sequence_ci": [
+        -0.004924753218199813,
+        0.004233273499623532
+      ]
+    },
+    {
+      "task": "P1",
+      "model": "clip",
+      "category": "large-vehicle",
+      "point_l2": 0.2595840237733294,
+      "point_ratio": 0.6235206879113867,
+      "l2_image_ci": [
+        0.23675571677922472,
+        0.29469229097312916
+      ],
+      "l2_sequence_ci": [
+        0.23181234465565145,
+        0.300874942644422
+      ],
+      "ratio_image_ci": [
+        0.5730752165713888,
+        0.7107703168048096
+      ],
+      "ratio_sequence_ci": [
+        0.5633800635647631,
+        0.7240469811091694
+      ],
+      "recall_gap_pp_image_ci": [
+        -10.199364433948357,
+        -2.2233845556171734
+      ],
+      "recall_gap_pp_sequence_ci": [
+        -10.53443007323839,
+        -1.978529175098256
+      ],
+      "delta_m_image_ci": [
+        -0.007435170209750877,
+        0.00026779022298361026
+      ],
+      "delta_m_sequence_ci": [
+        -0.007501329401938871,
+        0.00041024870626266683
+      ]
+    },
+    {
+      "task": "P1",
+      "model": "remoteclip",
+      "category": "small-vehicle",
+      "point_l2": 0.1892406314423547,
+      "point_ratio": 0.5627019030547297,
+      "l2_image_ci": [
+        0.17106028598953088,
+        0.22379913380563682
+      ],
+      "l2_sequence_ci": [
+        0.1685025988894673,
+        0.22270541420564824
+      ],
+      "ratio_image_ci": [
+        0.5113660818871768,
+        0.6712566572540086
+      ],
+      "ratio_sequence_ci": [
+        0.5031947938087079,
+        0.6719044886714456
+      ],
+      "ratio_pct_vs_clip_image_ci": [
+        -18.535452267059416,
+        -6.159075840951782
+      ],
+      "ratio_pct_vs_clip_sequence_ci": [
+        -18.92529485769873,
+        -6.03590748815142
+      ],
+      "recall_gap_pp_image_ci": [
+        -15.714498868873507,
+        -3.787324644498612
+      ],
+      "recall_gap_pp_sequence_ci": [
+        -15.831019279347322,
+        -3.0645989918130097
+      ],
+      "delta_m_image_ci": [
+        -0.008491757123645676,
+        -0.005614851245353094
+      ],
+      "delta_m_sequence_ci": [
+        -0.008563712958177887,
+        -0.005451143482185236
+      ]
+    },
+    {
+      "task": "P1",
+      "model": "remoteclip",
+      "category": "large-vehicle",
+      "point_l2": 0.227581604022216,
+      "point_ratio": 0.6251591584693318,
+      "l2_image_ci": [
+        0.20688736903521562,
+        0.2595785256401416
+      ],
+      "l2_sequence_ci": [
+        0.20474195849580887,
+        0.260516533635534
+      ],
+      "ratio_image_ci": [
+        0.5743360469616924,
+        0.7200364342311547
+      ],
+      "ratio_sequence_ci": [
+        0.5706994347639287,
+        0.7211745972286839
+      ],
+      "ratio_pct_vs_clip_image_ci": [
+        -7.988576850505821,
+        11.042568857876068
+      ],
+      "ratio_pct_vs_clip_sequence_ci": [
+        -8.028137723890927,
+        11.181723725051778
+      ],
+      "recall_gap_pp_image_ci": [
+        -4.9214070953201405,
+        23.62821943717009
+      ],
+      "recall_gap_pp_sequence_ci": [
+        -5.990052291737641,
+        24.369699303426692
+      ],
+      "delta_m_image_ci": [
+        -0.0028012498012909663,
+        0.00794912736494842
+      ],
+      "delta_m_sequence_ci": [
+        -0.0031173637230501347,
+        0.008738999779253156
+      ]
+    },
+    {
+      "task": "P1",
+      "model": "finetuned",
+      "category": "small-vehicle",
+      "point_l2": 0.1585264721984488,
+      "point_ratio": 0.8164505890593485,
+      "l2_image_ci": [
+        0.1158386669621575,
+        0.20703497036258628
+      ],
+      "l2_sequence_ci": [
+        0.11623757083767812,
+        0.20741436560639753
+      ],
+      "ratio_image_ci": [
+        0.6302211279372599,
+        1.0390004080803943
+      ],
+      "ratio_sequence_ci": [
+        0.6261527011580144,
+        1.0415533684606255
+      ],
+      "ratio_pct_vs_clip_image_ci": [
+        -1.484570841260812,
+        52.18048338996984
+      ],
+      "ratio_pct_vs_clip_sequence_ci": [
+        -2.628747654175747,
+        54.75686915732431
+      ],
+      "recall_gap_pp_image_ci": [
+        -15.177111458196523,
+        -5.222459487619515
+      ],
+      "recall_gap_pp_sequence_ci": [
+        -15.413618492726544,
+        -5.66502509365259
+      ],
+      "delta_m_image_ci": [
+        -0.025526639055349968,
+        -0.012614740647512161
+      ],
+      "delta_m_sequence_ci": [
+        -0.025361297031857518,
+        -0.012747118396204673
+      ]
+    },
+    {
+      "task": "P1",
+      "model": "finetuned",
+      "category": "large-vehicle",
+      "point_l2": 0.09545257944456344,
+      "point_ratio": 0.41322033348530984,
+      "l2_image_ci": [
+        0.0792961736524675,
+        0.12196412555601789
+      ],
+      "l2_sequence_ci": [
+        0.07921116699425457,
+        0.12571203774436987
+      ],
+      "ratio_image_ci": [
+        0.3384228963193241,
+        0.5386474292835904
+      ],
+      "ratio_sequence_ci": [
+        0.3385526682102696,
+        0.5522988523730936
+      ],
+      "ratio_pct_vs_clip_image_ci": [
+        -45.404400811980956,
+        -17.59009485242785
+      ],
+      "ratio_pct_vs_clip_sequence_ci": [
+        -45.51869649917427,
+        -13.863750210658052
+      ],
+      "recall_gap_pp_image_ci": [
+        3.1974253408887856,
+        19.069381570437116
+      ],
+      "recall_gap_pp_sequence_ci": [
+        2.3917092968332248,
+        20.22763054063528
+      ],
+      "delta_m_image_ci": [
+        0.004921203709260725,
+        0.020601402898295602
+      ],
+      "delta_m_sequence_ci": [
+        0.003873344518181299,
+        0.022429704434246082
+      ]
+    },
+    {
+      "task": "P2+P3",
+      "model": "clip",
+      "category": "car",
+      "point_l2": 0.35636925543750037,
+      "point_ratio": 0.9930517423217463,
+      "l2_image_ci": [
+        0.3317227642334252,
+        0.3820588730624232
+      ],
+      "l2_sequence_ci": [
+        0.31584734362516803,
+        0.3979667403899465
+      ],
+      "ratio_image_ci": [
+        0.9306088418561622,
+        1.0628146857637992
+      ],
+      "ratio_sequence_ci": [
+        0.8942985702483172,
+        1.1050346728736578
+      ],
+      "Y_image_ci": [
+        1.6519349095925235,
+        2.21019013160641
+      ],
+      "Y_sequence_ci": [
+        1.4856534834467132,
+        2.322094569870616
+      ],
+      "recall_gap_pp_image_ci": [
+        -0.7217423773570976,
+        9.109035695667673
+      ],
+      "recall_gap_pp_sequence_ci": [
+        -1.2416369406108267,
+        10.325337027510182
+      ],
+      "delta_m_image_ci": [
+        -0.016519160951538076,
+        -0.011930467905558562
+      ],
+      "delta_m_sequence_ci": [
+        -0.01766619498054472,
+        -0.01029792335539401
+      ]
+    },
+    {
+      "task": "P2+P3",
+      "model": "clip",
+      "category": "bus",
+      "point_l2": 0.32564395244854916,
+      "point_ratio": 0.8443099930149719,
+      "l2_image_ci": [
+        0.3038162159577275,
+        0.35023809978579007
+      ],
+      "l2_sequence_ci": [
+        0.3057735795341951,
+        0.3650291236947966
+      ],
+      "ratio_image_ci": [
+        0.7922762221002528,
+        0.9061272535115191
+      ],
+      "ratio_sequence_ci": [
+        0.7937080509610397,
+        0.9305105658837136
+      ],
+      "Y_image_ci": [
+        1.481716732662827,
+        2.0908121718489174
+      ],
+      "Y_sequence_ci": [
+        1.4863412583102873,
+        2.247562093426126
+      ],
+      "recall_gap_pp_image_ci": [
+        -46.55379064854239,
+        -34.555007625385606
+      ],
+      "recall_gap_pp_sequence_ci": [
+        -51.00895176252318,
+        -35.04470345557396
+      ],
+      "delta_m_image_ci": [
+        -0.024513099439386385,
+        -0.017957346446669045
+      ],
+      "delta_m_sequence_ci": [
+        -0.02751399240542564,
+        -0.018092110733400384
+      ]
+    },
+    {
+      "task": "P2+P3",
+      "model": "clip",
+      "category": "truck",
+      "point_l2": 0.28366076310814076,
+      "point_ratio": 0.755045531879722,
+      "l2_image_ci": [
+        0.26370451649256593,
+        0.3078991808200405
+      ],
+      "l2_sequence_ci": [
+        0.2427364775716568,
+        0.3283236628650527
+      ],
+      "ratio_image_ci": [
+        0.7103353376378609,
+        0.8132662189849292
+      ],
+      "ratio_sequence_ci": [
+        0.6694407716044449,
+        0.8579713399215699
+      ],
+      "Y_image_ci": [
+        1.2106393680033674,
+        1.795263132754293
+      ],
+      "Y_sequence_ci": [
+        1.0062345669252446,
+        2.001420603955374
+      ],
+      "recall_gap_pp_image_ci": [
+        -26.379657342171356,
+        -14.218083525953103
+      ],
+      "recall_gap_pp_sequence_ci": [
+        -27.38022007514761,
+        -13.285317864510844
+      ],
+      "delta_m_image_ci": [
+        -0.0123916481559914,
+        -0.007836650762783719
+      ],
+      "delta_m_sequence_ci": [
+        -0.013512954341499224,
+        -0.006825506857067071
+      ]
+    },
+    {
+      "task": "P2+P3",
+      "model": "clip",
+      "category": "building",
+      "point_l2": 0.5417470352349824,
+      "point_ratio": 1.2218502218658907,
+      "l2_image_ci": [
+        0.513374338915315,
+        0.5732959383048536
+      ],
+      "l2_sequence_ci": [
+        0.516304818347253,
+        0.5788472017885322
+      ],
+      "ratio_image_ci": [
+        1.14522396404292,
+        1.3184851114962914
+      ],
+      "ratio_sequence_ci": [
+        1.1534535650998452,
+        1.329969500484541
+      ],
+      "Y_image_ci": [
+        2.17467370371001,
+        2.4218862484094794
+      ],
+      "Y_sequence_ci": [
+        2.1530794055139704,
+        2.4455662615623712
+      ],
+      "recall_gap_pp_image_ci": [
+        -59.61423232658689,
+        -46.39758738975638
+      ],
+      "recall_gap_pp_sequence_ci": [
+        -60.61237607233869,
+        -45.620983728267696
+      ],
+      "delta_m_image_ci": [
+        -0.0385321659281386,
+        -0.03168020950743411
+      ],
+      "delta_m_sequence_ci": [
+        -0.04063845227424614,
+        -0.02997024787302621
+      ]
+    },
+    {
+      "task": "P2+P3",
+      "model": "remoteclip",
+      "category": "car",
+      "point_l2": 0.30235070440723183,
+      "point_ratio": 0.9718826327308009,
+      "l2_image_ci": [
+        0.2783680432213442,
+        0.32768997688544976
+      ],
+      "l2_sequence_ci": [
+        0.2639749343149564,
+        0.34019163614137476
+      ],
+      "ratio_image_ci": [
+        0.8952776919358557,
+        1.055721663005307
+      ],
+      "ratio_sequence_ci": [
+        0.8602899008442838,
+        1.0958304660559353
+      ],
+      "Y_image_ci": [
+        1.7795163776350456,
+        2.3385794117732277
+      ],
+      "Y_sequence_ci": [
+        1.6027713447260978,
+        2.4379177798775786
+      ],
+      "ratio_pct_vs_clip_image_ci": [
+        -6.849577346085904,
+        2.380272853495598
+      ],
+      "ratio_pct_vs_clip_sequence_ci": [
+        -8.023800174676786,
+        3.539381572431306
+      ],
+      "recall_gap_pp_image_ci": [
+        -61.296760634861485,
+        -48.847677343385286
+      ],
+      "recall_gap_pp_sequence_ci": [
+        -63.44809462960267,
+        -46.00647126181192
+      ],
+      "delta_m_image_ci": [
+        -0.03282713864252794,
+        -0.02635650490660673
+      ],
+      "delta_m_sequence_ci": [
+        -0.033781041837522195,
+        -0.02485364167940069
+      ]
+    },
+    {
+      "task": "P2+P3",
+      "model": "remoteclip",
+      "category": "bus",
+      "point_l2": 0.2802254935894186,
+      "point_ratio": 0.8491121453163106,
+      "l2_image_ci": [
+        0.2599038539724291,
+        0.30337710413838637
+      ],
+      "l2_sequence_ci": [
+        0.25993885448538223,
+        0.31764778138867433
+      ],
+      "ratio_image_ci": [
+        0.7942468327152387,
+        0.9171846146413499
+      ],
+      "ratio_sequence_ci": [
+        0.795499259043023,
+        0.9462833227604492
+      ],
+      "Y_image_ci": [
+        1.9438311279772582,
+        2.5836766551229777
+      ],
+      "Y_sequence_ci": [
+        1.8990082392683536,
+        2.7331720399717825
+      ],
+      "ratio_pct_vs_clip_image_ci": [
+        -3.6827664986745323,
+        5.027570235023303
+      ],
+      "ratio_pct_vs_clip_sequence_ci": [
+        -4.203020157803242,
+        5.859389766895277
+      ],
+      "recall_gap_pp_image_ci": [
+        -44.946824400924704,
+        -33.47356597768758
+      ],
+      "recall_gap_pp_sequence_ci": [
+        -45.29522468505913,
+        -31.624324607393202
+      ],
+      "delta_m_image_ci": [
+        -0.03346451709647757,
+        -0.02453718507015242
+      ],
+      "delta_m_sequence_ci": [
+        -0.0344426473402148,
+        -0.022327334584124336
+      ]
+    },
+    {
+      "task": "P2+P3",
+      "model": "remoteclip",
+      "category": "truck",
+      "point_l2": 0.2365789743738803,
+      "point_ratio": 0.7499587125779105,
+      "l2_image_ci": [
+        0.22009808595986208,
+        0.2575513194147837
+      ],
+      "l2_sequence_ci": [
+        0.2065161861826917,
+        0.27255961798198775
+      ],
+      "ratio_image_ci": [
+        0.7040796838781269,
+        0.8090666609535653
+      ],
+      "ratio_sequence_ci": [
+        0.6751156302254728,
+        0.8461095658041355
+      ],
+      "Y_image_ci": [
+        1.4329891548938436,
+        2.175766587966595
+      ],
+      "Y_sequence_ci": [
+        1.2285292641396262,
+        2.3854674761206014
+      ],
+      "ratio_pct_vs_clip_image_ci": [
+        -4.738256020786302,
+        3.9523821581643444
+      ],
+      "ratio_pct_vs_clip_sequence_ci": [
+        -5.42864915561497,
+        4.115470444540033
+      ],
+      "recall_gap_pp_image_ci": [
+        -14.995674269294023,
+        -7.292639045289226
+      ],
+      "recall_gap_pp_sequence_ci": [
+        -16.994212816516235,
+        -5.556662058157046
+      ],
+      "delta_m_image_ci": [
+        -0.0052994656111066555,
+        0.0015854731677936694
+      ],
+      "delta_m_sequence_ci": [
+        -0.006176490067329974,
+        0.002506265188892296
+      ]
+    },
+    {
+      "task": "P2+P3",
+      "model": "remoteclip",
+      "category": "building",
+      "point_l2": 0.3782662175321993,
+      "point_ratio": 0.9809077453203834,
+      "l2_image_ci": [
+        0.3554354971923446,
+        0.4044532794350865
+      ],
+      "l2_sequence_ci": [
+        0.3578081818603131,
+        0.4071937788635602
+      ],
+      "ratio_image_ci": [
+        0.9009329206974765,
+        1.0823077401697543
+      ],
+      "ratio_sequence_ci": [
+        0.9068544425067551,
+        1.096145586455223
+      ],
+      "Y_image_ci": [
+        1.8717850804849416,
+        2.32466324307616
+      ],
+      "Y_sequence_ci": [
+        1.8639425440924124,
+        2.3407070994713846
+      ],
+      "ratio_pct_vs_clip_image_ci": [
+        -23.16571674221568,
+        -15.935660096446897
+      ],
+      "ratio_pct_vs_clip_sequence_ci": [
+        -23.212836499015243,
+        -15.483911754285202
+      ],
+      "recall_gap_pp_image_ci": [
+        3.59743784927551,
+        10.81114882622503
+      ],
+      "recall_gap_pp_sequence_ci": [
+        2.3191987504926703,
+        13.69258817161944
+      ],
+      "delta_m_image_ci": [
+        -0.020890625893195597,
+        -0.011822300892979037
+      ],
+      "delta_m_sequence_ci": [
+        -0.0218791375618698,
+        -0.01036107270074738
+      ]
+    }
+  ],
+  "accuracy_gaps": {
+    "P1": {
+      "clip": {
+        "point_gap_pp": -3.3333333333333326,
+        "image_ci": [
+          -15.968803282303275,
+          9.110580933656049
+        ],
+        "sequence_ci": [
+          -16.435014046227376,
+          10.2662483725934
+        ],
+        "gap_minus_clip_gap_image_ci": null,
+        "gap_minus_clip_gap_sequence_ci": null
+      },
+      "remoteclip": {
+        "point_gap_pp": -0.16666666666667052,
+        "image_ci": [
+          -7.243878684647153,
+          7.277964810588254
+        ],
+        "sequence_ci": [
+          -7.972899416525687,
+          7.705298124755875
+        ],
+        "gap_minus_clip_gap_image_ci": [
+          -10.115013341753299,
+          17.706028378954695
+        ],
+        "gap_minus_clip_gap_sequence_ci": [
+          -10.580371393322611,
+          17.78488832522615
+        ],
+        "point_gap_minus_clip_gap_pp": 3.166666666666662
+      },
+      "finetuned": {
+        "point_gap_pp": 0.666666666666671,
+        "image_ci": [
+          -3.965498592739474,
+          5.315528761586052
+        ],
+        "sequence_ci": [
+          -4.682202532162754,
+          5.639002524974383
+        ],
+        "gap_minus_clip_gap_image_ci": [
+          -8.484720183416787,
+          16.49835474330952
+        ],
+        "gap_minus_clip_gap_sequence_ci": [
+          -8.91056455575869,
+          16.173232000331613
+        ],
+        "point_gap_minus_clip_gap_pp": 4.0000000000000036
+      }
+    },
+    "P2+P3": {
+      "clip": {
+        "point_gap_pp": -27.333333333333336,
+        "image_ci": [
+          -31.636057147337922,
+          -23.28204060023781
+        ],
+        "sequence_ci": [
+          -35.423665440318935,
+          -20.829105073101267
+        ],
+        "gap_minus_clip_gap_image_ci": null,
+        "gap_minus_clip_gap_sequence_ci": null
+      },
+      "remoteclip": {
+        "point_gap_pp": -24.58333333333333,
+        "image_ci": [
+          -30.086173194523056,
+          -19.265669331136113
+        ],
+        "sequence_ci": [
+          -34.27559894231586,
+          -16.278187941298032
+        ],
+        "gap_minus_clip_gap_image_ci": [
+          -3.4525272631299866,
+          8.660881030049012
+        ],
+        "gap_minus_clip_gap_sequence_ci": [
+          -4.268039822532317,
+          10.129759904402603
+        ],
+        "point_gap_minus_clip_gap_pp": 2.750000000000007
+      }
+    }
+  },
+  "paired_encoder_accuracy_difference": {
+    "P1/overhead/remoteclip_minus_clip": {
+      "point_pp": 15.666666666666663,
+      "image_bootstrap_95ci_pp": [
+        2.511597702051927,
+        29.46741822961428
+      ],
+      "replicates": 4000,
+      "seed": 11
+    },
+    "P1/uav/remoteclip_minus_clip": {
+      "point_pp": 12.5,
+      "image_bootstrap_95ci_pp": [
+        8.68824531516184,
+        16.44789898132428
+      ],
+      "replicates": 4000,
+      "seed": 11
+    },
+    "P1/overhead/finetuned_minus_clip": {
+      "point_pp": 33.666666666666664,
+      "image_bootstrap_95ci_pp": [
+        22.241079489640054,
+        45.01708767053609
+      ],
+      "replicates": 4000,
+      "seed": 11
+    },
+    "P1/uav/finetuned_minus_clip": {
+      "point_pp": 29.666666666666664,
+      "image_bootstrap_95ci_pp": [
+        25.516810344827586,
+        33.868508888085316
+      ],
+      "replicates": 4000,
+      "seed": 11
+    },
+    "P2+P3/overhead/remoteclip_minus_clip": {
+      "point_pp": -5.666666666666664,
+      "image_bootstrap_95ci_pp": [
+        -10.893658352501438,
+        -0.5796791750021881
+      ],
+      "replicates": 4000,
+      "seed": 11
+    },
+    "P2+P3/uav/remoteclip_minus_clip": {
+      "point_pp": -8.416666666666671,
+      "image_bootstrap_95ci_pp": [
+        -11.61645525017618,
+        -5.314638502345431
+      ],
+      "replicates": 4000,
+      "seed": 11
+    }
+  },
+  "correlations": {
+    "rows": [
+      {
+        "model": "clip",
+        "category": "car",
+        "cos_drift": 0.07177383650761104,
+        "ratio": 0.9930517423217463,
+        "Y": 1.9504736526114372,
+        "recall_overhead": 0.92,
+        "recall_uav": 0.8766666666666667,
+        "recall_gap_pp_overhead_minus_uav": 4.333333333333334,
+        "A_c": 0.03331418367853964,
+        "delta_m": -0.014192051757920598
+      },
+      {
+        "model": "remoteclip",
+        "category": "car",
+        "cos_drift": 0.05034993525545939,
+        "ratio": 0.9718826327308009,
+        "Y": 2.0907952468419353,
+        "recall_overhead": 0.08333333333333333,
+        "recall_uav": 0.6333333333333333,
+        "recall_gap_pp_overhead_minus_uav": -54.99999999999999,
+        "A_c": 0.03665843003202296,
+        "delta_m": -0.02949185703390428
+      },
+      {
+        "model": "clip",
+        "category": "bus",
+        "cos_drift": 0.06027785113769124,
+        "ratio": 0.8443099930149719,
+        "Y": 1.8064927184107094,
+        "recall_overhead": 0.01,
+        "recall_uav": 0.41333333333333333,
+        "recall_gap_pp_overhead_minus_uav": -40.33333333333333,
+        "A_c": 0.03930339369668209,
+        "delta_m": -0.021200826051856858
+      },
+      {
+        "model": "remoteclip",
+        "category": "bus",
+        "cos_drift": 0.04338863796623915,
+        "ratio": 0.8491121453163106,
+        "Y": 2.302367896821744,
+        "recall_overhead": 0.016666666666666666,
+        "recall_uav": 0.41,
+        "recall_gap_pp_overhead_minus_uav": -39.33333333333333,
+        "A_c": 0.047688761219341624,
+        "delta_m": -0.028895324240086367
+      },
+      {
+        "model": "clip",
+        "category": "truck",
+        "cos_drift": 0.045091601749899235,
+        "ratio": 0.755045531879722,
+        "Y": 1.4965844449823749,
+        "recall_overhead": 0.1,
+        "recall_uav": 0.30333333333333334,
+        "recall_gap_pp_overhead_minus_uav": -20.333333333333332,
+        "A_c": 0.02993410571206051,
+        "delta_m": -0.010080553736437348
+      },
+      {
+        "model": "remoteclip",
+        "category": "truck",
+        "cos_drift": 0.030340099093014383,
+        "ratio": 0.7499587125779105,
+        "Y": 1.8080401788699898,
+        "recall_overhead": 0.006666666666666667,
+        "recall_uav": 0.11666666666666667,
+        "recall_gap_pp_overhead_minus_uav": -11.0,
+        "A_c": 0.022979809974828486,
+        "delta_m": -0.0017492077328561673
+      },
+      {
+        "model": "clip",
+        "category": "building",
+        "cos_drift": 0.18216365472063112,
+        "ratio": 1.2218502218658907,
+        "Y": 2.3189291608114324,
+        "recall_overhead": 0.2866666666666667,
+        "recall_uav": 0.8166666666666667,
+        "recall_gap_pp_overhead_minus_uav": -53.0,
+        "A_c": 0.05809605291257358,
+        "delta_m": -0.03500501627776775
+      },
+      {
+        "model": "remoteclip",
+        "category": "building",
+        "cos_drift": 0.08466030827889104,
+        "ratio": 0.9809077453203834,
+        "Y": 2.123327785531415,
+        "recall_overhead": 0.9833333333333333,
+        "recall_uav": 0.9133333333333333,
+        "recall_gap_pp_overhead_minus_uav": 6.999999999999995,
+        "A_c": 0.037379835704713815,
+        "delta_m": -0.016453154584369828
+      }
+    ],
+    "stored": {
+      "per_model": [
+        {
+          "task": "P2+P3",
+          "model": "clip",
+          "drift": "cos",
+          "target": "recall_gap_pp",
+          "rho": 0.39999999999999997
+        },
+        {
+          "task": "P2+P3",
+          "model": "clip",
+          "drift": "cos",
+          "target": "A",
+          "rho": 0.7999999999999999
+        },
+        {
+          "task": "P2+P3",
+          "model": "clip",
+          "drift": "cos",
+          "target": "delta_m",
+          "rho": 0.7999999999999999
+        },
+        {
+          "task": "P2+P3",
+          "model": "clip",
+          "drift": "ratio",
+          "target": "recall_gap_pp",
+          "rho": 0.39999999999999997
+        },
+        {
+          "task": "P2+P3",
+          "model": "clip",
+          "drift": "ratio",
+          "target": "A",
+          "rho": 0.7999999999999999
+        },
+        {
+          "task": "P2+P3",
+          "model": "clip",
+          "drift": "ratio",
+          "target": "delta_m",
+          "rho": 0.7999999999999999
+        },
+        {
+          "task": "P2+P3",
+          "model": "clip",
+          "drift": "Y",
+          "target": "recall_gap_pp",
+          "rho": 0.39999999999999997
+        },
+        {
+          "task": "P2+P3",
+          "model": "clip",
+          "drift": "Y",
+          "target": "A",
+          "rho": 0.7999999999999999
+        },
+        {
+          "task": "P2+P3",
+          "model": "clip",
+          "drift": "Y",
+          "target": "delta_m",
+          "rho": 0.7999999999999999
+        },
+        {
+          "task": "P2+P3",
+          "model": "remoteclip",
+          "drift": "cos",
+          "target": "recall_gap_pp",
+          "rho": -0.19999999999999998
+        },
+        {
+          "task": "P2+P3",
+          "model": "remoteclip",
+          "drift": "cos",
+          "target": "A",
+          "rho": 0.39999999999999997
+        },
+        {
+          "task": "P2+P3",
+          "model": "remoteclip",
+          "drift": "cos",
+          "target": "delta_m",
+          "rho": 0.39999999999999997
+        },
+        {
+          "task": "P2+P3",
+          "model": "remoteclip",
+          "drift": "ratio",
+          "target": "recall_gap_pp",
+          "rho": -0.19999999999999998
+        },
+        {
+          "task": "P2+P3",
+          "model": "remoteclip",
+          "drift": "ratio",
+          "target": "A",
+          "rho": 0.39999999999999997
+        },
+        {
+          "task": "P2+P3",
+          "model": "remoteclip",
+          "drift": "ratio",
+          "target": "delta_m",
+          "rho": 0.39999999999999997
+        },
+        {
+          "task": "P2+P3",
+          "model": "remoteclip",
+          "drift": "Y",
+          "target": "recall_gap_pp",
+          "rho": 0.0
+        },
+        {
+          "task": "P2+P3",
+          "model": "remoteclip",
+          "drift": "Y",
+          "target": "A",
+          "rho": 1.0
+        },
+        {
+          "task": "P2+P3",
+          "model": "remoteclip",
+          "drift": "Y",
+          "target": "delta_m",
+          "rho": 0.39999999999999997
+        }
+      ],
+      "pooled_cos": {
+        "recall_gap_pp": 0.023809523809523815,
+        "A": 0.523809523809524,
+        "delta_m": 0.4761904761904762
+      }
+    },
+    "pooled_8_points": {
+      "cos_vs_abs_recall_gap  (the reported 0.02)": 0.023809523809523815,
+      "cos_vs_signed_recall_gap (overhead - UAV)": 0.0,
+      "cos_vs_overhead_recall_loss (UAV - overhead)": 0.0,
+      "cos_vs_A_c": 0.523809523809524,
+      "cos_vs_abs_delta_m": 0.4761904761904762
+    },
+    "ranks_cos_drift": [
+      6.0,
+      4.0,
+      5.0,
+      2.0,
+      3.0,
+      1.0,
+      8.0,
+      7.0
+    ],
+    "ranks_abs_recall_gap": [
+      1.0,
+      8.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      7.0,
+      2.0
+    ],
+    "ties_present": {
+      "cos_drift": false,
+      "abs_recall_gap": false
+    },
+    "within_encoder": {
+      "clip": {
+        "cos_vs_A_c": 0.7999999999999999,
+        "cos_vs_abs_delta_m": 0.7999999999999999,
+        "cos_vs_abs_recall_gap": 0.39999999999999997,
+        "cos_vs_signed_recall_gap": -0.39999999999999997
+      },
+      "remoteclip": {
+        "cos_vs_A_c": 0.39999999999999997,
+        "cos_vs_abs_delta_m": 0.39999999999999997,
+        "cos_vs_abs_recall_gap": -0.19999999999999998,
+        "cos_vs_signed_recall_gap": 0.19999999999999998
+      }
+    }
+  }
+}

@@ -1,0 +1,508 @@
+{
+  "tag": "conda_pillow_11.1.0_jpeg9",
+  "pillow_version": "11.1.0",
+  "pillow_path": "C:\\Users\\user\\AppData\\Local\\Temp\\claude\\cpil_PIL\\PIL",
+  "libjpeg_turbo": null,
+  "jpeg_library_version": "9.0",
+  "torch": "2.5.1+cu118",
+  "lists": {
+    "p1_dota": {
+      "n": 600,
+      "raw_counts_replayed": {
+        "large-vehicle": 3033,
+        "small-vehicle": 6537
+      },
+      "raw_counts_original_log": {
+        "large-vehicle": 3033,
+        "small-vehicle": 6537
+      },
+      "raw_counts_equal_original_log": true,
+      "encoders": {
+        "clip": {
+          "labels_equal_cached": true,
+          "cosine_to_own_row": {
+            "min": 0.9999997527677944,
+            "median": 0.9999999995248379,
+            "mean": 1.000000002555443,
+            "share_above_0.999999": 1.0,
+            "share_above_0.9999": 1.0
+          },
+          "max_abs_elementwise_difference": 1.223292201757431e-06,
+          "nearest_neighbour_is_own_row": 600,
+          "optimal_one_to_one_assignment_is_own_row": 600,
+          "total_cosine_identity": 600.0000015332657,
+          "total_cosine_optimal_assignment": 600.0000015332657,
+          "control_misaligned_rows_cosine": {
+            "median": 0.8739476646756521,
+            "max": 0.9786066395011851
+          },
+          "rows_not_nearest_to_own": []
+        },
+        "remoteclip": {
+          "labels_equal_cached": true,
+          "cosine_to_own_row": {
+            "min": 0.9999998466782658,
+            "median": 1.0000000096335926,
+            "mean": 1.0000000057001126,
+            "share_above_0.999999": 1.0,
+            "share_above_0.9999": 1.0
+          },
+          "max_abs_elementwise_difference": 7.026828825473785e-07,
+          "nearest_neighbour_is_own_row": 600,
+          "optimal_one_to_one_assignment_is_own_row": 600,
+          "total_cosine_identity": 600.0000034200675,
+          "total_cosine_optimal_assignment": 600.0000034200675,
+          "control_misaligned_rows_cosine": {
+            "median": 0.9028273897111759,
+            "max": 0.9777079334163099
+          },
+          "rows_not_nearest_to_own": []
+        },
+        "finetuned": {
+          "labels_equal_cached": true,
+          "cosine_to_own_row": {
+            "min": 0.9999998401871916,
+            "median": 0.9999999970120913,
+            "mean": 0.9999999982782534,
+            "share_above_0.999999": 1.0,
+            "share_above_0.9999": 1.0
+          },
+          "max_abs_elementwise_difference": 1.7881393432617188e-06,
+          "nearest_neighbour_is_own_row": 600,
+          "optimal_one_to_one_assignment_is_own_row": 600,
+          "total_cosine_identity": 599.999998966952,
+          "total_cosine_optimal_assignment": 599.999998966952,
+          "control_misaligned_rows_cosine": {
+            "median": 0.9559448383236875,
+            "max": 0.9964016822684424
+          },
+          "rows_not_nearest_to_own": []
+        }
+      }
+    },
+    "p1_visdrone_heldout": {
+      "n": 600,
+      "raw_counts_replayed": {
+        "small-vehicle": 22368,
+        "large-vehicle": 7341
+      },
+      "raw_counts_original_log": {
+        "small-vehicle": 22368,
+        "large-vehicle": 7341
+      },
+      "raw_counts_equal_original_log": true,
+      "encoders": {
+        "clip": {
+          "labels_equal_cached": true,
+          "cosine_to_own_row": {
+            "min": 0.999999854795526,
+            "median": 0.9999999956332233,
+            "mean": 0.999999998940488,
+            "share_above_0.999999": 1.0,
+            "share_above_0.9999": 1.0
+          },
+          "max_abs_elementwise_difference": 9.499490261077881e-07,
+          "nearest_neighbour_is_own_row": 600,
+          "optimal_one_to_one_assignment_is_own_row": 600,
+          "total_cosine_identity": 599.9999993642928,
+          "total_cosine_optimal_assignment": 599.9999993642928,
+          "control_misaligned_rows_cosine": {
+            "median": 0.8064799808965379,
+            "max": 0.9525606694605632
+          },
+          "rows_not_nearest_to_own": []
+        },
+        "remoteclip": {
+          "labels_equal_cached": true,
+          "cosine_to_own_row": {
+            "min": 0.9999998217353904,
+            "median": 1.0000000017817203,
+            "mean": 1.0000000019596864,
+            "share_above_0.999999": 1.0,
+            "share_above_0.9999": 1.0
+          },
+          "max_abs_elementwise_difference": 1.0207295417785645e-06,
+          "nearest_neighbour_is_own_row": 600,
+          "optimal_one_to_one_assignment_is_own_row": 600,
+          "total_cosine_identity": 600.0000011758118,
+          "total_cosine_optimal_assignment": 600.0000011758118,
+          "control_misaligned_rows_cosine": {
+            "median": 0.8689380513763918,
+            "max": 0.9711902312248832
+          },
+          "rows_not_nearest_to_own": []
+        },
+        "finetuned": {
+          "labels_equal_cached": true,
+          "cosine_to_own_row": {
+            "min": 0.9999998642125759,
+            "median": 0.999999998901886,
+            "mean": 0.999999997693364,
+            "share_above_0.999999": 1.0,
+            "share_above_0.9999": 1.0
+          },
+          "max_abs_elementwise_difference": 9.98377799987793e-07,
+          "nearest_neighbour_is_own_row": 600,
+          "optimal_one_to_one_assignment_is_own_row": 600,
+          "total_cosine_identity": 599.9999986160184,
+          "total_cosine_optimal_assignment": 599.9999986160184,
+          "control_misaligned_rows_cosine": {
+            "median": 0.973516308753919,
+            "max": 0.9969146429204725
+          },
+          "rows_not_nearest_to_own": []
+        }
+      }
+    },
+    "p2_visdrone": {
+      "n": 1200,
+      "raw_counts_replayed": {
+        "car": 109567,
+        "van": 20534,
+        "truck": 11297,
+        "bus": 5233
+      },
+      "raw_counts_original_log": {
+        "car": 109567,
+        "van": 20534,
+        "truck": 11297,
+        "bus": 5233
+      },
+      "raw_counts_equal_original_log": true,
+      "encoders": {
+        "clip": {
+          "labels_equal_cached": true,
+          "cosine_to_own_row": {
+            "min": 0.999999830180126,
+            "median": 0.9999999988800627,
+            "mean": 1.0000000000525768,
+            "share_above_0.999999": 1.0,
+            "share_above_0.9999": 1.0
+          },
+          "max_abs_elementwise_difference": 1.0021030902862549e-06,
+          "nearest_neighbour_is_own_row": 1200,
+          "optimal_one_to_one_assignment_is_own_row": 1200,
+          "total_cosine_identity": 1200.000000063092,
+          "total_cosine_optimal_assignment": 1200.000000063092,
+          "control_misaligned_rows_cosine": {
+            "median": 0.8029997318397586,
+            "max": 0.964975249201665
+          },
+          "rows_not_nearest_to_own": []
+        },
+        "remoteclip": {
+          "labels_equal_cached": true,
+          "cosine_to_own_row": {
+            "min": 0.9999998193457298,
+            "median": 0.9999999975715148,
+            "mean": 0.9999999975590879,
+            "share_above_0.999999": 1.0,
+            "share_above_0.9999": 1.0
+          },
+          "max_abs_elementwise_difference": 9.015202522277832e-07,
+          "nearest_neighbour_is_own_row": 1200,
+          "optimal_one_to_one_assignment_is_own_row": 1200,
+          "total_cosine_identity": 1199.9999970709055,
+          "total_cosine_optimal_assignment": 1199.9999970709055,
+          "control_misaligned_rows_cosine": {
+            "median": 0.866374483795876,
+            "max": 0.9822120094807556
+          },
+          "rows_not_nearest_to_own": []
+        }
+      }
+    },
+    "p2_xview": {
+      "n": 925,
+      "raw_counts_replayed": {
+        "car": 1269,
+        "truck": 3694,
+        "bus": 903,
+        "van": 25
+      },
+      "raw_counts_original_log": {
+        "car": 1269,
+        "truck": 3694,
+        "bus": 903,
+        "van": 25
+      },
+      "raw_counts_equal_original_log": true,
+      "encoders": {
+        "clip": {
+          "labels_equal_cached": true,
+          "cosine_to_own_row": {
+            "min": 0.9999998359367257,
+            "median": 1.0000000034824919,
+            "mean": 1.0000000005766203,
+            "share_above_0.999999": 1.0,
+            "share_above_0.9999": 1.0
+          },
+          "max_abs_elementwise_difference": 8.717179298400879e-07,
+          "nearest_neighbour_is_own_row": 923,
+          "optimal_one_to_one_assignment_is_own_row": 925,
+          "total_cosine_identity": 925.0000005333738,
+          "total_cosine_optimal_assignment": 925.0000005333738,
+          "control_misaligned_rows_cosine": {
+            "median": 0.9194644466841877,
+            "max": 0.9857924382589788
+          },
+          "rows_not_nearest_to_own": [
+            {
+              "row": 357,
+              "label": "bus",
+              "source": "xview_chip_105",
+              "box": [
+                386,
+                416,
+                402,
+                454
+              ],
+              "cos_to_own_row": 0.999999961966812,
+              "nearest_row": 180,
+              "nearest_row_label": "bus",
+              "cos_to_nearest_row": 0.999999961966812,
+              "cos_between_the_two_cached_rows": 0.9999998619971665,
+              "own_row_rank": 1,
+              "assigned_row_in_optimal_matching": 357
+            },
+            {
+              "row": 860,
+              "label": "bus",
+              "source": "xview_chip_4831",
+              "box": [
+                476,
+                89,
+                512,
+                107
+              ],
+              "cos_to_own_row": 0.9999999000238242,
+              "nearest_row": 804,
+              "nearest_row_label": "bus",
+              "cos_to_nearest_row": 0.9999999000238242,
+              "cos_between_the_two_cached_rows": 0.9999999041053163,
+              "own_row_rank": 1,
+              "assigned_row_in_optimal_matching": 860
+            }
+          ]
+        },
+        "remoteclip": {
+          "labels_equal_cached": true,
+          "cosine_to_own_row": {
+            "min": 0.9999997612520855,
+            "median": 0.9999999973192026,
+            "mean": 0.9999999967997739,
+            "share_above_0.999999": 1.0,
+            "share_above_0.9999": 1.0
+          },
+          "max_abs_elementwise_difference": 1.7113052308559418e-06,
+          "nearest_neighbour_is_own_row": 923,
+          "optimal_one_to_one_assignment_is_own_row": 925,
+          "total_cosine_identity": 924.9999970397909,
+          "total_cosine_optimal_assignment": 924.9999970397909,
+          "control_misaligned_rows_cosine": {
+            "median": 0.9372844975714882,
+            "max": 0.9872960461321066
+          },
+          "rows_not_nearest_to_own": [
+            {
+              "row": 357,
+              "label": "bus",
+              "source": "xview_chip_105",
+              "box": [
+                386,
+                416,
+                402,
+                454
+              ],
+              "cos_to_own_row": 1.0000000977067127,
+              "nearest_row": 180,
+              "nearest_row_label": "bus",
+              "cos_to_nearest_row": 1.0000000977067127,
+              "cos_between_the_two_cached_rows": 1.0000000366305573,
+              "own_row_rank": 1,
+              "assigned_row_in_optimal_matching": 357
+            },
+            {
+              "row": 860,
+              "label": "bus",
+              "source": "xview_chip_4831",
+              "box": [
+                476,
+                89,
+                512,
+                107
+              ],
+              "cos_to_own_row": 0.9999998829180733,
+              "nearest_row": 804,
+              "nearest_row_label": "bus",
+              "cos_to_nearest_row": 0.9999998829180733,
+              "cos_between_the_two_cached_rows": 0.9999998441233677,
+              "own_row_rank": 1,
+              "assigned_row_in_optimal_matching": 860
+            }
+          ]
+        }
+      }
+    },
+    "p3_uavid_building": {
+      "n": 300,
+      "raw_counts_replayed": {
+        "building": 1199
+      },
+      "raw_counts_original_log": {
+        "building": 1199
+      },
+      "raw_counts_equal_original_log": true,
+      "encoders": {
+        "clip": {
+          "labels_equal_cached": null,
+          "cosine_to_own_row": {
+            "min": 0.9999998413404954,
+            "median": 1.0000000039063013,
+            "mean": 0.9999999998726097,
+            "share_above_0.999999": 1.0,
+            "share_above_0.9999": 1.0
+          },
+          "max_abs_elementwise_difference": 5.753245204687119e-07,
+          "nearest_neighbour_is_own_row": 300,
+          "optimal_one_to_one_assignment_is_own_row": 300,
+          "total_cosine_identity": 299.9999999617829,
+          "total_cosine_optimal_assignment": 299.9999999617829,
+          "control_misaligned_rows_cosine": {
+            "median": 0.6992656008362471,
+            "max": 0.9556488990765073
+          },
+          "rows_not_nearest_to_own": []
+        },
+        "remoteclip": {
+          "labels_equal_cached": null,
+          "cosine_to_own_row": {
+            "min": 0.9999998705942508,
+            "median": 1.000000001645133,
+            "mean": 1.0000000048533266,
+            "share_above_0.999999": 1.0,
+            "share_above_0.9999": 1.0
+          },
+          "max_abs_elementwise_difference": 1.6307458281517029e-06,
+          "nearest_neighbour_is_own_row": 300,
+          "optimal_one_to_one_assignment_is_own_row": 300,
+          "total_cosine_identity": 300.00000145599796,
+          "total_cosine_optimal_assignment": 300.00000145599796,
+          "control_misaligned_rows_cosine": {
+            "median": 0.7993593122462364,
+            "max": 0.9677291171885414
+          },
+          "rows_not_nearest_to_own": []
+        }
+      }
+    },
+    "p3_xview_building": {
+      "n": 300,
+      "raw_counts_replayed": {
+        "building": 3711
+      },
+      "raw_counts_original_log": {
+        "building": 3711
+      },
+      "raw_counts_equal_original_log": true,
+      "encoders": {
+        "clip": {
+          "labels_equal_cached": null,
+          "cosine_to_own_row": {
+            "min": 0.99999986459705,
+            "median": 1.0000000111638931,
+            "mean": 1.0000000096806132,
+            "share_above_0.999999": 1.0,
+            "share_above_0.9999": 1.0
+          },
+          "max_abs_elementwise_difference": 6.128102540969849e-07,
+          "nearest_neighbour_is_own_row": 298,
+          "optimal_one_to_one_assignment_is_own_row": 298,
+          "total_cosine_identity": 300.000002904184,
+          "total_cosine_optimal_assignment": 300.000002904184,
+          "control_misaligned_rows_cosine": {
+            "median": 0.8821386944741956,
+            "max": 0.988960163613017
+          },
+          "rows_not_nearest_to_own": [
+            {
+              "row": 94,
+              "label": "building",
+              "source": "xview_chip_110",
+              "box": [
+                398,
+                134,
+                512,
+                251
+              ],
+              "cos_to_own_row": 1.0000000086835787,
+              "nearest_row": 210,
+              "nearest_row_label": "building",
+              "cos_to_nearest_row": 1.000000008683579,
+              "cos_between_the_two_cached_rows": 0.9999999967874743,
+              "own_row_rank": 2,
+              "assigned_row_in_optimal_matching": 210
+            },
+            {
+              "row": 210,
+              "label": "building",
+              "source": "xview_chip_106",
+              "box": [
+                398,
+                214,
+                512,
+                331
+              ],
+              "cos_to_own_row": 1.0000000086835787,
+              "nearest_row": 94,
+              "nearest_row_label": "building",
+              "cos_to_nearest_row": 1.0000000086835787,
+              "cos_between_the_two_cached_rows": 0.9999999967874743,
+              "own_row_rank": 1,
+              "assigned_row_in_optimal_matching": 94
+            }
+          ]
+        },
+        "remoteclip": {
+          "labels_equal_cached": null,
+          "cosine_to_own_row": {
+            "min": 0.999999853474915,
+            "median": 0.9999999967800979,
+            "mean": 0.9999999994549182,
+            "share_above_0.999999": 1.0,
+            "share_above_0.9999": 1.0
+          },
+          "max_abs_elementwise_difference": 8.344650268554688e-07,
+          "nearest_neighbour_is_own_row": 299,
+          "optimal_one_to_one_assignment_is_own_row": 300,
+          "total_cosine_identity": 299.99999983647547,
+          "total_cosine_optimal_assignment": 299.99999983647547,
+          "control_misaligned_rows_cosine": {
+            "median": 0.9129372141391963,
+            "max": 0.9892530025770252
+          },
+          "rows_not_nearest_to_own": [
+            {
+              "row": 210,
+              "label": "building",
+              "source": "xview_chip_106",
+              "box": [
+                398,
+                214,
+                512,
+                331
+              ],
+              "cos_to_own_row": 1.0000000394133155,
+              "nearest_row": 94,
+              "nearest_row_label": "building",
+              "cos_to_nearest_row": 1.0000000394133155,
+              "cos_between_the_two_cached_rows": 1.0000000657356152,
+              "own_row_rank": 1,
+              "assigned_row_in_optimal_matching": 210
+            }
+          ]
+        }
+      }
+    }
+  }
+}

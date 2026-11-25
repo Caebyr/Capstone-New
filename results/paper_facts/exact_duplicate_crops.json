@@ -1,0 +1,174 @@
+{
+  "p1_dota": {
+    "evaluated_crops": 600,
+    "exact_duplicate_pairs_in_every_encoder": 0,
+    "per_encoder_counts": {
+      "clip": 0,
+      "remoteclip": 0,
+      "finetuned": 0
+    },
+    "pairs": []
+  },
+  "p1_visdrone_heldout": {
+    "evaluated_crops": 600,
+    "exact_duplicate_pairs_in_every_encoder": 0,
+    "per_encoder_counts": {
+      "clip": 0,
+      "remoteclip": 0,
+      "finetuned": 0
+    },
+    "pairs": []
+  },
+  "p2_xview": {
+    "evaluated_crops": 900,
+    "exact_duplicate_pairs_in_every_encoder": 2,
+    "per_encoder_counts": {
+      "clip": 2,
+      "remoteclip": 2
+    },
+    "pairs": [
+      {
+        "rows": [
+          180,
+          357
+        ],
+        "labels": [
+          "bus",
+          "bus"
+        ],
+        "sources": [
+          "xview_chip_109",
+          "xview_chip_105"
+        ],
+        "boxes": [
+          [
+            386,
+            336,
+            402,
+            374
+          ],
+          [
+            386,
+            416,
+            402,
+            454
+          ]
+        ],
+        "sizes": [
+          [
+            16,
+            38
+          ],
+          [
+            16,
+            38
+          ]
+        ]
+      },
+      {
+        "rows": [
+          804,
+          860
+        ],
+        "labels": [
+          "bus",
+          "bus"
+        ],
+        "sources": [
+          "xview_chip_4821",
+          "xview_chip_4831"
+        ],
+        "boxes": [
+          [
+            476,
+            137,
+            512,
+            155
+          ],
+          [
+            476,
+            89,
+            512,
+            107
+          ]
+        ],
+        "sizes": [
+          [
+            36,
+            18
+          ],
+          [
+            36,
+            18
+          ]
+        ]
+      }
+    ]
+  },
+  "p2_visdrone": {
+    "evaluated_crops": 900,
+    "exact_duplicate_pairs_in_every_encoder": 0,
+    "per_encoder_counts": {
+      "clip": 0,
+      "remoteclip": 0
+    },
+    "pairs": []
+  },
+  "p3_xview_building": {
+    "evaluated_crops": 300,
+    "exact_duplicate_pairs_in_every_encoder": 1,
+    "per_encoder_counts": {
+      "clip": 1,
+      "remoteclip": 1
+    },
+    "pairs": [
+      {
+        "rows": [
+          94,
+          210
+        ],
+        "labels": [
+          "building",
+          "building"
+        ],
+        "sources": [
+          "xview_chip_110",
+          "xview_chip_106"
+        ],
+        "boxes": [
+          [
+            398,
+            134,
+            512,
+            251
+          ],
+          [
+            398,
+            214,
+            512,
+            331
+          ]
+        ],
+        "sizes": [
+          [
+            114,
+            117
+          ],
+          [
+            114,
+            117
+          ]
+        ]
+      }
+    ]
+  },
+  "p3_uavid_building": {
+    "evaluated_crops": 300,
+    "exact_duplicate_pairs_in_every_encoder": 0,
+    "per_encoder_counts": {
+      "clip": 0,
+      "remoteclip": 0
+    },
+    "pairs": []
+  }
+}

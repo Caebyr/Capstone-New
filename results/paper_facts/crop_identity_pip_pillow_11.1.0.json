@@ -1,0 +1,924 @@
+{
+  "tag": "pillow_11.1.0",
+  "pillow_version": "11.1.0",
+  "pillow_path": "C:\\Users\\user\\AppData\\Local\\Temp\\claude\\d--C-drive-data-Kabir-Oberoi-Desktop-Capstone\\61c13b12-05fe-4ef2-a7ce-a6fce2aaaba8\\scratchpad\\pillow_11_1_0\\PIL",
+  "libjpeg_turbo": "3.1.0",
+  "torch": "2.5.1+cu118",
+  "lists": {
+    "p1_dota": {
+      "n": 600,
+      "raw_counts_replayed": {
+        "large-vehicle": 3033,
+        "small-vehicle": 6537
+      },
+      "raw_counts_original_log": {
+        "large-vehicle": 3033,
+        "small-vehicle": 6537
+      },
+      "raw_counts_equal_original_log": true,
+      "encoders": {
+        "clip": {
+          "labels_equal_cached": true,
+          "cosine_to_own_row": {
+            "min": 0.9999997527677944,
+            "median": 0.9999999995248379,
+            "mean": 1.000000002555443,
+            "share_above_0.999999": 1.0,
+            "share_above_0.9999": 1.0
+          },
+          "max_abs_elementwise_difference": 1.223292201757431e-06,
+          "nearest_neighbour_is_own_row": 600,
+          "optimal_one_to_one_assignment_is_own_row": 600,
+          "total_cosine_identity": 600.0000015332657,
+          "total_cosine_optimal_assignment": 600.0000015332657,
+          "control_misaligned_rows_cosine": {
+            "median": 0.8739476646756521,
+            "max": 0.9786066395011851
+          },
+          "rows_not_nearest_to_own": []
+        },
+        "remoteclip": {
+          "labels_equal_cached": true,
+          "cosine_to_own_row": {
+            "min": 0.9999998466782658,
+            "median": 1.0000000096335926,
+            "mean": 1.0000000057001126,
+            "share_above_0.999999": 1.0,
+            "share_above_0.9999": 1.0
+          },
+          "max_abs_elementwise_difference": 7.026828825473785e-07,
+          "nearest_neighbour_is_own_row": 600,
+          "optimal_one_to_one_assignment_is_own_row": 600,
+          "total_cosine_identity": 600.0000034200675,
+          "total_cosine_optimal_assignment": 600.0000034200675,
+          "control_misaligned_rows_cosine": {
+            "median": 0.9028273897111759,
+            "max": 0.9777079334163099
+          },
+          "rows_not_nearest_to_own": []
+        },
+        "finetuned": {
+          "labels_equal_cached": true,
+          "cosine_to_own_row": {
+            "min": 0.9999998401871916,
+            "median": 0.9999999970120913,
+            "mean": 0.9999999982782534,
+            "share_above_0.999999": 1.0,
+            "share_above_0.9999": 1.0
+          },
+          "max_abs_elementwise_difference": 1.7881393432617188e-06,
+          "nearest_neighbour_is_own_row": 600,
+          "optimal_one_to_one_assignment_is_own_row": 600,
+          "total_cosine_identity": 599.999998966952,
+          "total_cosine_optimal_assignment": 599.999998966952,
+          "control_misaligned_rows_cosine": {
+            "median": 0.9559448383236875,
+            "max": 0.9964016822684424
+          },
+          "rows_not_nearest_to_own": []
+        }
+      }
+    },
+    "p1_visdrone_heldout": {
+      "n": 600,
+      "raw_counts_replayed": {
+        "small-vehicle": 22368,
+        "large-vehicle": 7341
+      },
+      "raw_counts_original_log": {
+        "small-vehicle": 22368,
+        "large-vehicle": 7341
+      },
+      "raw_counts_equal_original_log": true,
+      "encoders": {
+        "clip": {
+          "labels_equal_cached": true,
+          "cosine_to_own_row": {
+            "min": 0.8855946996110928,
+            "median": 0.9940024841024548,
+            "mean": 0.9874033880842069,
+            "share_above_0.999999": 0.0,
+            "share_above_0.9999": 0.0
+          },
+          "max_abs_elementwise_difference": 0.1708066128194332,
+          "nearest_neighbour_is_own_row": 600,
+          "optimal_one_to_one_assignment_is_own_row": 600,
+          "total_cosine_identity": 592.4420328505241,
+          "total_cosine_optimal_assignment": 592.4420328505241,
+          "control_misaligned_rows_cosine": {
+            "median": 0.809568536916184,
+            "max": 0.959237362643605
+          },
+          "rows_not_nearest_to_own": []
+        },
+        "remoteclip": {
+          "labels_equal_cached": true,
+          "cosine_to_own_row": {
+            "min": 0.9482483728927817,
+            "median": 0.9955975216398829,
+            "mean": 0.9933113332000593,
+            "share_above_0.999999": 0.0,
+            "share_above_0.9999": 0.0016666666666666668
+          },
+          "max_abs_elementwise_difference": 0.06445452570915222,
+          "nearest_neighbour_is_own_row": 600,
+          "optimal_one_to_one_assignment_is_own_row": 600,
+          "total_cosine_identity": 595.9867999200355,
+          "total_cosine_optimal_assignment": 595.9867999200355,
+          "control_misaligned_rows_cosine": {
+            "median": 0.87093339999026,
+            "max": 0.9685058368379662
+          },
+          "rows_not_nearest_to_own": []
+        },
+        "finetuned": {
+          "labels_equal_cached": true,
+          "cosine_to_own_row": {
+            "min": 0.9788139258468008,
+            "median": 0.999184617184414,
+            "mean": 0.9982861006120879,
+            "share_above_0.999999": 0.0,
+            "share_above_0.9999": 0.04833333333333333
+          },
+          "max_abs_elementwise_difference": 0.07549561560153961,
+          "nearest_neighbour_is_own_row": 592,
+          "optimal_one_to_one_assignment_is_own_row": 600,
+          "total_cosine_identity": 598.9716603672528,
+          "total_cosine_optimal_assignment": 598.9716603672528,
+          "control_misaligned_rows_cosine": {
+            "median": 0.9734288885376241,
+            "max": 0.9972028375733331
+          },
+          "rows_not_nearest_to_own": [
+            {
+              "row": 51,
+              "label": "small-vehicle",
+              "source": "9999982_00000_d_0000001.jpg",
+              "box": [
+                632,
+                107,
+                649,
+                133
+              ],
+              "cos_to_own_row": 0.9798648052457016,
+              "nearest_row": 10,
+              "nearest_row_label": "small-vehicle",
+              "cos_to_nearest_row": 0.9905574432467342,
+              "cos_between_the_two_cached_rows": 0.9769934959452232,
+              "own_row_rank": 23,
+              "assigned_row_in_optimal_matching": 51
+            },
+            {
+              "row": 137,
+              "label": "large-vehicle",
+              "source": "9999982_00000_d_0000064.jpg",
+              "box": [
+                246,
+                112,
+                267,
+                128
+              ],
+              "cos_to_own_row": 0.9956556602514358,
+              "nearest_row": 555,
+              "nearest_row_label": "small-vehicle",
+              "cos_to_nearest_row": 0.9967909654039143,
+              "cos_between_the_two_cached_rows": 0.9907158841495145,
+              "own_row_rank": 9,
+              "assigned_row_in_optimal_matching": 137
+            },
+            {
+              "row": 350,
+              "label": "large-vehicle",
+              "source": "9999984_00000_d_0000140.jpg",
+              "box": [
+                263,
+                289,
+                293,
+                313
+              ],
+              "cos_to_own_row": 0.98046946413067,
+              "nearest_row": 458,
+              "nearest_row_label": "small-vehicle",
+              "cos_to_nearest_row": 0.9832224934846112,
+              "cos_between_the_two_cached_rows": 0.9731721312671999,
+              "own_row_rank": 2,
+              "assigned_row_in_optimal_matching": 350
+            },
+            {
+              "row": 429,
+              "label": "large-vehicle",
+              "source": "9999955_00000_d_0000315.jpg",
+              "box": [
+                770,
+                158,
+                787,
+                177
+              ],
+              "cos_to_own_row": 0.9923535108517976,
+              "nearest_row": 306,
+              "nearest_row_label": "large-vehicle",
+              "cos_to_nearest_row": 0.9936485204212513,
+              "cos_between_the_two_cached_rows": 0.9836958017719525,
+              "own_row_rank": 3,
+              "assigned_row_in_optimal_matching": 429
+            },
+            {
+              "row": 451,
+              "label": "large-vehicle",
+              "source": "9999942_00000_d_0000256.jpg",
+              "box": [
+                1133,
+                144,
+                1224,
+                194
+              ],
+              "cos_to_own_row": 0.9788139258468008,
+              "nearest_row": 517,
+              "nearest_row_label": "large-vehicle",
+              "cos_to_nearest_row": 0.98149942931199,
+              "cos_between_the_two_cached_rows": 0.9658517941984355,
+              "own_row_rank": 5,
+              "assigned_row_in_optimal_matching": 451
+            },
+            {
+              "row": 530,
+              "label": "large-vehicle",
+              "source": "9999950_00000_d_0000038.jpg",
+              "box": [
+                730,
+                279,
+                765,
+                318
+              ],
+              "cos_to_own_row": 0.9825572615287848,
+              "nearest_row": 451,
+              "nearest_row_label": "large-vehicle",
+              "cos_to_nearest_row": 0.9865533974907684,
+              "cos_between_the_two_cached_rows": 0.9700144366827029,
+              "own_row_rank": 15,
+              "assigned_row_in_optimal_matching": 530
+            },
+            {
+              "row": 547,
+              "label": "large-vehicle",
+              "source": "0000323_03001_d_0000647.jpg",
+              "box": [
+                911,
+                47,
+                934,
+                71
+              ],
+              "cos_to_own_row": 0.9914351810923401,
+              "nearest_row": 236,
+              "nearest_row_label": "small-vehicle",
+              "cos_to_nearest_row": 0.9918783590845937,
+              "cos_between_the_two_cached_rows": 0.9813181969932159,
+              "own_row_rank": 4,
+              "assigned_row_in_optimal_matching": 547
+            },
+            {
+              "row": 585,
+              "label": "small-vehicle",
+              "source": "9999974_00000_d_0000023.jpg",
+              "box": [
+                123,
+                340,
+                183,
+                366
+              ],
+              "cos_to_own_row": 0.9836306516372245,
+              "nearest_row": 158,
+              "nearest_row_label": "small-vehicle",
+              "cos_to_nearest_row": 0.9946569047967656,
+              "cos_between_the_two_cached_rows": 0.9712105622648259,
+              "own_row_rank": 254,
+              "assigned_row_in_optimal_matching": 585
+            }
+          ]
+        }
+      }
+    },
+    "p2_visdrone": {
+      "n": 1200,
+      "raw_counts_replayed": {
+        "car": 109567,
+        "van": 20534,
+        "truck": 11297,
+        "bus": 5233
+      },
+      "raw_counts_original_log": {
+        "car": 109567,
+        "van": 20534,
+        "truck": 11297,
+        "bus": 5233
+      },
+      "raw_counts_equal_original_log": true,
+      "encoders": {
+        "clip": {
+          "labels_equal_cached": true,
+          "cosine_to_own_row": {
+            "min": 0.8833261020071099,
+            "median": 0.9937574766603021,
+            "mean": 0.9873826117699385,
+            "share_above_0.999999": 0.0,
+            "share_above_0.9999": 0.0
+          },
+          "max_abs_elementwise_difference": 0.14360489137470722,
+          "nearest_neighbour_is_own_row": 1198,
+          "optimal_one_to_one_assignment_is_own_row": 1200,
+          "total_cosine_identity": 1184.8591341239262,
+          "total_cosine_optimal_assignment": 1184.8591341239262,
+          "control_misaligned_rows_cosine": {
+            "median": 0.8038282376133662,
+            "max": 0.9677580398044202
+          },
+          "rows_not_nearest_to_own": [
+            {
+              "row": 506,
+              "label": "car",
+              "source": "9999942_00000_d_0000092.jpg",
+              "box": [
+                1021,
+                824,
+                1111,
+                1013
+              ],
+              "cos_to_own_row": 0.9346171449003318,
+              "nearest_row": 508,
+              "nearest_row_label": "car",
+              "cos_to_nearest_row": 0.9393842143885056,
+              "cos_between_the_two_cached_rows": 0.9450134402240483,
+              "own_row_rank": 2,
+              "assigned_row_in_optimal_matching": 506
+            },
+            {
+              "row": 779,
+              "label": "van",
+              "source": "9999942_00000_d_0000072.jpg",
+              "box": [
+                1150,
+                704,
+                1236,
+                839
+              ],
+              "cos_to_own_row": 0.9451503513808523,
+              "nearest_row": 993,
+              "nearest_row_label": "car",
+              "cos_to_nearest_row": 0.9482506427792022,
+              "cos_between_the_two_cached_rows": 0.9250664615940617,
+              "own_row_rank": 2,
+              "assigned_row_in_optimal_matching": 779
+            }
+          ]
+        },
+        "remoteclip": {
+          "labels_equal_cached": true,
+          "cosine_to_own_row": {
+            "min": 0.9063020226214963,
+            "median": 0.9952886345294585,
+            "mean": 0.9924422602074962,
+            "share_above_0.999999": 0.0,
+            "share_above_0.9999": 0.0
+          },
+          "max_abs_elementwise_difference": 0.08182397484779358,
+          "nearest_neighbour_is_own_row": 1196,
+          "optimal_one_to_one_assignment_is_own_row": 1200,
+          "total_cosine_identity": 1190.9307122489954,
+          "total_cosine_optimal_assignment": 1190.9307122489954,
+          "control_misaligned_rows_cosine": {
+            "median": 0.8696572746317942,
+            "max": 0.9825414064381045
+          },
+          "rows_not_nearest_to_own": [
+            {
+              "row": 200,
+              "label": "bus",
+              "source": "9999955_00000_d_0000330.jpg",
+              "box": [
+                0,
+                225,
+                75,
+                291
+              ],
+              "cos_to_own_row": 0.9275021078481085,
+              "nearest_row": 446,
+              "nearest_row_label": "bus",
+              "cos_to_nearest_row": 0.9330996695574929,
+              "cos_between_the_two_cached_rows": 0.8924735747035966,
+              "own_row_rank": 4,
+              "assigned_row_in_optimal_matching": 200
+            },
+            {
+              "row": 847,
+              "label": "bus",
+              "source": "9999953_00000_d_0000053.jpg",
+              "box": [
+                595,
+                207,
+                757,
+                358
+              ],
+              "cos_to_own_row": 0.9063020226214963,
+              "nearest_row": 313,
+              "nearest_row_label": "car",
+              "cos_to_nearest_row": 0.9082339187706507,
+              "cos_between_the_two_cached_rows": 0.8132509342337095,
+              "own_row_rank": 2,
+              "assigned_row_in_optimal_matching": 847
+            },
+            {
+              "row": 1001,
+              "label": "van",
+              "source": "9999962_00000_d_0000060.jpg",
+              "box": [
+                838,
+                168,
+                948,
+                287
+              ],
+              "cos_to_own_row": 0.909690407884812,
+              "nearest_row": 694,
+              "nearest_row_label": "bus",
+              "cos_to_nearest_row": 0.9175608796802446,
+              "cos_between_the_two_cached_rows": 0.8482057029432132,
+              "own_row_rank": 5,
+              "assigned_row_in_optimal_matching": 1001
+            },
+            {
+              "row": 1105,
+              "label": "car",
+              "source": "9999970_00000_d_0000014.jpg",
+              "box": [
+                47,
+                380,
+                80,
+                408
+              ],
+              "cos_to_own_row": 0.975389307271274,
+              "nearest_row": 801,
+              "nearest_row_label": "van",
+              "cos_to_nearest_row": 0.9791277174131636,
+              "cos_between_the_two_cached_rows": 0.9596242656652991,
+              "own_row_rank": 2,
+              "assigned_row_in_optimal_matching": 1105
+            }
+          ]
+        }
+      }
+    },
+    "p2_xview": {
+      "n": 925,
+      "raw_counts_replayed": {
+        "car": 1269,
+        "truck": 3694,
+        "bus": 903,
+        "van": 25
+      },
+      "raw_counts_original_log": {
+        "car": 1269,
+        "truck": 3694,
+        "bus": 903,
+        "van": 25
+      },
+      "raw_counts_equal_original_log": true,
+      "encoders": {
+        "clip": {
+          "labels_equal_cached": true,
+          "cosine_to_own_row": {
+            "min": 0.9578893649090633,
+            "median": 0.9967429819970549,
+            "mean": 0.9959609499924484,
+            "share_above_0.999999": 0.024864864864864864,
+            "share_above_0.9999": 0.02702702702702703
+          },
+          "max_abs_elementwise_difference": 0.08484948915429413,
+          "nearest_neighbour_is_own_row": 918,
+          "optimal_one_to_one_assignment_is_own_row": 925,
+          "total_cosine_identity": 921.2638787430149,
+          "total_cosine_optimal_assignment": 921.2638787430149,
+          "control_misaligned_rows_cosine": {
+            "median": 0.9186872139559965,
+            "max": 0.9829418421015952
+          },
+          "rows_not_nearest_to_own": [
+            {
+              "row": 92,
+              "label": "bus",
+              "source": "xview_chip_1482",
+              "box": [
+                362,
+                39,
+                383,
+                73
+              ],
+              "cos_to_own_row": 0.9841945279730479,
+              "nearest_row": 352,
+              "nearest_row_label": "bus",
+              "cos_to_nearest_row": 0.9910698016350846,
+              "cos_between_the_two_cached_rows": 0.9881045634058611,
+              "own_row_rank": 2,
+              "assigned_row_in_optimal_matching": 92
+            },
+            {
+              "row": 172,
+              "label": "truck",
+              "source": "xview_chip_4333",
+              "box": [
+                341,
+                57,
+                362,
+                99
+              ],
+              "cos_to_own_row": 0.9911145977479232,
+              "nearest_row": 596,
+              "nearest_row_label": "truck",
+              "cos_to_nearest_row": 0.9928899099028667,
+              "cos_between_the_two_cached_rows": 0.987961189703567,
+              "own_row_rank": 2,
+              "assigned_row_in_optimal_matching": 172
+            },
+            {
+              "row": 357,
+              "label": "bus",
+              "source": "xview_chip_105",
+              "box": [
+                386,
+                416,
+                402,
+                454
+              ],
+              "cos_to_own_row": 0.999999961966812,
+              "nearest_row": 180,
+              "nearest_row_label": "bus",
+              "cos_to_nearest_row": 0.999999961966812,
+              "cos_between_the_two_cached_rows": 0.9999998619971665,
+              "own_row_rank": 1,
+              "assigned_row_in_optimal_matching": 357
+            },
+            {
+              "row": 468,
+              "label": "bus",
+              "source": "xview_chip_1660",
+              "box": [
+                382,
+                407,
+                407,
+                439
+              ],
+              "cos_to_own_row": 0.9898802627685234,
+              "nearest_row": 189,
+              "nearest_row_label": "bus",
+              "cos_to_nearest_row": 0.9923187857381215,
+              "cos_between_the_two_cached_rows": 0.9926555903603558,
+              "own_row_rank": 2,
+              "assigned_row_in_optimal_matching": 468
+            },
+            {
+              "row": 599,
+              "label": "car",
+              "source": "xview_chip_3177",
+              "box": [
+                319,
+                383,
+                337,
+                402
+              ],
+              "cos_to_own_row": 0.965811658409311,
+              "nearest_row": 131,
+              "nearest_row_label": "car",
+              "cos_to_nearest_row": 0.9785822104818954,
+              "cos_between_the_two_cached_rows": 0.9477551984020894,
+              "own_row_rank": 7,
+              "assigned_row_in_optimal_matching": 599
+            },
+            {
+              "row": 828,
+              "label": "car",
+              "source": "xview_chip_2521",
+              "box": [
+                466,
+                345,
+                485,
+                361
+              ],
+              "cos_to_own_row": 0.9891516196381829,
+              "nearest_row": 105,
+              "nearest_row_label": "car",
+              "cos_to_nearest_row": 0.9902479203166105,
+              "cos_between_the_two_cached_rows": 0.9911731974238877,
+              "own_row_rank": 2,
+              "assigned_row_in_optimal_matching": 828
+            },
+            {
+              "row": 860,
+              "label": "bus",
+              "source": "xview_chip_4831",
+              "box": [
+                476,
+                89,
+                512,
+                107
+              ],
+              "cos_to_own_row": 0.9925218392483259,
+              "nearest_row": 804,
+              "nearest_row_label": "bus",
+              "cos_to_nearest_row": 0.9925218392483259,
+              "cos_between_the_two_cached_rows": 0.9999999041053163,
+              "own_row_rank": 1,
+              "assigned_row_in_optimal_matching": 860
+            }
+          ]
+        },
+        "remoteclip": {
+          "labels_equal_cached": true,
+          "cosine_to_own_row": {
+            "min": 0.9705419667241744,
+            "median": 0.9965644952457939,
+            "mean": 0.995489292566013,
+            "share_above_0.999999": 0.024864864864864864,
+            "share_above_0.9999": 0.025945945945945945
+          },
+          "max_abs_elementwise_difference": 0.035576348192989826,
+          "nearest_neighbour_is_own_row": 919,
+          "optimal_one_to_one_assignment_is_own_row": 925,
+          "total_cosine_identity": 920.827595623562,
+          "total_cosine_optimal_assignment": 920.827595623562,
+          "control_misaligned_rows_cosine": {
+            "median": 0.936188038954662,
+            "max": 0.9887484182521558
+          },
+          "rows_not_nearest_to_own": [
+            {
+              "row": 172,
+              "label": "truck",
+              "source": "xview_chip_4333",
+              "box": [
+                341,
+                57,
+                362,
+                99
+              ],
+              "cos_to_own_row": 0.986510010183768,
+              "nearest_row": 596,
+              "nearest_row_label": "truck",
+              "cos_to_nearest_row": 0.992580276330054,
+              "cos_between_the_two_cached_rows": 0.9806660572038806,
+              "own_row_rank": 2,
+              "assigned_row_in_optimal_matching": 172
+            },
+            {
+              "row": 262,
+              "label": "bus",
+              "source": "xview_chip_1101",
+              "box": [
+                9,
+                493,
+                37,
+                512
+              ],
+              "cos_to_own_row": 0.9865860187145712,
+              "nearest_row": 737,
+              "nearest_row_label": "bus",
+              "cos_to_nearest_row": 0.9884461535799913,
+              "cos_between_the_two_cached_rows": 0.9790512830912077,
+              "own_row_rank": 2,
+              "assigned_row_in_optimal_matching": 262
+            },
+            {
+              "row": 357,
+              "label": "bus",
+              "source": "xview_chip_105",
+              "box": [
+                386,
+                416,
+                402,
+                454
+              ],
+              "cos_to_own_row": 1.0000000977067127,
+              "nearest_row": 180,
+              "nearest_row_label": "bus",
+              "cos_to_nearest_row": 1.0000000977067127,
+              "cos_between_the_two_cached_rows": 1.0000000366305573,
+              "own_row_rank": 1,
+              "assigned_row_in_optimal_matching": 357
+            },
+            {
+              "row": 468,
+              "label": "bus",
+              "source": "xview_chip_1660",
+              "box": [
+                382,
+                407,
+                407,
+                439
+              ],
+              "cos_to_own_row": 0.9882322368029794,
+              "nearest_row": 189,
+              "nearest_row_label": "bus",
+              "cos_to_nearest_row": 0.9898095121856592,
+              "cos_between_the_two_cached_rows": 0.9849968366076358,
+              "own_row_rank": 2,
+              "assigned_row_in_optimal_matching": 468
+            },
+            {
+              "row": 471,
+              "label": "bus",
+              "source": "xview_chip_1139",
+              "box": [
+                476,
+                33,
+                497,
+                52
+              ],
+              "cos_to_own_row": 0.9705419667241744,
+              "nearest_row": 789,
+              "nearest_row_label": "bus",
+              "cos_to_nearest_row": 0.9753347601336428,
+              "cos_between_the_two_cached_rows": 0.950895784160403,
+              "own_row_rank": 2,
+              "assigned_row_in_optimal_matching": 471
+            },
+            {
+              "row": 860,
+              "label": "bus",
+              "source": "xview_chip_4831",
+              "box": [
+                476,
+                89,
+                512,
+                107
+              ],
+              "cos_to_own_row": 0.9923089137844848,
+              "nearest_row": 804,
+              "nearest_row_label": "bus",
+              "cos_to_nearest_row": 0.9923089137844848,
+              "cos_between_the_two_cached_rows": 0.9999998441233677,
+              "own_row_rank": 1,
+              "assigned_row_in_optimal_matching": 860
+            }
+          ]
+        }
+      }
+    },
+    "p3_uavid_building": {
+      "n": 300,
+      "raw_counts_replayed": {
+        "building": 1199
+      },
+      "raw_counts_original_log": {
+        "building": 1199
+      },
+      "raw_counts_equal_original_log": true,
+      "encoders": {
+        "clip": {
+          "labels_equal_cached": null,
+          "cosine_to_own_row": {
+            "min": 0.9999998413404954,
+            "median": 1.0000000039063013,
+            "mean": 0.9999999998726097,
+            "share_above_0.999999": 1.0,
+            "share_above_0.9999": 1.0
+          },
+          "max_abs_elementwise_difference": 5.753245204687119e-07,
+          "nearest_neighbour_is_own_row": 300,
+          "optimal_one_to_one_assignment_is_own_row": 300,
+          "total_cosine_identity": 299.9999999617829,
+          "total_cosine_optimal_assignment": 299.9999999617829,
+          "control_misaligned_rows_cosine": {
+            "median": 0.6992656008362471,
+            "max": 0.9556488990765073
+          },
+          "rows_not_nearest_to_own": []
+        },
+        "remoteclip": {
+          "labels_equal_cached": null,
+          "cosine_to_own_row": {
+            "min": 0.9999998705942508,
+            "median": 1.000000001645133,
+            "mean": 1.0000000048533266,
+            "share_above_0.999999": 1.0,
+            "share_above_0.9999": 1.0
+          },
+          "max_abs_elementwise_difference": 1.6307458281517029e-06,
+          "nearest_neighbour_is_own_row": 300,
+          "optimal_one_to_one_assignment_is_own_row": 300,
+          "total_cosine_identity": 300.00000145599796,
+          "total_cosine_optimal_assignment": 300.00000145599796,
+          "control_misaligned_rows_cosine": {
+            "median": 0.7993593122462364,
+            "max": 0.9677291171885414
+          },
+          "rows_not_nearest_to_own": []
+        }
+      }
+    },
+    "p3_xview_building": {
+      "n": 300,
+      "raw_counts_replayed": {
+        "building": 3711
+      },
+      "raw_counts_original_log": {
+        "building": 3711
+      },
+      "raw_counts_equal_original_log": true,
+      "encoders": {
+        "clip": {
+          "labels_equal_cached": null,
+          "cosine_to_own_row": {
+            "min": 0.926665243438014,
+            "median": 0.9972503057505999,
+            "mean": 0.9919517460204058,
+            "share_above_0.999999": 0.09333333333333334,
+            "share_above_0.9999": 0.13
+          },
+          "max_abs_elementwise_difference": 0.1098484629765153,
+          "nearest_neighbour_is_own_row": 298,
+          "optimal_one_to_one_assignment_is_own_row": 300,
+          "total_cosine_identity": 297.5855238061217,
+          "total_cosine_optimal_assignment": 297.5855238061217,
+          "control_misaligned_rows_cosine": {
+            "median": 0.8806079034729064,
+            "max": 0.9859827587977532
+          },
+          "rows_not_nearest_to_own": [
+            {
+              "row": 116,
+              "label": "building",
+              "source": "xview_chip_350",
+              "box": [
+                186,
+                57,
+                250,
+                94
+              ],
+              "cos_to_own_row": 0.980379868671261,
+              "nearest_row": 49,
+              "nearest_row_label": "building",
+              "cos_to_nearest_row": 0.9809440318292048,
+              "cos_between_the_two_cached_rows": 0.995277656872001,
+              "own_row_rank": 3,
+              "assigned_row_in_optimal_matching": 116
+            },
+            {
+              "row": 210,
+              "label": "building",
+              "source": "xview_chip_106",
+              "box": [
+                398,
+                214,
+                512,
+                331
+              ],
+              "cos_to_own_row": 0.9956764219558647,
+              "nearest_row": 94,
+              "nearest_row_label": "building",
+              "cos_to_nearest_row": 0.9956764219558647,
+              "cos_between_the_two_cached_rows": 0.9999999967874743,
+              "own_row_rank": 1,
+              "assigned_row_in_optimal_matching": 210
+            }
+          ]
+        },
+        "remoteclip": {
+          "labels_equal_cached": null,
+          "cosine_to_own_row": {
+            "min": 0.9191590106736265,
+            "median": 0.997201018088979,
+            "mean": 0.9929317577615087,
+            "share_above_0.999999": 0.09333333333333334,
+            "share_above_0.9999": 0.13
+          },
+          "max_abs_elementwise_difference": 0.07562628388404846,
+          "nearest_neighbour_is_own_row": 299,
+          "optimal_one_to_one_assignment_is_own_row": 300,
+          "total_cosine_identity": 297.8795273284526,
+          "total_cosine_optimal_assignment": 297.8795273284526,
+          "control_misaligned_rows_cosine": {
+            "median": 0.9132341135509721,
+            "max": 0.991098473588204
+          },
+          "rows_not_nearest_to_own": [
+            {
+              "row": 210,
+              "label": "building",
+              "source": "xview_chip_106",
+              "box": [
+                398,
+                214,
+                512,
+                331
+              ],
+              "cos_to_own_row": 0.9920892206178329,
+              "nearest_row": 94,
+              "nearest_row_label": "building",
+              "cos_to_nearest_row": 0.9920892206178329,
+              "cos_between_the_two_cached_rows": 1.0000000657356152,
+              "own_row_rank": 1,
+              "assigned_row_in_optimal_matching": 210
+            }
+          ]
+        }
+      }
+    }
+  }
+}

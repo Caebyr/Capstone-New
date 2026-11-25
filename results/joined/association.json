@@ -1,0 +1,135 @@
+{
+  "per_model": [
+    {
+      "task": "P2+P3",
+      "model": "clip",
+      "drift": "cos",
+      "target": "recall_gap_pp",
+      "rho": 0.39999999999999997
+    },
+    {
+      "task": "P2+P3",
+      "model": "clip",
+      "drift": "cos",
+      "target": "A",
+      "rho": 0.7999999999999999
+    },
+    {
+      "task": "P2+P3",
+      "model": "clip",
+      "drift": "cos",
+      "target": "delta_m",
+      "rho": 0.7999999999999999
+    },
+    {
+      "task": "P2+P3",
+      "model": "clip",
+      "drift": "ratio",
+      "target": "recall_gap_pp",
+      "rho": 0.39999999999999997
+    },
+    {
+      "task": "P2+P3",
+      "model": "clip",
+      "drift": "ratio",
+      "target": "A",
+      "rho": 0.7999999999999999
+    },
+    {
+      "task": "P2+P3",
+      "model": "clip",
+      "drift": "ratio",
+      "target": "delta_m",
+      "rho": 0.7999999999999999
+    },
+    {
+      "task": "P2+P3",
+      "model": "clip",
+      "drift": "Y",
+      "target": "recall_gap_pp",
+      "rho": 0.39999999999999997
+    },
+    {
+      "task": "P2+P3",
+      "model": "clip",
+      "drift": "Y",
+      "target": "A",
+      "rho": 0.7999999999999999
+    },
+    {
+      "task": "P2+P3",
+      "model": "clip",
+      "drift": "Y",
+      "target": "delta_m",
+      "rho": 0.7999999999999999
+    },
+    {
+      "task": "P2+P3",
+      "model": "remoteclip",
+      "drift": "cos",
+      "target": "recall_gap_pp",
+      "rho": -0.19999999999999998
+    },
+    {
+      "task": "P2+P3",
+      "model": "remoteclip",
+      "drift": "cos",
+      "target": "A",
+      "rho": 0.39999999999999997
+    },
+    {
+      "task": "P2+P3",
+      "model": "remoteclip",
+      "drift": "cos",
+      "target": "delta_m",
+      "rho": 0.39999999999999997
+    },
+    {
+      "task": "P2+P3",
+      "model": "remoteclip",
+      "drift": "ratio",
+      "target": "recall_gap_pp",
+      "rho": -0.19999999999999998
+    },
+    {
+      "task": "P2+P3",
+      "model": "remoteclip",
+      "drift": "ratio",
+      "target": "A",
+      "rho": 0.39999999999999997
+    },
+    {
+      "task": "P2+P3",
+      "model": "remoteclip",
+      "drift": "ratio",
+      "target": "delta_m",
+      "rho": 0.39999999999999997
+    },
+    {
+      "task": "P2+P3",
+      "model": "remoteclip",
+      "drift": "Y",
+      "target": "recall_gap_pp",
+      "rho": 0.0
+    },
+    {
+      "task": "P2+P3",
+      "model": "remoteclip",
+      "drift": "Y",
+      "target": "A",
+      "rho": 1.0
+    },
+    {
+      "task": "P2+P3",
+      "model": "remoteclip",
+      "drift": "Y",
+      "target": "delta_m",
+      "rho": 0.39999999999999997
+    }
+  ],
+  "pooled_cos": {
+    "recall_gap_pp": 0.023809523809523815,
+    "A": 0.523809523809524,
+    "delta_m": 0.4761904761904762
+  }
+}

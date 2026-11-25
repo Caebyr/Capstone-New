@@ -1,0 +1,18 @@
+{
+  "bin_file": "C:\\Users\\user\\.cache\\huggingface\\hub\\models--openai--clip-vit-base-patch32\\snapshots\\3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268\\pytorch_model.bin",
+  "safetensors_file": "D:\\C drive data\\Kabir Oberoi\\.cache\\huggingface\\hub\\models--openai--clip-vit-base-patch32\\snapshots\\c237dc49a33fc61debc9276459120b7eac67e7ef\\model.safetensors",
+  "bin_tensors": 400,
+  "safetensors_tensors": 400,
+  "keys_only_in_bin": [],
+  "keys_only_in_safetensors": [],
+  "common_tensors": 400,
+  "common_tensors_not_bit_identical": [],
+  "parameters_compared": 151277440,
+  "max_abs_difference_over_common": 0.0,
+  "transformers_version": "4.49.0",
+  "from_pretrained_log": [
+    "loading weights file pytorch_model.bin from cache at C:\\Users\\user\\.cache\\huggingface\\hub\\models--openai--clip-vit-base-patch32\\snapshots\\3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268\\pytorch_model.bin"
+  ],
+  "loaded_model_params_equal_bin": true,
+  "loaded_model_keys_missing_from_bin": []
+}

@@ -1,0 +1,88 @@
+{
+  "n_images": 6471,
+  "n_prefix_groups": 208,
+  "group_kinds": {
+    "frame field varies": 175,
+    "all frame field = 00000": 33
+  },
+  "thumbnail_correlation_16x16_grey": {
+    "across_groups": 0.10024042620508888,
+    "within_group (frame field varies)": 0.3467071026518617,
+    "within_group (all frame field = 00000)": 0.09732497487415194,
+    "adjacent frames in a varying group": 0.3831132306628784,
+    "first vs last frame in a varying group": 0.30035151427030904
+  },
+  "pairs": {
+    "across": 6000,
+    "frame field varies": 2544,
+    "all frame field = 00000": 1306
+  },
+  "p1_visdrone_heldout": {
+    "evaluated_crops": 600,
+    "crops_by_group_kind": {
+      "all frame field = 00000": 374,
+      "frame field varies": 226
+    },
+    "groups_by_kind": {
+      "all frame field = 00000": 33,
+      "frame field varies": 65
+    },
+    "largest_share_of_crops_in_one_group": 0.09166666666666666,
+    "top_groups": [
+      [
+        "9999999",
+        55
+      ],
+      [
+        "9999998",
+        38
+      ],
+      [
+        "9999951",
+        38
+      ],
+      [
+        "9999955",
+        31
+      ],
+      [
+        "9999942",
+        30
+      ]
+    ]
+  },
+  "p2_visdrone": {
+    "evaluated_crops": 900,
+    "crops_by_group_kind": {
+      "all frame field = 00000": 646,
+      "frame field varies": 254
+    },
+    "groups_by_kind": {
+      "frame field varies": 75,
+      "all frame field = 00000": 32
+    },
+    "largest_share_of_crops_in_one_group": 0.13666666666666666,
+    "top_groups": [
+      [
+        "9999955",
+        123
+      ],
+      [
+        "9999951",
+        91
+      ],
+      [
+        "9999998",
+        54
+      ],
+      [
+        "9999982",
+        51
+      ],
+      [
+        "9999999",
+        39
+      ]
+    ]
+  }
+}
