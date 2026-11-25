@@ -1,0 +1,1804 @@
+{
+ "settings": {
+  "per_cat": 2000,
+  "seed": 20261130,
+  "templates": [
+   "a photo of a {}",
+   "a satellite photo of a {}",
+   "an aerial photo of a {}",
+   "a drone photo of a {}",
+   "{}"
+  ]
+ },
+ "resolution": {
+  "P1": {
+   "median_scale": {
+    "small-vehicle": 0.7368421052631579,
+    "large-vehicle": 1.0
+   },
+   "clip": {
+    "drift": {
+     "small-vehicle": {
+      "overhead_vs_uav": {
+       "l2": 0.2143965512810666,
+       "cos": 0.026025231211666555,
+       "r_overhead": 0.32927945471718384,
+       "r_uav": 0.42662934879028874,
+       "rad": 0.3779544017537363,
+       "ratio": 0.5672550717394765
+      },
+      "overhead_vs_uav_shrunk": {
+       "l2": 0.13958710895724355,
+       "cos": 0.010981468159876662,
+       "r_overhead": 0.32927945471718384,
+       "r_uav": 0.37528995753241784,
+       "rad": 0.35228470612480084,
+       "ratio": 0.39623380331416724
+      },
+      "uav_vs_uav_shrunk": {
+       "l2": 0.12335963573980574,
+       "cos": 0.008831035051823588,
+       "r_overhead": 0.42662934879028874,
+       "r_uav": 0.37528995753241784,
+       "rad": 0.4009596531613533,
+       "ratio": 0.30766096979379526
+      }
+     },
+     "large-vehicle": {
+      "overhead_vs_uav": {
+       "l2": 0.21531255635574595,
+       "cos": 0.02761804700394732,
+       "r_overhead": 0.37953350235424704,
+       "r_uav": 0.44353434610645887,
+       "rad": 0.41153392423035295,
+       "ratio": 0.5231951576250282
+      },
+      "overhead_vs_uav_shrunk": {
+       "l2": 0.19038149661107512,
+       "cos": 0.02154128047911541,
+       "r_overhead": 0.37953350235424704,
+       "r_uav": 0.41610516730075314,
+       "rad": 0.3978193348275001,
+       "ratio": 0.47856270408180923
+      },
+      "uav_vs_uav_shrunk": {
+       "l2": 0.06715915968100097,
+       "cos": 0.0026824616762838316,
+       "r_overhead": 0.44353434610645887,
+       "r_uav": 0.41610516730075314,
+       "rad": 0.429819756703606,
+       "ratio": 0.15624958749235068
+      }
+     }
+    },
+    "classification": {
+     "overhead": {
+      "accuracy": 0.508,
+      "recall": {
+       "small-vehicle": 0.988,
+       "large-vehicle": 0.028
+      },
+      "pred_share": {
+       "small-vehicle": 0.98,
+       "large-vehicle": 0.02
+      },
+      "margin": {
+       "small-vehicle": 0.020419525349104045,
+       "large-vehicle": -0.0172306316885375
+      }
+     },
+     "uav_original": {
+      "accuracy": 0.553,
+      "recall": {
+       "small-vehicle": 0.986,
+       "large-vehicle": 0.12
+      },
+      "pred_share": {
+       "small-vehicle": 0.933,
+       "large-vehicle": 0.067
+      },
+      "margin": {
+       "small-vehicle": 0.02096272331503521,
+       "large-vehicle": -0.01387358000615288
+      }
+     },
+     "uav_shrunk": {
+      "accuracy": 0.5445,
+      "recall": {
+       "small-vehicle": 0.987,
+       "large-vehicle": 0.102
+      },
+      "pred_share": {
+       "small-vehicle": 0.9425,
+       "large-vehicle": 0.0575
+      },
+      "margin": {
+       "small-vehicle": 0.01728144646168131,
+       "large-vehicle": -0.013353670015800817
+      }
+     }
+    }
+   },
+   "remoteclip": {
+    "drift": {
+     "small-vehicle": {
+      "overhead_vs_uav": {
+       "l2": 0.16820272110978138,
+       "cos": 0.015576440987029372,
+       "r_overhead": 0.29187744973447927,
+       "r_uav": 0.36085957070011415,
+       "rad": 0.32636851021729674,
+       "ratio": 0.5153766856912504
+      },
+      "overhead_vs_uav_shrunk": {
+       "l2": 0.1320148464756165,
+       "cos": 0.009603191307377967,
+       "r_overhead": 0.29187744973447927,
+       "r_uav": 0.3246788290984213,
+       "rad": 0.30827813941645027,
+       "ratio": 0.42823291565698335
+      },
+      "uav_vs_uav_shrunk": {
+       "l2": 0.10067020055704443,
+       "cos": 0.005662671709968592,
+       "r_overhead": 0.36085957070011415,
+       "r_uav": 0.3246788290984213,
+       "rad": 0.3427691998992677,
+       "ratio": 0.2936967515944524
+      }
+     },
+     "large-vehicle": {
+      "overhead_vs_uav": {
+       "l2": 0.189282284684044,
+       "cos": 0.020481695091758234,
+       "r_overhead": 0.3326050655404533,
+       "r_uav": 0.371739592684042,
+       "rad": 0.35217232911224766,
+       "ratio": 0.5374706330880249
+      },
+      "overhead_vs_uav_shrunk": {
+       "l2": 0.188817162774285,
+       "cos": 0.020279228338672906,
+       "r_overhead": 0.3326050655404533,
+       "r_uav": 0.34739828085430563,
+       "rad": 0.3400016731973795,
+       "ratio": 0.5553418634639244
+      },
+      "uav_vs_uav_shrunk": {
+       "l2": 0.056150364846167644,
+       "cos": 0.0017641378778638916,
+       "r_overhead": 0.371739592684042,
+       "r_uav": 0.34739828085430563,
+       "rad": 0.3595689367691738,
+       "ratio": 0.15616022159949128
+      }
+     }
+    },
+    "classification": {
+     "overhead": {
+      "accuracy": 0.6314,
+      "recall": {
+       "small-vehicle": 0.8304,
+       "large-vehicle": 0.4324
+      },
+      "pred_share": {
+       "small-vehicle": 0.699,
+       "large-vehicle": 0.301
+      },
+      "margin": {
+       "small-vehicle": 0.006348294733848903,
+       "large-vehicle": 0.002947427031681854
+      }
+     },
+     "uav_original": {
+      "accuracy": 0.6825,
+      "recall": {
+       "small-vehicle": 0.898,
+       "large-vehicle": 0.467
+      },
+      "pred_share": {
+       "small-vehicle": 0.7155,
+       "large-vehicle": 0.2845
+      },
+      "margin": {
+       "small-vehicle": 0.011798933024769614,
+       "large-vehicle": 0.00427770868785235
+      }
+     },
+     "uav_shrunk": {
+      "accuracy": 0.665,
+      "recall": {
+       "small-vehicle": 0.8935,
+       "large-vehicle": 0.4365
+      },
+      "pred_share": {
+       "small-vehicle": 0.7285,
+       "large-vehicle": 0.2715
+      },
+      "margin": {
+       "small-vehicle": 0.010564912953200806,
+       "large-vehicle": 0.0025579058714841063
+      }
+     }
+    }
+   },
+   "finetuned": {
+    "drift": {
+     "small-vehicle": {
+      "overhead_vs_uav": {
+       "l2": 0.1193796844498609,
+       "cos": 0.007291985538883328,
+       "r_overhead": 0.22835613281116693,
+       "r_uav": 0.14377408094111546,
+       "rad": 0.1860651068761412,
+       "ratio": 0.6416016761774088
+      },
+      "overhead_vs_uav_shrunk": {
+       "l2": 0.10570121137371594,
+       "cos": 0.00571567441520715,
+       "r_overhead": 0.22835613281116693,
+       "r_uav": 0.15124258677112404,
+       "rad": 0.18979935979114548,
+       "ratio": 0.5569102629746968
+      },
+      "uav_vs_uav_shrunk": {
+       "l2": 0.02185324061499262,
+       "cos": 0.00024463259482210287,
+       "r_overhead": 0.14377408094111546,
+       "r_uav": 0.15124258677112404,
+       "rad": 0.14750833385611975,
+       "ratio": 0.1481491929554866
+      }
+     },
+     "large-vehicle": {
+      "overhead_vs_uav": {
+       "l2": 0.0761567785667773,
+       "cos": 0.0030799637370039212,
+       "r_overhead": 0.22910845170808083,
+       "r_uav": 0.23385173581206087,
+       "rad": 0.23148009376007084,
+       "ratio": 0.3289992557447027
+      },
+      "overhead_vs_uav_shrunk": {
+       "l2": 0.07711864141106034,
+       "cos": 0.003159467493323076,
+       "r_overhead": 0.22910845170808083,
+       "r_uav": 0.2361051417090514,
+       "rad": 0.2326067967085661,
+       "ratio": 0.3315407911647679
+      },
+      "uav_vs_uav_shrunk": {
+       "l2": 0.020848813819250175,
+       "cos": 0.00023100836929867974,
+       "r_overhead": 0.23385173581206087,
+       "r_uav": 0.2361051417090514,
+       "rad": 0.23497843876055613,
+       "ratio": 0.08872649732980477
+      }
+     }
+    },
+    "classification": {
+     "overhead": {
+      "accuracy": 0.8362,
+      "recall": {
+       "small-vehicle": 0.8728,
+       "large-vehicle": 0.7996
+      },
+      "pred_share": {
+       "small-vehicle": 0.5366,
+       "large-vehicle": 0.4634
+      },
+      "margin": {
+       "small-vehicle": 0.03535955095328164,
+       "large-vehicle": 0.03564996285844557
+      }
+     },
+     "uav_original": {
+      "accuracy": 0.835,
+      "recall": {
+       "small-vehicle": 0.9575,
+       "large-vehicle": 0.7125
+      },
+      "pred_share": {
+       "small-vehicle": 0.6225,
+       "large-vehicle": 0.3775
+      },
+      "margin": {
+       "small-vehicle": 0.05147161622408766,
+       "large-vehicle": 0.027631459352075338
+      }
+     },
+     "uav_shrunk": {
+      "accuracy": 0.82025,
+      "recall": {
+       "small-vehicle": 0.946,
+       "large-vehicle": 0.6945
+      },
+      "pred_share": {
+       "small-vehicle": 0.62575,
+       "large-vehicle": 0.37425
+      },
+      "margin": {
+       "small-vehicle": 0.049854035808491126,
+       "large-vehicle": 0.02454019239469274
+      }
+     }
+    }
+   }
+  },
+  "P2+P3": {
+   "median_scale": {
+    "car": 0.48484848484848486,
+    "bus": 0.48507130124777187,
+    "truck": 0.5370370370370371,
+    "building": 0.31343283582089554
+   },
+   "clip": {
+    "drift": {
+     "car": {
+      "overhead_vs_uav": {
+       "l2": 0.35927191119090346,
+       "cos": 0.07237250307599019,
+       "r_overhead": 0.26810722963938727,
+       "r_uav": 0.42728338619540135,
+       "rad": 0.34769530791739434,
+       "ratio": 1.0332952530848059
+      },
+      "overhead_vs_uav_shrunk": {
+       "l2": 0.20625661099532144,
+       "cos": 0.02325147100016889,
+       "r_overhead": 0.26810722963938727,
+       "r_uav": 0.31988004332222714,
+       "rad": 0.29399363648080723,
+       "ratio": 0.7015682838046274
+      },
+      "uav_vs_uav_shrunk": {
+       "l2": 0.2413339384218635,
+       "cos": 0.03301883203470979,
+       "r_overhead": 0.42728338619540135,
+       "r_uav": 0.31988004332222714,
+       "rad": 0.37358171475881424,
+       "ratio": 0.6460004033593282
+      }
+     },
+     "bus": {
+      "overhead_vs_uav": {
+       "l2": 0.3027907075840425,
+       "cos": 0.051748007665154194,
+       "r_overhead": 0.30124664256776623,
+       "r_uav": 0.46274772036011474,
+       "rad": 0.38199718146394046,
+       "ratio": 0.792651679846557
+      },
+      "overhead_vs_uav_shrunk": {
+       "l2": 0.17271461141993794,
+       "cos": 0.01660206414632115,
+       "r_overhead": 0.30124664256776623,
+       "r_uav": 0.35808158631382164,
+       "rad": 0.3296641144407939,
+       "ratio": 0.5239108651935382
+      },
+      "uav_vs_uav_shrunk": {
+       "l2": 0.2158556006992937,
+       "cos": 0.026951553469732548,
+       "r_overhead": 0.46274772036011474,
+       "r_uav": 0.35808158631382164,
+       "rad": 0.4104146533369682,
+       "ratio": 0.5259451604474437
+      }
+     },
+     "truck": {
+      "overhead_vs_uav": {
+       "l2": 0.31323112895952615,
+       "cos": 0.055771487403252995,
+       "r_overhead": 0.30346588410301545,
+       "r_uav": 0.4602126246541018,
+       "rad": 0.3818392543785586,
+       "ratio": 0.8203219689115206
+      },
+      "overhead_vs_uav_shrunk": {
+       "l2": 0.19854642864940156,
+       "cos": 0.022074304261541,
+       "r_overhead": 0.30346588410301545,
+       "r_uav": 0.36545357336720624,
+       "rad": 0.3344597287351109,
+       "ratio": 0.5936332885285827
+      },
+      "uav_vs_uav_shrunk": {
+       "l2": 0.1967655819179514,
+       "cos": 0.022461777697582952,
+       "r_overhead": 0.4602126246541018,
+       "r_uav": 0.36545357336720624,
+       "rad": 0.412833099010654,
+       "ratio": 0.4766225924943907
+      }
+     },
+     "building": {
+      "overhead_vs_uav": {
+       "l2": 0.4902256283192984,
+       "cos": 0.14712449336058153,
+       "r_overhead": 0.3411173596192493,
+       "r_uav": 0.5385221164993474,
+       "rad": 0.4398197380592984,
+       "ratio": 1.1146057939155156
+      },
+      "overhead_vs_uav_shrunk": {
+       "l2": 0.29530445233139296,
+       "cos": 0.05105356926521987,
+       "r_overhead": 0.3411173596192493,
+       "r_uav": 0.4299295472347093,
+       "rad": 0.3855234534269793,
+       "ratio": 0.7659831061025852
+      },
+      "uav_vs_uav_shrunk": {
+       "l2": 0.3163229058792872,
+       "cos": 0.06409863697667217,
+       "r_overhead": 0.5385221164993474,
+       "r_uav": 0.4299295472347093,
+       "rad": 0.4842258318670284,
+       "ratio": 0.6532549175653056
+      }
+     }
+    },
+    "classification": {
+     "overhead": {
+      "accuracy": 0.3520455161202926,
+      "recall": {
+       "car": 0.9472,
+       "bus": 0.014182344428364689,
+       "truck": 0.1062,
+       "building": 0.2362
+      },
+      "pred_share": {
+       "car": 0.8262259550257383,
+       "bus": 0.008073692766188025,
+       "truck": 0.07786507721484692,
+       "building": 0.08783527499322677
+      },
+      "margin": {
+       "car": 0.009796179774518965,
+       "bus": -0.011303389160537247,
+       "truck": -0.0068706347270142965,
+       "building": -0.006832672681651941
+      }
+     },
+     "uav_original": {
+      "accuracy": 0.5911932212807335,
+      "recall": {
+       "car": 0.893,
+       "bus": 0.3985,
+       "truck": 0.3425,
+       "building": 0.8240200166805671
+      },
+      "pred_share": {
+       "car": 0.5003472704542298,
+       "bus": 0.17391304347826086,
+       "truck": 0.13890818169190167,
+       "building": 0.18683150437560772
+      },
+      "margin": {
+       "car": 0.023968304377076616,
+       "bus": 0.008330958620026585,
+       "truck": 0.005092890974000841,
+       "building": 0.03055875818394216
+      }
+     },
+     "uav_shrunk": {
+      "accuracy": 0.4627031532157244,
+      "recall": {
+       "car": 0.853,
+       "bus": 0.278,
+       "truck": 0.1695,
+       "building": 0.6088407005838199
+      },
+      "pred_share": {
+       "car": 0.6082789276288373,
+       "bus": 0.16280038894290874,
+       "truck": 0.09084595082650368,
+       "building": 0.13807473260175024
+      },
+      "margin": {
+       "car": 0.013417438079390831,
+       "bus": -0.0019369121113064769,
+       "truck": -0.003212908711316159,
+       "building": 0.0099218640509387
+      }
+     }
+    }
+   },
+   "remoteclip": {
+    "drift": {
+     "car": {
+      "overhead_vs_uav": {
+       "l2": 0.29866910020248877,
+       "cos": 0.04869905332266988,
+       "r_overhead": 0.24258631657939309,
+       "r_uav": 0.35939726315693726,
+       "rad": 0.30099178986816516,
+       "ratio": 0.9922832125530942
+      },
+      "overhead_vs_uav_shrunk": {
+       "l2": 0.18419859247223627,
+       "cos": 0.01823642371659806,
+       "r_overhead": 0.24258631657939309,
+       "r_uav": 0.2863126897067126,
+       "rad": 0.2644495031430528,
+       "ratio": 0.6965359748571539
+      },
+      "uav_vs_uav_shrunk": {
+       "l2": 0.20668873967552734,
+       "cos": 0.02362017370570957,
+       "r_overhead": 0.35939726315693726,
+       "r_uav": 0.2863126897067126,
+       "rad": 0.3228549764318249,
+       "ratio": 0.640190657613024
+      }
+     },
+     "bus": {
+      "overhead_vs_uav": {
+       "l2": 0.26548552133127945,
+       "cos": 0.03904170883978186,
+       "r_overhead": 0.2761153923385945,
+       "r_uav": 0.3836783225586016,
+       "rad": 0.3298968574485981,
+       "ratio": 0.8047531079396393
+      },
+      "overhead_vs_uav_shrunk": {
+       "l2": 0.18075871436295413,
+       "cos": 0.017891746616175208,
+       "r_overhead": 0.2761153923385945,
+       "r_uav": 0.31311262563757597,
+       "rad": 0.2946140089880852,
+       "ratio": 0.6135441929045009
+      },
+      "uav_vs_uav_shrunk": {
+       "l2": 0.18833905882323523,
+       "cos": 0.019914397976101283,
+       "r_overhead": 0.3836783225586016,
+       "r_uav": 0.31311262563757597,
+       "rad": 0.3483954740980888,
+       "ratio": 0.5405898549939527
+      }
+     },
+     "truck": {
+      "overhead_vs_uav": {
+       "l2": 0.2517973182184993,
+       "cos": 0.03499130709697773,
+       "r_overhead": 0.27209813994291326,
+       "r_uav": 0.37473787382871737,
+       "rad": 0.32341800688581535,
+       "ratio": 0.7785507079307364
+      },
+      "overhead_vs_uav_shrunk": {
+       "l2": 0.18046601093741807,
+       "cos": 0.017801636128099707,
+       "r_overhead": 0.27209813994291326,
+       "r_uav": 0.30742190682200715,
+       "rad": 0.2897600233824602,
+       "ratio": 0.6228119698182701
+      },
+      "uav_vs_uav_shrunk": {
+       "l2": 0.1684587583639147,
+       "cos": 0.0158066695689022,
+       "r_overhead": 0.37473787382871737,
+       "r_uav": 0.30742190682200715,
+       "rad": 0.34107989032536223,
+       "ratio": 0.49389824244173075
+      }
+     },
+     "building": {
+      "overhead_vs_uav": {
+       "l2": 0.3449463415792962,
+       "cos": 0.06914737514350622,
+       "r_overhead": 0.31784369912125526,
+       "r_uav": 0.4431315738233843,
+       "rad": 0.38048763647231976,
+       "ratio": 0.9065901451554546
+      },
+      "overhead_vs_uav_shrunk": {
+       "l2": 0.2771858519135548,
+       "cos": 0.0435176467321613,
+       "r_overhead": 0.31784369912125526,
+       "r_uav": 0.34553014647537617,
+       "rad": 0.3316869227983157,
+       "ratio": 0.835685198484896
+      },
+      "uav_vs_uav_shrunk": {
+       "l2": 0.24373032034997172,
+       "cos": 0.03449451521679592,
+       "r_overhead": 0.4431315738233843,
+       "r_uav": 0.34553014647537617,
+       "rad": 0.39433086014938024,
+       "ratio": 0.6180858385205812
+      }
+     }
+    },
+    "classification": {
+     "overhead": {
+      "accuracy": 0.3110810078569493,
+      "recall": {
+       "car": 0.1244,
+       "bus": 0.024891461649782922,
+       "truck": 0.0154,
+       "building": 0.9912
+      },
+      "pred_share": {
+       "car": 0.052993768626388514,
+       "bus": 0.009319967488485506,
+       "truck": 0.005689515036575454,
+       "building": 0.9319967488485505
+      },
+      "margin": {
+       "car": -0.00981140829422289,
+       "bus": -0.025775564422396174,
+       "truck": -0.017980568940268893,
+       "building": 0.02973013581511269
+      }
+     },
+     "uav_original": {
+      "accuracy": 0.48590081955827197,
+      "recall": {
+       "car": 0.655,
+       "bus": 0.3795,
+       "truck": 0.1745,
+       "building": 0.9007506255212677
+      },
+      "pred_share": {
+       "car": 0.2851784970134741,
+       "bus": 0.12987914988192806,
+       "truck": 0.05584108904014447,
+       "building": 0.5291012640644533
+      },
+      "margin": {
+       "car": 0.018370520060376788,
+       "bus": 0.0037919651660456855,
+       "truck": -0.010977269781918625,
+       "building": 0.037622456493325046
+      }
+     },
+     "uav_shrunk": {
+      "accuracy": 0.3971384914571468,
+      "recall": {
+       "car": 0.533,
+       "bus": 0.2645,
+       "truck": 0.0655,
+       "building": 0.944954128440367
+      },
+      "pred_share": {
+       "car": 0.2601750243089318,
+       "bus": 0.09570773718572025,
+       "truck": 0.02083622725378525,
+       "building": 0.6232810112515628
+      },
+      "margin": {
+       "car": 0.007921813056119109,
+       "bus": -0.004395347410340339,
+       "truck": -0.014083090547793442,
+       "building": 0.03019726062165823
+      }
+     }
+    }
+   }
+  }
+ },
+ "prompts": {
+  "P1": {
+   "clip": {
+    "a photo of a {}": {
+     "overhead": {
+      "accuracy": 0.508,
+      "recall": {
+       "small-vehicle": 0.988,
+       "large-vehicle": 0.028
+      },
+      "pred_share": {
+       "small-vehicle": 0.98,
+       "large-vehicle": 0.02
+      },
+      "margin": {
+       "small-vehicle": 0.020419525349104045,
+       "large-vehicle": -0.0172306316885375
+      }
+     },
+     "uav": {
+      "accuracy": 0.5484,
+      "recall": {
+       "small-vehicle": 0.986,
+       "large-vehicle": 0.1108
+      },
+      "pred_share": {
+       "small-vehicle": 0.9376,
+       "large-vehicle": 0.0624
+      },
+      "margin": {
+       "small-vehicle": 0.020887585561878946,
+       "large-vehicle": -0.014265114493810127
+      }
+     }
+    },
+    "a satellite photo of a {}": {
+     "overhead": {
+      "accuracy": 0.5079,
+      "recall": {
+       "small-vehicle": 0.9964,
+       "large-vehicle": 0.0194
+      },
+      "pred_share": {
+       "small-vehicle": 0.9885,
+       "large-vehicle": 0.0115
+      },
+      "margin": {
+       "small-vehicle": 0.01881345613574359,
+       "large-vehicle": -0.016339484700076234
+      }
+     },
+     "uav": {
+      "accuracy": 0.5353,
+      "recall": {
+       "small-vehicle": 0.9934,
+       "large-vehicle": 0.0772
+      },
+      "pred_share": {
+       "small-vehicle": 0.9581,
+       "large-vehicle": 0.0419
+      },
+      "margin": {
+       "small-vehicle": 0.020186649354289377,
+       "large-vehicle": -0.014102703923159488
+      }
+     }
+    },
+    "an aerial photo of a {}": {
+     "overhead": {
+      "accuracy": 0.5014,
+      "recall": {
+       "small-vehicle": 0.9994,
+       "large-vehicle": 0.0034
+      },
+      "pred_share": {
+       "small-vehicle": 0.998,
+       "large-vehicle": 0.002
+      },
+      "margin": {
+       "small-vehicle": 0.02388753135192581,
+       "large-vehicle": -0.02065710409285365
+      }
+     },
+     "uav": {
+      "accuracy": 0.5239,
+      "recall": {
+       "small-vehicle": 0.9966,
+       "large-vehicle": 0.0512
+      },
+      "pred_share": {
+       "small-vehicle": 0.9727,
+       "large-vehicle": 0.0273
+      },
+      "margin": {
+       "small-vehicle": 0.02506474253276847,
+       "large-vehicle": -0.01870619080421254
+      }
+     }
+    },
+    "a drone photo of a {}": {
+     "overhead": {
+      "accuracy": 0.5064,
+      "recall": {
+       "small-vehicle": 0.993,
+       "large-vehicle": 0.0198
+      },
+      "pred_share": {
+       "small-vehicle": 0.9866,
+       "large-vehicle": 0.0134
+      },
+      "margin": {
+       "small-vehicle": 0.019563287197459922,
+       "large-vehicle": -0.016184875793697234
+      }
+     },
+     "uav": {
+      "accuracy": 0.5585,
+      "recall": {
+       "small-vehicle": 0.983,
+       "large-vehicle": 0.134
+      },
+      "pred_share": {
+       "small-vehicle": 0.9245,
+       "large-vehicle": 0.0755
+      },
+      "margin": {
+       "small-vehicle": 0.019797280962620428,
+       "large-vehicle": -0.01237841505520254
+      }
+     }
+    },
+    "{}": {
+     "overhead": {
+      "accuracy": 0.5453,
+      "recall": {
+       "small-vehicle": 0.7586,
+       "large-vehicle": 0.332
+      },
+      "pred_share": {
+       "small-vehicle": 0.7133,
+       "large-vehicle": 0.2867
+      },
+      "margin": {
+       "small-vehicle": 0.007678762112823534,
+       "large-vehicle": -0.0036007847622485933
+      }
+     },
+     "uav": {
+      "accuracy": 0.5683,
+      "recall": {
+       "small-vehicle": 0.7096,
+       "large-vehicle": 0.427
+      },
+      "pred_share": {
+       "small-vehicle": 0.6413,
+       "large-vehicle": 0.3587
+      },
+      "margin": {
+       "small-vehicle": 0.007923798861517506,
+       "large-vehicle": -0.00282183051760998
+      }
+     }
+    },
+    "ensemble": {
+     "overhead": {
+      "accuracy": 0.5108,
+      "recall": {
+       "small-vehicle": 0.9848,
+       "large-vehicle": 0.0368
+      },
+      "pred_share": {
+       "small-vehicle": 0.974,
+       "large-vehicle": 0.026
+      },
+      "margin": {
+       "small-vehicle": 0.01814906150670198,
+       "large-vehicle": -0.014707392241508188
+      }
+     },
+     "uav": {
+      "accuracy": 0.5562,
+      "recall": {
+       "small-vehicle": 0.9814,
+       "large-vehicle": 0.131
+      },
+      "pred_share": {
+       "small-vehicle": 0.9252,
+       "large-vehicle": 0.0748
+      },
+      "margin": {
+       "small-vehicle": 0.018839273825888514,
+       "large-vehicle": -0.012144503174514987
+      }
+     }
+    }
+   },
+   "remoteclip": {
+    "a photo of a {}": {
+     "overhead": {
+      "accuracy": 0.6314,
+      "recall": {
+       "small-vehicle": 0.8304,
+       "large-vehicle": 0.4324
+      },
+      "pred_share": {
+       "small-vehicle": 0.699,
+       "large-vehicle": 0.301
+      },
+      "margin": {
+       "small-vehicle": 0.006348294733848903,
+       "large-vehicle": 0.002947427031681854
+      }
+     },
+     "uav": {
+      "accuracy": 0.6805,
+      "recall": {
+       "small-vehicle": 0.9076,
+       "large-vehicle": 0.4534
+      },
+      "pred_share": {
+       "small-vehicle": 0.7271,
+       "large-vehicle": 0.2729
+      },
+      "margin": {
+       "small-vehicle": 0.012168212147652346,
+       "large-vehicle": 0.004041695823114616
+      }
+     }
+    },
+    "a satellite photo of a {}": {
+     "overhead": {
+      "accuracy": 0.6024,
+      "recall": {
+       "small-vehicle": 0.9436,
+       "large-vehicle": 0.2612
+      },
+      "pred_share": {
+       "small-vehicle": 0.8412,
+       "large-vehicle": 0.1588
+      },
+      "margin": {
+       "small-vehicle": 0.012296256046871373,
+       "large-vehicle": -0.004743336477750576
+      }
+     },
+     "uav": {
+      "accuracy": 0.628,
+      "recall": {
+       "small-vehicle": 0.9812,
+       "large-vehicle": 0.2748
+      },
+      "pred_share": {
+       "small-vehicle": 0.8532,
+       "large-vehicle": 0.1468
+      },
+      "margin": {
+       "small-vehicle": 0.018561653734515515,
+       "large-vehicle": -0.004443187518254593
+      }
+     }
+    },
+    "an aerial photo of a {}": {
+     "overhead": {
+      "accuracy": 0.5843,
+      "recall": {
+       "small-vehicle": 0.9654,
+       "large-vehicle": 0.2032
+      },
+      "pred_share": {
+       "small-vehicle": 0.8811,
+       "large-vehicle": 0.1189
+      },
+      "margin": {
+       "small-vehicle": 0.017370869242979675,
+       "large-vehicle": -0.009060704868716296
+      }
+     },
+     "uav": {
+      "accuracy": 0.6121,
+      "recall": {
+       "small-vehicle": 0.9906,
+       "large-vehicle": 0.2336
+      },
+      "pred_share": {
+       "small-vehicle": 0.8785,
+       "large-vehicle": 0.1215
+      },
+      "margin": {
+       "small-vehicle": 0.024530918942047647,
+       "large-vehicle": -0.00861965276835866
+      }
+     }
+    },
+    "a drone photo of a {}": {
+     "overhead": {
+      "accuracy": 0.6149,
+      "recall": {
+       "small-vehicle": 0.9312,
+       "large-vehicle": 0.2986
+      },
+      "pred_share": {
+       "small-vehicle": 0.8163,
+       "large-vehicle": 0.1837
+      },
+      "margin": {
+       "small-vehicle": 0.011375454287507303,
+       "large-vehicle": -0.0025578019050762624
+      }
+     },
+     "uav": {
+      "accuracy": 0.6424,
+      "recall": {
+       "small-vehicle": 0.9692,
+       "large-vehicle": 0.3156
+      },
+      "pred_share": {
+       "small-vehicle": 0.8268,
+       "large-vehicle": 0.1732
+      },
+      "margin": {
+       "small-vehicle": 0.017951141657742975,
+       "large-vehicle": -0.0020307523717195963
+      }
+     }
+    },
+    "{}": {
+     "overhead": {
+      "accuracy": 0.6253,
+      "recall": {
+       "small-vehicle": 0.9228,
+       "large-vehicle": 0.3278
+      },
+      "pred_share": {
+       "small-vehicle": 0.7975,
+       "large-vehicle": 0.2025
+      },
+      "margin": {
+       "small-vehicle": 0.010670241383033713,
+       "large-vehicle": -0.0014175762608269193
+      }
+     },
+     "uav": {
+      "accuracy": 0.6362,
+      "recall": {
+       "small-vehicle": 0.9554,
+       "large-vehicle": 0.317
+      },
+      "pred_share": {
+       "small-vehicle": 0.8192,
+       "large-vehicle": 0.1808
+      },
+      "margin": {
+       "small-vehicle": 0.01864576957281297,
+       "large-vehicle": -0.003022369649421819
+      }
+     }
+    },
+    "ensemble": {
+     "overhead": {
+      "accuracy": 0.6157,
+      "recall": {
+       "small-vehicle": 0.9242,
+       "large-vehicle": 0.3072
+      },
+      "pred_share": {
+       "small-vehicle": 0.8085,
+       "large-vehicle": 0.1915
+      },
+      "margin": {
+       "small-vehicle": 0.010900897534699555,
+       "large-vehicle": -0.0021334973733090623
+      }
+     },
+     "uav": {
+      "accuracy": 0.6439,
+      "recall": {
+       "small-vehicle": 0.9684,
+       "large-vehicle": 0.3194
+      },
+      "pred_share": {
+       "small-vehicle": 0.8245,
+       "large-vehicle": 0.1755
+      },
+      "margin": {
+       "small-vehicle": 0.017797540823918157,
+       "large-vehicle": -0.00194557819071689
+      }
+     }
+    }
+   },
+   "finetuned": {
+    "a photo of a {}": {
+     "overhead": {
+      "accuracy": 0.8362,
+      "recall": {
+       "small-vehicle": 0.8728,
+       "large-vehicle": 0.7996
+      },
+      "pred_share": {
+       "small-vehicle": 0.5366,
+       "large-vehicle": 0.4634
+      },
+      "margin": {
+       "small-vehicle": 0.03535955095328164,
+       "large-vehicle": 0.03564996285844557
+      }
+     },
+     "uav": {
+      "accuracy": 0.8304,
+      "recall": {
+       "small-vehicle": 0.9572,
+       "large-vehicle": 0.7036
+      },
+      "pred_share": {
+       "small-vehicle": 0.6268,
+       "large-vehicle": 0.3732
+      },
+      "margin": {
+       "small-vehicle": 0.05164894382403473,
+       "large-vehicle": 0.02649429717739271
+      }
+     }
+    },
+    "a satellite photo of a {}": {
+     "overhead": {
+      "accuracy": 0.8402,
+      "recall": {
+       "small-vehicle": 0.8606,
+       "large-vehicle": 0.8198
+      },
+      "pred_share": {
+       "small-vehicle": 0.5204,
+       "large-vehicle": 0.4796
+      },
+      "margin": {
+       "small-vehicle": 0.024260551363769645,
+       "large-vehicle": 0.03384259282720653
+      }
+     },
+     "uav": {
+      "accuracy": 0.8368,
+      "recall": {
+       "small-vehicle": 0.947,
+       "large-vehicle": 0.7266
+      },
+      "pred_share": {
+       "small-vehicle": 0.6102,
+       "large-vehicle": 0.3898
+      },
+      "margin": {
+       "small-vehicle": 0.03669286714526937,
+       "large-vehicle": 0.026533808696853622
+      }
+     }
+    },
+    "an aerial photo of a {}": {
+     "overhead": {
+      "accuracy": 0.841,
+      "recall": {
+       "small-vehicle": 0.8882,
+       "large-vehicle": 0.7938
+      },
+      "pred_share": {
+       "small-vehicle": 0.5472,
+       "large-vehicle": 0.4528
+      },
+      "margin": {
+       "small-vehicle": 0.031901960778357,
+       "large-vehicle": 0.030224076466775218
+      }
+     },
+     "uav": {
+      "accuracy": 0.8297,
+      "recall": {
+       "small-vehicle": 0.958,
+       "large-vehicle": 0.7014
+      },
+      "pred_share": {
+       "small-vehicle": 0.6283,
+       "large-vehicle": 0.3717
+      },
+      "margin": {
+       "small-vehicle": 0.045628804098886644,
+       "large-vehicle": 0.022586136242699173
+      }
+     }
+    },
+    "a drone photo of a {}": {
+     "overhead": {
+      "accuracy": 0.8381,
+      "recall": {
+       "small-vehicle": 0.8464,
+       "large-vehicle": 0.8298
+      },
+      "pred_share": {
+       "small-vehicle": 0.5083,
+       "large-vehicle": 0.4917
+      },
+      "margin": {
+       "small-vehicle": 0.02763519448291396,
+       "large-vehicle": 0.04218899838580009
+      }
+     },
+     "uav": {
+      "accuracy": 0.8394,
+      "recall": {
+       "small-vehicle": 0.9426,
+       "large-vehicle": 0.7362
+      },
+      "pred_share": {
+       "small-vehicle": 0.6032,
+       "large-vehicle": 0.3968
+      },
+      "margin": {
+       "small-vehicle": 0.04234079095055682,
+       "large-vehicle": 0.03392064915445503
+      }
+     }
+    },
+    "{}": {
+     "overhead": {
+      "accuracy": 0.8136,
+      "recall": {
+       "small-vehicle": 0.77,
+       "large-vehicle": 0.8572
+      },
+      "pred_share": {
+       "small-vehicle": 0.4564,
+       "large-vehicle": 0.5436
+      },
+      "margin": {
+       "small-vehicle": 0.023461110382761607,
+       "large-vehicle": 0.04839611976319855
+      }
+     },
+     "uav": {
+      "accuracy": 0.8409,
+      "recall": {
+       "small-vehicle": 0.931,
+       "large-vehicle": 0.7508
+      },
+      "pred_share": {
+       "small-vehicle": 0.5901,
+       "large-vehicle": 0.4099
+      },
+      "margin": {
+       "small-vehicle": 0.040903851203551445,
+       "large-vehicle": 0.038358245138287395
+      }
+     }
+    },
+    "ensemble": {
+     "overhead": {
+      "accuracy": 0.8315,
+      "recall": {
+       "small-vehicle": 0.8378,
+       "large-vehicle": 0.8252
+      },
+      "pred_share": {
+       "small-vehicle": 0.5063,
+       "large-vehicle": 0.4937
+      },
+      "margin": {
+       "small-vehicle": 0.02899307238598775,
+       "large-vehicle": 0.041515380092308984
+      }
+     },
+     "uav": {
+      "accuracy": 0.8366,
+      "recall": {
+       "small-vehicle": 0.9458,
+       "large-vehicle": 0.7274
+      },
+      "pred_share": {
+       "small-vehicle": 0.6092,
+       "large-vehicle": 0.3908
+      },
+      "margin": {
+       "small-vehicle": 0.044799215499047196,
+       "large-vehicle": 0.03253389174904886
+      }
+     }
+    }
+   }
+  },
+  "P2+P3": {
+   "clip": {
+    "a photo of a {}": {
+     "overhead": {
+      "accuracy": 0.3520455161202926,
+      "recall": {
+       "car": 0.9472,
+       "bus": 0.014182344428364689,
+       "truck": 0.1062,
+       "building": 0.2362
+      },
+      "pred_share": {
+       "car": 0.8262259550257383,
+       "bus": 0.008073692766188025,
+       "truck": 0.07786507721484692,
+       "building": 0.08783527499322677
+      },
+      "margin": {
+       "car": 0.009796179774518965,
+       "bus": -0.011303389160537247,
+       "truck": -0.0068706347270142965,
+       "building": -0.006832672681651941
+      }
+     },
+     "uav": {
+      "accuracy": 0.5696030619174023,
+      "recall": {
+       "car": 0.8992,
+       "bus": 0.414,
+       "truck": 0.3346,
+       "building": 0.8240200166805671
+      },
+      "pred_share": {
+       "car": 0.5440459287610346,
+       "bus": 0.19241928514105808,
+       "truck": 0.1469226495462683,
+       "building": 0.11661213655163899
+      },
+      "margin": {
+       "car": 0.024264384412835543,
+       "bus": 0.009009203532418963,
+       "truck": 0.004534372141926812,
+       "building": 0.03055875818394216
+      }
+     }
+    },
+    "a satellite photo of a {}": {
+     "overhead": {
+      "accuracy": 0.3458141425088052,
+      "recall": {
+       "car": 0.8338,
+       "bus": 0.3175108538350217,
+       "truck": 0.102,
+       "building": 0.1212
+      },
+      "pred_share": {
+       "car": 0.6342454619344351,
+       "bus": 0.22059062584665404,
+       "truck": 0.10181522622595503,
+       "building": 0.04334868599295584
+      },
+      "margin": {
+       "car": 0.005095569363190028,
+       "bus": -0.002062652285699157,
+       "truck": -0.004238274582104157,
+       "building": -0.007614034148767185
+      }
+     },
+     "uav": {
+      "accuracy": 0.6064571887153528,
+      "recall": {
+       "car": 0.7508,
+       "bus": 0.774,
+       "truck": 0.3046,
+       "building": 0.5646371976647206
+      },
+      "pred_share": {
+       "car": 0.35261435891104387,
+       "bus": 0.46885610222853263,
+       "truck": 0.12303228594357676,
+       "building": 0.05549725291684672
+      },
+      "margin": {
+       "car": 0.017442262436014322,
+       "bus": 0.019591356251704828,
+       "truck": 0.0007381361478137616,
+       "building": 0.005585965102170798
+      }
+     }
+    },
+    "an aerial photo of a {}": {
+     "overhead": {
+      "accuracy": 0.3164454077485776,
+      "recall": {
+       "car": 0.9556,
+       "bus": 0.012445730824891461,
+       "truck": 0.1442,
+       "building": 0.0596
+      },
+      "pred_share": {
+       "car": 0.8646437279869954,
+       "bus": 0.0074776483337848825,
+       "truck": 0.1115144947168789,
+       "building": 0.01636412896234083
+      },
+      "margin": {
+       "car": 0.008387220998552353,
+       "bus": -0.01131634544479232,
+       "truck": -0.00525695020272221,
+       "building": -0.020055367968517007
+      }
+     },
+     "uav": {
+      "accuracy": 0.5881844558306069,
+      "recall": {
+       "car": 0.9036,
+       "bus": 0.462,
+       "truck": 0.3794,
+       "building": 0.6697247706422018
+      },
+      "pred_share": {
+       "car": 0.5486141119822211,
+       "bus": 0.2163096487437496,
+       "truck": 0.17680103710105563,
+       "building": 0.05827520217297364
+      },
+      "margin": {
+       "car": 0.01844722827183487,
+       "bus": 0.010468219016398383,
+       "truck": 0.0050433460787894235,
+       "building": 0.017235734146489046
+      }
+     }
+    },
+    "a drone photo of a {}": {
+     "overhead": {
+      "accuracy": 0.3175291248984015,
+      "recall": {
+       "car": 0.9772,
+       "bus": 0.0066570188133140374,
+       "truck": 0.081,
+       "building": 0.1092
+      },
+      "pred_share": {
+       "car": 0.8984015172040097,
+       "bus": 0.0031969655919804932,
+       "truck": 0.05543213221349228,
+       "building": 0.04296938499051747
+      },
+      "margin": {
+       "car": 0.012233959083666951,
+       "bus": -0.014435191491034283,
+       "truck": -0.008266644295607278,
+       "building": -0.012448648037042653
+      }
+     },
+     "uav": {
+      "accuracy": 0.5682449533921847,
+      "recall": {
+       "car": 0.9298,
+       "bus": 0.4252,
+       "truck": 0.3236,
+       "building": 0.677231025854879
+      },
+      "pred_share": {
+       "car": 0.5953453916908451,
+       "bus": 0.1879128341255633,
+       "truck": 0.13821840854373726,
+       "building": 0.0785233656398543
+      },
+      "margin": {
+       "car": 0.02710890808901903,
+       "bus": 0.01064904076962539,
+       "truck": 0.0026386849098591347,
+       "building": 0.014521131515831287
+      }
+     }
+    },
+    "{}": {
+     "overhead": {
+      "accuracy": 0.3803847195881875,
+      "recall": {
+       "car": 0.4184,
+       "bus": 0.4602026049204052,
+       "truck": 0.447,
+       "building": 0.2206
+      },
+      "pred_share": {
+       "car": 0.21322134922785152,
+       "bus": 0.3503115686805744,
+       "truck": 0.3613112977512869,
+       "building": 0.07515578434028719
+      },
+      "margin": {
+       "car": 0.0010385771039149727,
+       "bus": 0.0006411157765575659,
+       "truck": 0.0013362002815614227,
+       "building": -0.006546776967407797
+      }
+     },
+     "uav": {
+      "accuracy": 0.5986789307981975,
+      "recall": {
+       "car": 0.6234,
+       "bus": 0.6674,
+       "truck": 0.4686,
+       "building": 0.7514595496246872
+      },
+      "pred_share": {
+       "car": 0.25476881288968456,
+       "bus": 0.40638311006852273,
+       "truck": 0.2556947959750602,
+       "building": 0.08315328106673252
+      },
+      "margin": {
+       "car": 0.011119619692021243,
+       "bus": 0.011383719096147216,
+       "truck": 0.007684960809811459,
+       "building": 0.02354841815512415
+      }
+     }
+    },
+    "ensemble": {
+     "overhead": {
+      "accuracy": 0.360498509888919,
+      "recall": {
+       "car": 0.9356,
+       "bus": 0.036468885672937774,
+       "truck": 0.197,
+       "building": 0.1728
+      },
+      "pred_share": {
+       "car": 0.7671091845028447,
+       "bus": 0.01907342183690057,
+       "truck": 0.1562720130046058,
+       "building": 0.057545380655648876
+      },
+      "margin": {
+       "car": 0.008038513615100717,
+       "bus": -0.008411513743186771,
+       "truck": -0.004227296129748204,
+       "building": -0.008511842176163631
+      }
+     },
+     "uav": {
+      "accuracy": 0.6037409716649176,
+      "recall": {
+       "car": 0.8606,
+       "bus": 0.5188,
+       "truck": 0.3956,
+       "building": 0.7547956630525438
+      },
+      "pred_share": {
+       "car": 0.4720044447188098,
+       "bus": 0.256373850237669,
+       "truck": 0.1845175628125193,
+       "building": 0.08710414223100191
+      },
+      "margin": {
+       "car": 0.020983680758857093,
+       "bus": 0.01257661541796451,
+       "truck": 0.008164237773406136,
+       "building": 0.023468867028424045
+      }
+     }
+    }
+   },
+   "remoteclip": {
+    "a photo of a {}": {
+     "overhead": {
+      "accuracy": 0.3110810078569493,
+      "recall": {
+       "car": 0.1244,
+       "bus": 0.024891461649782922,
+       "truck": 0.0154,
+       "building": 0.9912
+      },
+      "pred_share": {
+       "car": 0.052993768626388514,
+       "bus": 0.009319967488485506,
+       "truck": 0.005689515036575454,
+       "building": 0.9319967488485505
+      },
+      "margin": {
+       "car": -0.00981140829422289,
+       "bus": -0.025775564422396174,
+       "truck": -0.017980568940268893,
+       "building": 0.02973013581511269
+      }
+     },
+     "uav": {
+      "accuracy": 0.44638557935675044,
+      "recall": {
+       "car": 0.6664,
+       "bus": 0.3956,
+       "truck": 0.1682,
+       "building": 0.9007506255212677
+      },
+      "pred_share": {
+       "car": 0.3135378727081919,
+       "bus": 0.14612013087227607,
+       "truck": 0.05629977159083894,
+       "building": 0.48404222482869314
+      },
+      "margin": {
+       "car": 0.018581711438095838,
+       "bus": 0.004788892177704396,
+       "truck": -0.011761881142396874,
+       "building": 0.037622456493325046
+      }
+     }
+    },
+    "a satellite photo of a {}": {
+     "overhead": {
+      "accuracy": 0.44101869412083444,
+      "recall": {
+       "car": 0.6046,
+       "bus": 0.16324167872648335,
+       "truck": 0.1532,
+       "building": 0.7572
+      },
+      "pred_share": {
+       "car": 0.37431590354917366,
+       "bus": 0.07255486318070983,
+       "truck": 0.0989433757789217,
+       "building": 0.4541858574911948
+      },
+      "margin": {
+       "car": 0.005336645609869878,
+       "bus": -0.003616122042258446,
+       "truck": -0.002576118317859699,
+       "building": 0.011391428531301345
+      }
+     },
+     "uav": {
+      "accuracy": 0.5340453114389777,
+      "recall": {
+       "car": 0.865,
+       "bus": 0.5322,
+       "truck": 0.1634,
+       "building": 0.707256046705588
+      },
+      "pred_share": {
+       "car": 0.4879313537872708,
+       "bus": 0.23643434779924688,
+       "truck": 0.05796654114451509,
+       "building": 0.21766775726896723
+      },
+      "margin": {
+       "car": 0.03259725493857568,
+       "bus": 0.013013955336312194,
+       "truck": -0.006319163899966118,
+       "building": 0.015060410987051465
+      }
+     }
+    },
+    "an aerial photo of a {}": {
+     "overhead": {
+      "accuracy": 0.4034137090219453,
+      "recall": {
+       "car": 0.9308,
+       "bus": 0.07496382054992765,
+       "truck": 0.009,
+       "building": 0.4974
+      },
+      "pred_share": {
+       "car": 0.74603088593877,
+       "bus": 0.02790571660796532,
+       "truck": 0.0031427797344892984,
+       "building": 0.2229206177187754
+      },
+      "margin": {
+       "car": 0.011745277211131944,
+       "bus": -0.011417736704564613,
+       "truck": -0.013197602959646754,
+       "building": 0.0028003020513047705
+      }
+     },
+     "uav": {
+      "accuracy": 0.5178097413420581,
+      "recall": {
+       "car": 0.9648,
+       "bus": 0.4416,
+       "truck": 0.1396,
+       "building": 0.548790658882402
+      },
+      "pred_share": {
+       "car": 0.6590530279646892,
+       "bus": 0.17643064386690535,
+       "truck": 0.0454966355947898,
+       "building": 0.11901969257361565
+      },
+      "margin": {
+       "car": 0.04186499032253832,
+       "bus": 0.004548199177389106,
+       "truck": -0.016486171854411397,
+       "building": 0.003525769980012
+      }
+     }
+    },
+    "a drone photo of a {}": {
+     "overhead": {
+      "accuracy": 0.3323760498509889,
+      "recall": {
+       "car": 0.1972,
+       "bus": 0.03270622286541244,
+       "truck": 0.0266,
+       "building": 0.9804
+      },
+      "pred_share": {
+       "car": 0.08761853156326199,
+       "bus": 0.013058791655377947,
+       "truck": 0.010945543213221349,
+       "building": 0.8883771335681387
+      },
+      "margin": {
+       "car": -0.006530109371997717,
+       "bus": -0.022425842993884226,
+       "truck": -0.012823996572521257,
+       "building": 0.0240879114840985
+      }
+     },
+     "uav": {
+      "accuracy": 0.4634236681276622,
+      "recall": {
+       "car": 0.7014,
+       "bus": 0.4156,
+       "truck": 0.1796,
+       "building": 0.854045037531276
+      },
+      "pred_share": {
+       "car": 0.34681153157602324,
+       "bus": 0.15766405333662573,
+       "truck": 0.05963331069819125,
+       "building": 0.43589110438915984
+      },
+      "margin": {
+       "car": 0.027238068225274553,
+       "bus": 0.008496456216336518,
+       "truck": -0.003794641796736914,
+       "building": 0.031015538405921694
+      }
+     }
+    },
+    "{}": {
+     "overhead": {
+      "accuracy": 0.4396098618260634,
+      "recall": {
+       "car": 0.8264,
+       "bus": 0.049782923299565844,
+       "truck": 0.2194,
+       "building": 0.5424
+      },
+      "pred_share": {
+       "car": 0.6067732321863993,
+       "bus": 0.016418314819832025,
+       "truck": 0.1345434841506367,
+       "building": 0.24226496884313195
+      },
+      "margin": {
+       "car": 0.007460060404183733,
+       "bus": -0.010802460708833755,
+       "truck": -0.0036462283882561786,
+       "building": 0.005470201039571743
+      }
+     },
+     "uav": {
+      "accuracy": 0.539724674362615,
+      "recall": {
+       "car": 0.9424,
+       "bus": 0.4282,
+       "truck": 0.2112,
+       "building": 0.69557964970809
+      },
+      "pred_share": {
+       "car": 0.6016420766713995,
+       "bus": 0.1594542873016853,
+       "truck": 0.07568368417803568,
+       "building": 0.16321995184887955
+      },
+      "margin": {
+       "car": 0.035780836442545566,
+       "bus": 0.0036360164450801036,
+       "truck": -0.0059390233856070895,
+       "building": 0.013583416739284593
+      }
+     }
+    },
+    "ensemble": {
+     "overhead": {
+      "accuracy": 0.3939311839609862,
+      "recall": {
+       "car": 0.4546,
+       "bus": 0.061070911722141824,
+       "truck": 0.0486,
+       "building": 0.9086
+      },
+      "pred_share": {
+       "car": 0.24361961528041182,
+       "bus": 0.023245732863722567,
+       "truck": 0.025900839880791112,
+       "building": 0.7072338119750745
+      },
+      "margin": {
+       "car": 0.0010721261944635352,
+       "bus": -0.013735836575954535,
+       "truck": -0.007990710731571149,
+       "building": 0.016199732985422904
+      }
+     },
+     "uav": {
+      "accuracy": 0.49885795419470336,
+      "recall": {
+       "car": 0.8148,
+       "bus": 0.4442,
+       "truck": 0.1708,
+       "building": 0.7773144286905754
+      },
+      "pred_share": {
+       "car": 0.44792888449904317,
+       "bus": 0.17414655225631212,
+       "truck": 0.058090005555898515,
+       "building": 0.31983455768874625
+      },
+      "margin": {
+       "car": 0.03228344375006262,
+       "bus": 0.00797529973845365,
+       "truck": -0.007741258309720861,
+       "building": 0.021920553229853396
+      }
+     }
+    }
+   }
+  }
+ }
+}
