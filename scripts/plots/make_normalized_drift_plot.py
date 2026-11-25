@@ -17,8 +17,8 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 
-ROOT = os.path.dirname(__file__)
-OUT_DIR = os.path.join(ROOT, "results", "category_yardstick")
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))  # repo root (script lives in scripts/plots/)
+OUT_DIR = os.path.join(ROOT, "results", "archive")  # superseded by final_premst_results/fig1
 os.makedirs(OUT_DIR, exist_ok=True)
 
 MODEL_LABELS = {

@@ -8,7 +8,10 @@ Inputs (all read from the repo; nothing is recomputed except the t-SNE embedding
   embeddings/xview_vs_visdrone/*.npy  (git-ignored, cached)       -> Fig. 2  (t-SNE)
 
 Run with the project's `hf` environment (from anywhere):
-  C:\\anaconda\\envs\\hf\\python.exe final_premst_results\\make_final_figures.py
+  conda activate hf
+  python final_premst_results\\make_final_figures.py
+(The committed figures are the 21 Sep 2026 renders from the original environment; a re-run in the rebuilt
+environment changes the t-SNE layout slightly -- see README.md before overwriting them.)
 
 Shared design choices: sized for a two-column paper page (7.2 in wide, so text stays legible at full
 text width); one colour per encoder in every figure (CLIP blue, RemoteCLIP amber, fine-tuned green);

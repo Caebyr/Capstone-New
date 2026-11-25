@@ -20,7 +20,7 @@ import numpy as np
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 
-ROOT = os.path.dirname(__file__)
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))  # repo root (script lives in scripts/plots/)
 E_RC = os.path.join(ROOT, "embeddings", "remoteclip_vs_clip")
 E_XV = os.path.join(ROOT, "embeddings", "xview_vs_visdrone")
 OUT = os.path.join(ROOT, "results", "pca_tsne")

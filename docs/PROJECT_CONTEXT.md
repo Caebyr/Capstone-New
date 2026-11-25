@@ -1,5 +1,7 @@
 # CAPSTONE PROJECT — PROJECT CONTEXT & EXECUTION PLAN
 
+> **Status note (25 Nov 2026).** This is the standing working log and rules file. It was written in August and its history sections (1–7, 13–20) are kept as they were. Sections 8, 11, 12 and 21 were updated after the November cleanup. For the current plain-English summary of everything done, read `PROJECT_EXPLAINED.md` in the repo root; for the submitted paper see `docs/paper/`.
+
 ## Purpose
 
 This is the authoritative working context for the Capstone project. It is intended for use with the Claude extension in VS Code so development can continue without repeatedly reconstructing the project history.
@@ -269,6 +271,8 @@ Do not assume these checkpoints are required for the next experiment. Retrieve t
 
 ## 7b. RemoteCLIP vs. CLIP, done correctly (2026-08-14, validation-scale)
 
+> **Superseded numbers.** The table in this section is from before the bicycle-mapping and held-out-split fixes in 7c. The current values (CLIP 0.246 / 0.260, RemoteCLIP 0.189 / 0.228) are in 7c and `results/remoteclip_vs_clip/drift_comparison.json`.
+
 Fixes Section 14a/14b in one pass: `run_remoteclip_vs_clip.py` (driver script; extraction/encoding
 logic lives in `src/dataset.py` / `src/embeddings.py`) embeds **both** DOTA and VisDrone
 ground-truth crops with **RemoteCLIP ViT-L/14**, and separately with **CLIP ViT-B/32** — same
@@ -393,8 +397,10 @@ The project is being migrated away from Lightning AI to a local Windows/VS Code 
 ## Local project root
 
 ```text
-C:\Users\Kabir Oberoi\Desktop\Capstone
+D:\C drive data\Kabir Oberoi\Desktop\Capstone
 ```
+
+(Originally `C:\Users\Kabir Oberoi\Desktop\Capstone`; moved to the D drive after the laptop resets. Always open the folder from this path.)
 
 ## Correct Conda environment
 
@@ -404,10 +410,10 @@ Use:
 hf
 ```
 
-Interpreter:
+Interpreter (rebuilt 25 Nov 2026 from `environment.yml` after the second laptop reset; the original was `C:\anaconda\envs\hf\python.exe`):
 
 ```text
-C:\anaconda\envs\hf\python.exe
+C:\Users\Pc\miniconda3\envs\hf\python.exe
 ```
 
 Do NOT use the `tf` environment for this project.
@@ -499,58 +505,17 @@ Therefore:
 
 # 11. Local Project Structure (implemented)
 
-```text
-Capstone/
-│
-├── data/
-│   ├── raw/
-│   │   ├── DOTA/            (part1 extracted; part2/part3 pending disk space)
-│   │   └── VisDrone/        (fully extracted)
-│   └── processed/
-│
-├── models/
-│   └── RemoteCLIP/
-│       └── RemoteCLIP-ViT-L-14.pt
-│
-├── embeddings/
-│   ├── phase1_lightning/    (historical — do not overwrite)
-│   ├── phase1_local/        (local Phase-1 reproduction)
-│   ├── clip/
-│   ├── remoteclip/
-│   └── finetuned/
-│
-├── results/
-│   ├── phase1_lightning/    (historical reference notebook + figures)
-│   ├── phase1_local/        (local reproduction figures + drift scores)
-│   ├── full_dataset/
-│   └── figures/
-│
-├── notebooks/
-│   ├── 01_phase1_reproduction.ipynb   (done)
-│   ├── 02_full_dataset.ipynb          (planned)
-│   ├── 03_remoteclip.ipynb            (planned)
-│   └── 04_drift_analysis.ipynb        (planned)
-│
-├── src/
-│   ├── dataset.py
-│   ├── embeddings.py
-│   ├── centroids.py
-│   ├── metrics.py
-│   └── visualization.py
-│
-├── configs/
-│   └── experiment.yaml
-│
-├── requirements.txt
-├── README.md
-└── PROJECT_CONTEXT.md
-```
+The current layout is described in the repo `README.md` ("Repository layout"). In short: experiment drivers and analysis scripts at the root, reusable code in `src/`, notebooks for the Phase-1 reproduction (01), the RemoteCLIP analysis (03) and fine-tuning (04), results in `results/`, paper figures in `final_premst_results/`, documents in `docs/`, and git-ignored `data/`, `models/` and `embeddings/`.
+
+The placeholder notebooks `02_full_dataset.ipynb` and `04_drift_analysis.ipynb` and the empty `src/centroids.py`, `metrics.py` and `visualization.py` were removed in the November cleanup; the analysis they were reserved for now lives in `drift_stats.py`, `classify_crops.py`, `join_results.py` and `src/stats.py`.
 
 ---
 
 # 12. Meaning of the Notebook Phases
 
 The notebooks are stages of one reproducible pipeline, not independent projects.
+
+> **Nov 2026:** notebooks 02 and 04 (drift analysis) below were planned but never written, and their empty files were removed. Their roles were taken over by scripts (`run_*.py`, `drift_stats.py`, `classify_crops.py`, `join_results.py`). Notebook 04 that exists today is `04_finetune_visdrone_clip.ipynb` (the fine-tuned CLIP arm). The plans below are kept as written.
 
 ## Notebook 01 — Phase-1 Reproduction
 
@@ -907,22 +872,27 @@ The final conclusion must follow the actual results.
 - [x] UAVid integrated (Kaggle) — building vs. xView (VisDrone has no building class), largest drift + largest reduction of anything measured — see Section 7d
 - [x] Mid-semester presentation materials (`PROGRESS_SUMMARY.md`, `PRESENTATION_SCRIPT.md`) written and kept in sync with corrected/expanded results
 
+- [x] Technical report and final paper figures (Sep 2026; `docs/TECHNICAL_REPORT.md`, `final_premst_results/`)
+- [x] Crop manifests linking every cached embedding to its crop; image-level permutation tests and bootstrap intervals (Oct 2026)
+- [x] Zero-shot ground-truth crop classification and the text-anchored measures A_c / Δm_c (Oct 2026)
+- [x] RAIT paper written and submitted (Oct 2026; under review; `docs/paper/RAIT_paper_submitted.pdf`)
+- [x] Environment rebuilt and verified after the second laptop reset; repository cleaned up (25 Nov 2026)
+
 ## In progress / next up
 
-- [ ] Decide whether the Section 7c/7d results (RemoteCLIP shows lower drift than CLIP across all 6 classes measured so far) are robust — sensitivity check across random seeds/sample sizes before treating as final
+- [ ] Same-domain baseline (DOTA vs xView, VisDrone vs UAVid/UAVDT) to separate platform drift from dataset drift
+- [ ] Multi-seed robustness check (the old `verify_drift_seeds.py` used the leaky checkpoint and was removed; needs a new script)
 - [ ] Recover `van` as a usable xView<->VisDrone class (needs a larger xView scan — only 25/300 samples in the current 5,000-image pass, below the 30-sample threshold)
 
 ## Not yet completed
 
 - [ ] Full DOTA experiment (parts 2–3)
 - [ ] Full VisDrone experiment at full scale with the now-fixed methodology
-- [ ] Rigorous final drift metrics
 - [ ] Standard CLIP vs RemoteCLIP comparison at full scale (single shared encoder — done at validation-scale, Sections 7b/7d)
+- [ ] Alternative prompts and encoders (e.g. CLIP ViT-L/14) for the classification and drift results
 - [ ] Altitude-conditioned alignment module (Phase 5)
-- [ ] Final evaluation metrics (mAP, cross-altitude gap, semantic drift reduction)
-- [ ] Final visualizations
-- [ ] Final report/paper
-- [ ] SAM-based detection integration with teammate's work (see PROGRESS_SUMMARY.md item 9)
+- [ ] Detection evaluation (mAP, cross-altitude gap) — SAM-based integration with teammate's work or an off-the-shelf open-vocabulary detector
+- [ ] Final capstone report
 
 ---
 
@@ -934,7 +904,7 @@ The first milestone is:
 
 > **A local run reproduces the Phase-1 pipeline and produces results that are reasonably consistent with the existing Lightning experiment under the same configuration.**
 
-This milestone has been reached (Section 21), and so has the next one (resolving the cross-model methodology gap, Section 14a/7b). The current milestone is deciding whether the validation-scale RemoteCLIP-vs-CLIP result is robust enough to scale up (Section 21, "In progress / next up") before committing to a full-dataset run.
+This milestone has been reached (Section 21), and so has the next one (resolving the cross-model methodology gap, Section 14a/7b). Statistical robustness at validation scale (permutation tests, image-level intervals) was added in October 2026 for the paper. The current milestone is the same-domain baseline and multi-seed check (Section 21, "In progress / next up") before committing to a full-dataset run or detection experiments.
 
 ---
 
