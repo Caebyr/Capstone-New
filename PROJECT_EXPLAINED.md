@@ -8,7 +8,7 @@ This is a plain-English reference for the final presentation, for revision, and 
 
 Numbers come from the result files in `results/`. Where the paper submitted to RAIT 2026 words something differently, the paper's wording wins for the paper, but the numbers here are the same ones.
 
-*Last updated: 25 November 2026.*
+*Last updated: 26 November 2026, after the full-scale checks and detection experiments (Steps 14–15, Sections 6.8–6.12).*
 
 ---
 
@@ -47,6 +47,14 @@ That ability rests on one assumption: the model's internal idea of "car" stays t
 2. For four categories, a car's overhead version sits further from its drone version than a car sits from a bus. The move is bigger than the gap between two different categories.
 3. A remote-sensing model (RemoteCLIP) moves less in raw distance, but once you account for how tightly it bunches its examples, it is better only for small vehicles and buildings.
 4. When we asked the models to name the objects, both did much worse on overhead crops (about 25–27 points lower accuracy). The model with less drift did *not* recognise objects better, so **less drift does not automatically mean better recognition**.
+
+**What we added after the paper (November):**
+
+5. Every finding above still holds on the full datasets (up to 5,000 crops per category instead of 300) and over 20 repeated samples.
+6. Real open-vocabulary detectors (OWLv2, Grounding DINO) are 2–10 times worse overhead. They mostly fail to *find* overhead objects, because the right box is there but scores too low against the text.
+7. Two results refine the "platform" story:
+   - DOTA-vs-VisDrone drift is no bigger than the drift between two overhead datasets.
+   - In the xView comparisons, much of the drift goes away when drone crops are shrunk to overhead size.
 
 ---
 
@@ -351,11 +359,48 @@ We then cleaned up the repository:
 - **Restored:** the 21 Sep paper figures, which a later re-run had overwritten.
 - **Updated:** outdated text in the docs.
 
+### Step 14: Making the claims solid: full datasets and controls (25–26 Nov)
+
+**The worry:** the paper's numbers came from one random sample of 300 crops per category. A different 300 might have told a different story.
+
+We redid the work on the full datasets:
+
+1. **Listed every usable box** in every dataset with exactly the same rules as before (A1). The counts for the paper's subsets matched the August numbers exactly, which shows the rules were reproduced faithfully.
+2. **Embedded up to 5,000 crops per category per domain** (65,052 crops) with CLIP and RemoteCLIP, and the vehicle crops with the fine-tuned model (A2).
+3. **Re-tested every claim** on all of these crops, and also re-ran the paper's 300-crop design 20 times with different seeds (A3).
+4. **Ran the same-domain baseline** (A4). It measures the drift between two datasets from the *same* platform, so we know how much drift "just a different dataset" produces.
+5. **Ran two controls** (A5):
+   - shrinking drone crops to the size of overhead crops;
+   - trying five different prompt wordings.
+
+DOTA parts 2–3 were unzipped for this, and xView was downloaded locally instead of streamed.
+
+### Step 15: Real detectors (25–26 Nov)
+
+**The worry:** the paper tests naming with perfect boxes, which is not how a detector works.
+
+We built a detection benchmark, five test sets with COCO-format labels (B1):
+
+- DOTA cut into tiles;
+- VisDrone held-out images, scored twice: once with the small/large-vehicle labels and once with the car/bus/truck labels;
+- xView validation;
+- UAVid.
+
+Then we ran three kinds of detector, all zero-shot, with the same words in both domains:
+
+- **OWLv2 and Grounding DINO** (B2): two off-the-shelf open-vocabulary detectors.
+  - We scored them with standard COCO AP.
+  - We also split each failure into "not found" and "found but misnamed" (B3).
+- **Our own detector** (B4): SAM cuts the image into candidate regions, and CLIP or RemoteCLIP names each region.
+- **Drift inside the detector** (B5): measured in OWLv2's own embedding space, then compared with each category's detection loss.
+
+The teammate's SAM pipeline mentioned in August was never handed over, so everything was built here from scratch.
+
 ---
 
 ## 6. The results, explained
 
-All values come from 300 crops per category per domain, seed 42. Brackets are 95% image-bootstrap intervals.
+Sections 6.1–6.7 are the paper's results: 300 crops per category per domain, seed 42. Sections 6.8–6.12 are the November additions. Brackets are 95% image-bootstrap intervals.
 
 ### 6.1 How far each category moves
 
@@ -432,28 +477,121 @@ Across the four categories, we ranked drift against accuracy loss. The rank corr
 
 **Takeaway:** drift tracks how the image moves relative to the text, but drift size alone does not predict how badly recognition fails.
 
+### 6.8 Do the results survive full datasets and many samples? Yes.
+
+**Analogy:** the paper tasted one spoonful from each pot. Now we've tasted the whole pot, and also 20 separate spoonfuls.
+
+- **Every claim in the paper still holds.** Most hold in all 20 repeated samples; one holds in 19 of 20.
+- **Recognition numbers are almost identical.** Four-way balanced accuracy, overhead vs drone:
+  - CLIP 32.6% vs 61.8% (paper 32.9% vs 60.2%);
+  - RemoteCLIP 28.9% vs 53.3% (paper 27.3% vs 51.8%).
+- **The failure modes are the same.** CLIP calls 11,956 of 13,455 overhead vehicles "car"; RemoteCLIP calls 12,244 of them "building".
+- **The drift-vs-spacing ratio (Y_c) is now 1.75–2.20,** with every interval above 1.
+
+**Three questions the paper left open now have answers:**
+
+- **Fine-tuning:** it *raises* normalised drift for small vehicles, by +13.7% [+3.5, +22.6]. The paper's interval included zero.
+- **RemoteCLIP:** its normalised drift is also slightly lower than CLIP's for car (−3.9%) and truck (−4.7%). The big reductions are still small vehicle (−9.1%) and building (−18.7%).
+- **P1 recognition gap:** RemoteCLIP's small overhead gap (−4.9 points [−8.0, −1.6]) is now real; CLIP's is still unresolved.
+
+**One number moved:** P1 drift is 10–15% smaller at full scale. The paper's single 300-crop sample happened to run a little high. No conclusion changes.
+
+### 6.9 Is it really the platform? Partly.
+
+**Same-domain baseline (A4).** We compared three levels of difference:
+
+| Level | Example | CLIP cosine drift |
+|---|---|---|
+| Same dataset, different images | DOTA part 1 vs parts 2–3 | ≤ 0.004 (noise) |
+| Same platform, different dataset | DOTA vs xView (both overhead) | 0.025–0.031 |
+| Different platform | xView vs VisDrone / UAVid | 0.072–0.147 |
+| Different platform | DOTA vs VisDrone (P1) | 0.028 |
+
+**What this shows:**
+- **xView vs drone** drift is 2.5–5 times bigger than just switching dataset.
+- **DOTA vs VisDrone** drift is no bigger than switching between two overhead datasets, so P1's drift is not a platform effect.
+
+**Resolution control (A5).** We shrank each drone crop to the size of a random overhead crop of the same category, then measured again.
+- **Drift:** for xView comparisons, about two-thirds of the drift disappears. CLIP car drift falls from 0.072 to 0.023, about the same-platform level.
+- **Accuracy:** about half of the accuracy gap disappears. CLIP drone accuracy falls from 59.1% to 46.3%, against 35.2% overhead.
+- **RemoteCLIP:** on the shrunk drone crops it starts calling things "building", exactly as it does overhead.
+
+**Plain words:**
+- Much of what looks like "platform drift" is the object simply being **much smaller in the picture** from far away.
+- Size is not everything, though: half the recognition gap remains after matching size.
+
+### 6.10 Does the wording of the prompt matter? For RemoteCLIP, yes.
+
+We tested five templates ("a photo of a {}", "a satellite photo of a {}", "an aerial photo of a {}", "a drone photo of a {}", the bare word) plus an average of all five.
+
+- **Overhead is worse than drone with every wording,** for both models.
+- **RemoteCLIP improves a lot with a remote-sensing prompt.** With "a satellite photo of a {}" its overhead accuracy rises from 31.1% to 44.1%, which beats CLIP's best wording (38.0%).
+
+So the paper's "RemoteCLIP is no better than CLIP overhead" is true only for the paper's prompt.
+
+### 6.11 Do real detectors fail the same way? Yes, and worse.
+
+| AP50 (higher is better), overhead vs drone | OWLv2 | Grounding DINO |
+|---|---|---|
+| small-vehicle | 36.9 vs 58.6 | 18.4 vs 55.8 |
+| large-vehicle | 20.6 vs 27.1 | 1.4 vs 23.0 |
+| car | 10.3 vs 78.5 | 5.7 vs 75.5 |
+| bus | 6.5 vs 52.7 | 0.9 vs 24.5 |
+| truck | 8.1 vs 38.8 | 1.0 vs 27.8 |
+| building | 18.8 vs 33.3 | 10.8 vs 35.0 |
+
+**Found vs named:** we split each miss into "never found" or "found but called the wrong thing".
+
+- **Overhead failure is mostly not finding.**
+  - OWLv2 finds 61% of xView cars vs 89% of drone cars, and 29% of xView buildings vs 86% of drone buildings.
+  - When it does find a car or building, it names it right about 90% of the time.
+- **Buses and trucks are also misnamed overhead:** OWLv2 names them correctly only 46% and 57% of the time.
+
+**Our own detector (SAM + CLIP / RemoteCLIP)** shows where the failure is.
+
+- **SAM's regions are fine.** They cover about 55% of objects in *every* set, overhead and drone alike, including xView cars only 17 pixels wide.
+- **The naming step throws them away.** On xView, CLIP and RemoteCLIP decide about 97% of the regions are "background". Only 4–5% of objects survive, against about 40% on VisDrone.
+
+**Analogy:** the scissors cut out the right pieces; the person sorting them doesn't recognise them.
+
+### 6.12 Does drift explain detection loss? Text alignment does better than drift size.
+
+- **Drift inside OWLv2:** it shows the same drift pattern as CLIP and RemoteCLIP.
+  - The text query fits the overhead version of a category worse, for 5 of 6 categories (Δm < 0).
+  - For 88–100% of objects, OWLv2 *has* a well-placed box; it just scores it too low.
+- **Drift size vs detection loss, across the six categories:** no correlation is significant.
+  - This is the same as the paper's finding for crop classification.
+- **The text margin (Δm) is the most consistent clue.** The more negative it is, the bigger the naming loss, for all three encoders and both detectors (ρ −0.49 to −0.77).
+  - With only six categories this is a pattern, not proof.
+
+**Takeaway:** it isn't how far the category moves that matters; it's whether the text still points at it after the move.
+
 ---
 
 ## 7. What we can and cannot claim
 
-| Statement | Status |
-|---|---|
-| Drift is larger than sampling chance | **Supported**: all 14 cells beat 2,000 image-level permutations |
-| Drift is larger than the gap between categories | **Supported** for four categories and two models (all intervals above 1) |
-| RemoteCLIP has lower raw drift than CLIP | **Supported** for all six categories |
-| RemoteCLIP has lower *normalised* drift | **Only** for small-vehicle and building |
-| Fine-tuning reduces drift through better alignment | **Unresolved**: tighter clusters; small-vehicle change inconclusive |
-| Drift comes with a loss of crop recognition | **Supported** for the four-way task (25–27 points lower overhead); not for the two-way task |
-| Less drift means better recognition | **Not supported**: RemoteCLIP is no better overhead |
-| More drift predicts more accuracy loss | **Not supported** across four categories (ρ ≈ 0.02) |
-| Drift is caused by altitude | **Not supported**: sensor, resolution, geography and dataset all change together |
-| Drift predicts *detection* failure | **Not tested**: no detector was run |
-| Stable across seeds and full datasets | **Not tested**: one seed, image-level resampling only |
+The "Status" column is as of the paper; "After November" adds what Steps 14–15 found.
+
+| Statement | Status (paper) | After November |
+|---|---|---|
+| Drift is larger than sampling chance | **Supported**: all 14 cells beat 2,000 image-level permutations | Holds at full scale |
+| Drift is larger than the gap between categories | **Supported** for four categories and two models (all intervals above 1) | Holds: Y_c 1.75–2.20 |
+| RemoteCLIP has lower raw drift than CLIP | **Supported** for all six categories | Holds, 20/20 seeds |
+| RemoteCLIP has lower *normalised* drift | **Only** for small-vehicle and building | Also slightly for car and truck (−4 to −5%) |
+| Fine-tuning reduces drift through better alignment | **Unresolved**: tighter clusters; small-vehicle change inconclusive | **Resolved, no:** small-vehicle normalised drift rises by 13.7%; large-vehicle falls |
+| Drift comes with a loss of crop recognition | **Supported** for the four-way task (25–27 points lower overhead); not for the two-way task | Holds; also with every prompt |
+| Less drift means better recognition | **Not supported**: RemoteCLIP is no better overhead | With the paper's prompt only; a satellite prompt makes RemoteCLIP better than CLIP |
+| More drift predicts more accuracy loss | **Not supported** across four categories (ρ ≈ 0.02) | Still not supported, also for detection loss |
+| Drift is a platform (overhead vs drone) effect | Assumed | **Qualify:** P1 drift equals same-platform drift; much of the xView drift is object size |
+| Drift is caused by altitude | **Not supported**: sensor, resolution, geography and dataset all change together | Still not tested directly |
+| Detectors fail more overhead | **Not tested** | **Supported:** OWLv2 and Grounding DINO 2–10× lower AP50, mostly missed objects |
+| Stable across seeds and full datasets | **Not tested** | **Supported**: full scale and 20 seeds |
 
 **Words to avoid:**
-- "Detection accuracy" for the classification results. Say "ground-truth crop classification".
+- "Detection accuracy" for the classification results. Say "ground-truth crop classification". Real detection numbers are now separate (AP50).
 - "Drift causes errors". Say "drift accompanies errors".
 - "Altitude drift" as a proven cause. Say "a dataset-level change of platform".
+- "Platform drift" for P1 without the caveat. P1 drift is the same size as overhead-vs-overhead drift.
 
 ---
 
@@ -470,17 +608,20 @@ These are worth presenting openly. Catching your own mistakes before reporting i
 | 5 | Saved embeddings had no record of which crop they came from | Paper review | Rebuilt crop manifests and verified them row by row | Enabled image-level statistics |
 | 6 | Paper listed the rebuilt environment's versions, not the original's | Fact-checking | Original versions recovered from session logs | Factual fix in the paper |
 | 7 | "Video-sequence resampling" for VisDrone was inaccurate | Checking file-name groups | Called "file-name groups"; only UAVid has true videos | Wording fix, no number changed |
-| 8 | The seed-check script (`verify_drift_seeds.py`) used the leaky checkpoint and all VisDrone images | Technical report audit | Never used for any result; removed in the Nov cleanup. A correct multi-seed script is future work. | Open item |
+| 8 | The seed-check script (`verify_drift_seeds.py`) used the leaky checkpoint and all VisDrone images | Technical report audit | Never used for any result; removed in the Nov cleanup | Replaced by `drift_full_scale.py` (20 seeds, held-out checkpoint) |
+| 9 | Full-scale P2+P3 accuracy compared unbalanced categories with the paper's balanced ones | Numbers didn't match the paper | Balanced accuracy added | Matches the paper (32.6 vs 32.9) |
+| 10 | Shrinking long, thin drone crops gave 3-pixel slivers that crashed the model | Run failure | Short side kept ≥ 16 px, the floor every real crop already meets | Control re-run |
 
 ---
 
 ## 9. Limitations
 
 - **Platform and dataset are tangled.** Overhead vs drone is also DOTA/xView vs VisDrone/UAVid: different cameras, cities, years and labelling styles. We cannot say how much is altitude.
-- **Pilot scale.** 300 crops per category, one sampling seed, 469 DOTA images, 5,000 xView chips.
+- **Pilot scale (paper only).** The paper used 300 crops per category, one sampling seed, 469 DOTA images and 5,000 xView chips. November's full-scale and 20-seed runs resolve this (Section 6.8).
 - **The DOTA sample is clumpy.** The 300 crops per class come from only 68–119 images, with up to 43 from a single image. Resampling by image handles this, but it limits how much independent evidence there is.
-- **One prompt.** RemoteCLIP is normally used with remote-sensing prompts. Its "everything is a building" habit might partly be the prompt.
-- **Classification is not detection.** There is no box finding, no background and no extra classes.
+- **One prompt (paper only).** RemoteCLIP is normally used with remote-sensing prompts. November confirmed it does much better with "a satellite photo of a {}" (Section 6.10).
+- **Classification is not detection (paper only).** November adds real detectors (Section 6.11). They are zero-shot only: nothing was tuned on any of these datasets. The SAM pipeline was scored on an image subset (120–300 images per set).
+- **Six categories.** Any "does more drift mean more loss?" correlation has only six points behind it.
 - **Two drone datasets are pooled.** VisDrone supplies the vehicles and UAVid the buildings.
 - **xView chips can't be grouped by scene**, and three exact duplicate crop pairs exist from overlapping chips.
 - **Centroids are a first-order summary.** Two clouds can have the same centre but different shapes.
@@ -489,15 +630,20 @@ These are worth presenting openly. Catching your own mistakes before reporting i
 
 ## 10. Where the project goes next
 
-The planned next stage, from the 12 Oct review and the project plan, in order of value:
+**Done in November** (Steps 14–15):
+- the same-domain baseline;
+- the resolution control and more prompts;
+- multiple seeds and full datasets;
+- real detection with OWLv2, Grounding DINO and our own SAM pipeline.
 
-1. **Same-domain baseline.** Measure drift between two datasets from the *same* platform: DOTA vs xView (both overhead) and VisDrone vs UAVid or UAVDT (both drone). If overhead-vs-drone drift is much larger than this, the effect is more than just "different dataset". This addresses the biggest weakness.
-2. **Same-backbone comparison.** Add OpenAI CLIP ViT-L/14, the same architecture as RemoteCLIP, so the remote-sensing training is the only difference.
-3. **Controlled altitude and resolution tests.** UAVDT labels flight altitude, so we can test altitude within one dataset. We can also shrink drone crops to overhead resolution and re-measure.
-4. **Real detection.** Use the teammate's SAM-based pipeline, or an off-the-shelf open-vocabulary detector, to test whether per-category detection loss follows our measures.
-5. **More prompts and encoders, multiple seeds, full datasets** (DOTA parts 2–3 are on disk, still zipped).
-6. **Distribution-level measures** (shape, not just centre) and a fine-tuned model for P2/P3.
-7. **Longer term:** an altitude-aware alignment module that *reduces* drift.
+**Still open**, in order of value:
+
+1. **Same-backbone comparison.** Add OpenAI CLIP ViT-L/14, the same architecture as RemoteCLIP, so the remote-sensing training is the only difference. The model is downloaded and pinned; it needs encoding, which costs about the same as RemoteCLIP (also ViT-L/14).
+2. **Altitude within one dataset.** UAVDT labels flight altitude, so altitude can be tested without changing dataset. It needs a download.
+3. **Explain the half of the recognition gap that size doesn't.** Candidate causes: viewing angle (straight down vs oblique), image quality, and scene context.
+4. **Adaptation that targets the text margin.** Section 6.12 suggests alignment with the text matters more than drift size. A small adapter or prompt tuning that raises Δm overhead is the natural next method, and it can be judged by detection AP.
+5. **A fine-tuned model for P2/P3, and distribution-level measures** (shape, not just centre).
+6. **SAM on the full sets** with smaller point batches. It currently peaks at 4.4 GB of GPU memory with 64 points per batch.
 
 ---
 
@@ -513,10 +659,27 @@ Embeddings live on a sphere where everything is fairly close, so absolute values
 Not necessarily. Part of its lower drift is tighter clustering. After normalising, it wins only for two categories, and on overhead crops it recognises objects no better than CLIP: it calls most vehicles buildings.
 
 **"Did you test a detector?"**
-No. We tested ground-truth crop classification, which is the easier naming step with perfect boxes. Even there, overhead recognition is barely above chance for the four-way task. Detection is the planned next step.
+The paper didn't; it tested ground-truth crop classification. Since then we have run three zero-shot detectors: OWLv2, Grounding DINO, and SAM regions named by CLIP or RemoteCLIP.
+
+- All are 2–10× worse overhead.
+- The main failure is missing objects. The right box usually exists but scores too low against the text.
 
 **"Can you say altitude causes the drift?"**
-No. The datasets differ in sensor, resolution, location and labelling as well as altitude. A same-domain baseline and altitude-labelled data (UAVDT) are the planned tests.
+No. The datasets differ in sensor, resolution, location and labelling as well as altitude. Two November results limit the platform story further:
+
+- DOTA-vs-drone drift is no larger than DOTA-vs-xView drift (both overhead).
+- Much of the xView drift disappears when drone crops are shrunk to overhead size.
+
+Altitude-labelled data (UAVDT) is the remaining test.
+
+**"Your paper used only 300 crops. Would more change the answer?"**
+No. We re-ran everything with up to 5,000 crops per category and also repeated the 300-crop design with 20 seeds. Every claim held, and the accuracy numbers moved by about 1–2 points.
+
+**"So is it just resolution?"**
+Partly. Matching the object size removes about two-thirds of the xView drift but only half of the recognition gap. Something else, such as viewing angle or scene content, accounts for the rest.
+
+**"Is RemoteCLIP really no better than CLIP overhead?"**
+Only with the generic prompt "a photo of a {}". With "a satellite photo of a {}" it beats CLIP overhead (44.1% vs CLIP's best 38.0%). Its advantage depends on being asked the way it was trained.
 
 **"Why fine-tune only the last layers?"**
 To adapt the model to drone imagery cheaply on a 4 GB GPU while keeping its general knowledge, and with the text side frozen so the text addresses stay identical to CLIP's.
@@ -553,6 +716,14 @@ Crops from the same image share lighting, camera and scene, so they aren't indep
 | Full technical extraction (Sept) | `docs/TECHNICAL_REPORT.md` |
 | Midsem material | `docs/midsem/` |
 | How the October numbers were made | `results/NEW_EXPERIMENTS_2026-10.md` |
+| How the November numbers were made (full scale, controls, detection) | `results/NEW_EXPERIMENTS_2026-11.md` |
+| Full-scale box pools, encoding, drift re-test | `src/full_scale.py`, `build_full_pools.py`, `encode_full_scale.py`, `drift_full_scale.py` → `results/full_scale/` |
+| Same-domain baseline; resolution and prompt controls | `same_domain_baseline.py`, `controls_a5.py` → `results/full_scale/` |
+| Detection benchmark and scorer | `src/detection_data.py`, `src/detection_eval.py`, `build_detection_sets.py` |
+| OWLv2 / Grounding DINO runs and scores | `run_detectors.py`, `eval_detection.py` → `results/detection/` |
+| SAM + CLIP / RemoteCLIP detector | `sam_pipeline.py` → `results/detection/` |
+| Drift in OWLv2's space; drift vs detection loss | `drift_detection_link.py` → `results/detection/` |
+| November presentation figures | `scripts/plots/make_november_figures.py` → `results/figures_2026-11/` |
 | Environment | `environment.yml`, `requirements.txt` (conda env `hf`, Python 3.9) |
 
 Large files are not in git: `data/`, `embeddings/` and `models/`.
@@ -576,3 +747,5 @@ Large files are not in git: `data/`, `embeddings/` and `models/`.
 | 13–14 Oct | Fact sheet; original environment recovered; JPEG-decoder cause found; crop identity proven exact |
 | by 19 Oct | Paper submitted to RAIT 2026 (under review) |
 | 25 Nov | Laptop reset #2; `hf` environment rebuilt and verified; October work committed and pushed; repository cleaned up and reorganised |
+| 25–26 Nov | Full-scale pools and encoding; paper claims re-tested at full scale and over 20 seeds; same-domain baseline; resolution and prompt controls |
+| 25–26 Nov | Detection benchmark; OWLv2 and Grounding DINO; found-vs-named analysis; SAM + CLIP/RemoteCLIP detector; drift in OWLv2's space |

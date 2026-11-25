@@ -1,0 +1,13 @@
+detector,category,AP50_overhead,AP50_uav
+owlv2,small-vehicle,36.9,58.6
+owlv2,large-vehicle,20.6,27.1
+owlv2,car,10.3,78.5
+owlv2,bus,6.5,52.7
+owlv2,truck,8.1,38.8
+owlv2,building,18.8,33.3
+gdino,small-vehicle,18.4,55.8
+gdino,large-vehicle,1.4,23.0
+gdino,car,5.7,75.5
+gdino,bus,0.9,24.5
+gdino,truck,1.0,27.8
+gdino,building,10.8,35.0

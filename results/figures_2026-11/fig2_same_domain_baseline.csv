@@ -1,0 +1,14 @@
+level,comparison,category,cos,ci_lo,ci_hi
+L0,DOTA part1 vs part2/3,small-vehicle,0.0007,0.0006,0.0022
+L0,DOTA part1 vs part2/3,large-vehicle,0.0037,0.0029,0.0085
+L0,VisDrone train vs held-out images,car,0.0001,0.0002,0.0006
+L0,xView first vs second half of chips,car,0.0006,0.0003,0.0011
+L0,xView first vs second half of chips,building,0.0003,0.0002,0.0005
+L1,DOTA vs xView (overhead vs overhead),small-vehicle / car,0.0254,0.0229,0.0281
+L1,DOTA vs xView (overhead vs overhead),large-vehicle / bus+truck+van,0.0306,0.0273,0.0343
+L1,VisDrone vs UAVid (UAV vs UAV),car,0.0265,0.0232,0.0313
+L2,DOTA vs VisDrone (all images),small-vehicle,0.0281,0.026,0.0308
+L2,DOTA vs VisDrone (all images),large-vehicle,0.0289,0.0266,0.0316
+L2,xView vs VisDrone,car,0.0719,0.0691,0.0749
+L2,xView vs UAVid,car,0.1083,0.098,0.1189
+L2,xView vs UAVid,building,0.1471,0.139,0.1559
