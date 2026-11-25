@@ -1,0 +1,9 @@
+{
+  "note": "Hugging Face revisions downloaded on 2026-11-25 into the project HF cache (HF_HOME=D:/C drive data/Kabir Oberoi/.cache/huggingface) and used by run_detectors.py / sam_pipeline.py (loaded offline from the cache).",
+  "google/owlv2-base-patch16-ensemble": "cfd3195ba4ea9592eec887ded089f4c08eff231d",
+  "IDEA-Research/grounding-dino-tiny": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "facebook/sam-vit-base": "70c1a07f894ebb5b307fd9eaaee97b9dfc16068f",
+  "openai/clip-vit-large-patch14": "32bd64288804d66eefd0ccbe215aa642df71cc41",
+  "openai/clip-vit-base-patch32": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+  "HichTala/xview (dataset)": "00a1b977dc16f6eda77cce0236ca2c2a13ac840b"
+}

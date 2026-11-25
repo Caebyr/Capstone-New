@@ -27,6 +27,7 @@ from PIL import Image
 DET_ROOT, GT = "data/processed/detection", "data/processed/detection/gt"
 MIN_SCORE, MAX_PER_IMAGE = 0.05, 300
 MODELS = {"owlv2": "google/owlv2-base-patch16-ensemble", "gdino": "IDEA-Research/grounding-dino-tiny"}
+REV = {"owlv2": "cfd3195ba4ea9592eec887ded089f4c08eff231d", "gdino": "a2bb814dd30d776dcf7e30523b00659f4f141c71"}  # results/detection/model_revisions.json
 RUNS = [("dota_tiles", "D1"), ("visdrone_ho_D1", "D1"), ("xview_val", "D2"), ("visdrone_ho_D2", "D2"), ("uavid_tv", "D2")]
 PROMPTS = {"D1": ["small-vehicle", "large-vehicle"], "D2": ["car", "bus", "truck", "building"]}
 WORDS = {"small-vehicle": "small vehicle", "large-vehicle": "large vehicle"}
@@ -41,8 +42,8 @@ def log(msg):
 class Owl:
     def __init__(self, device):
         from transformers import Owlv2ForObjectDetection, Owlv2Processor
-        self.proc = Owlv2Processor.from_pretrained(MODELS["owlv2"])
-        self.model = Owlv2ForObjectDetection.from_pretrained(MODELS["owlv2"]).to(device).eval()
+        self.proc = Owlv2Processor.from_pretrained(MODELS["owlv2"], revision=REV["owlv2"])
+        self.model = Owlv2ForObjectDetection.from_pretrained(MODELS["owlv2"], revision=REV["owlv2"]).to(device).eval()
         self.device = device
 
     @torch.no_grad()
@@ -59,8 +60,8 @@ class Owl:
 class GDino:
     def __init__(self, device):
         from transformers import AutoModelForZeroShotObjectDetection, AutoProcessor
-        self.proc = AutoProcessor.from_pretrained(MODELS["gdino"])
-        self.model = AutoModelForZeroShotObjectDetection.from_pretrained(MODELS["gdino"]).to(device).eval()
+        self.proc = AutoProcessor.from_pretrained(MODELS["gdino"], revision=REV["gdino"])
+        self.model = AutoModelForZeroShotObjectDetection.from_pretrained(MODELS["gdino"], revision=REV["gdino"]).to(device).eval()
         self.device = device
         self._spans = {}
 
