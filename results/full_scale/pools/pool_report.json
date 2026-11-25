@@ -1,0 +1,137 @@
+{
+  "dota": {
+    "images": 561,
+    "boxes": {
+      "large-vehicle": 15212,
+      "small-vehicle": 22909
+    }
+  },
+  "visdrone": {
+    "images": 6157,
+    "boxes": {
+      "car": 109567,
+      "van": 20534,
+      "truck": 11297,
+      "bus": 5233
+    },
+    "boxes_heldout": {
+      "car": 22368,
+      "van": 4037,
+      "truck": 2260,
+      "bus": 1044
+    }
+  },
+  "xview": {
+    "chips_with_boxes": 17745,
+    "last_chip_index_with_box": 20880,
+    "boxes_raw": {
+      "Building": 391248,
+      "Small Car": 13600,
+      "Truck w/Flatbed": 756,
+      "Truck w/Liquid": 145,
+      "Truck w/Box": 3900,
+      "Cargo Truck": 3403,
+      "Dump Truck": 1116,
+      "Passenger Vehicle": 237,
+      "Bus": 3455,
+      "Utility Truck": 1177,
+      "Truck": 7273,
+      "Pickup Truck": 146,
+      "Truck Tractor": 470,
+      "Haul Truck": 542
+    },
+    "boxes_mapped": {
+      "building": 391248,
+      "car": 13837,
+      "truck": 18782,
+      "bus": 3455,
+      "van": 146
+    }
+  },
+  "uavid": {
+    "images": 269,
+    "boxes": {
+      "building": 1199,
+      "car": 391
+    }
+  },
+  "checks": [
+    {
+      "check": "DOTA part1 counts = paper",
+      "ok": true,
+      "got": {
+        "large-vehicle": 3033,
+        "small-vehicle": 6537
+      },
+      "expected": {
+        "large-vehicle": 3033,
+        "small-vehicle": 6537
+      }
+    },
+    {
+      "check": "VisDrone held-out P1 counts = paper",
+      "ok": true,
+      "got": {
+        "small-vehicle": 22368,
+        "large-vehicle": 7341
+      },
+      "expected": {
+        "small-vehicle": 22368,
+        "large-vehicle": 7341
+      }
+    },
+    {
+      "check": "VisDrone all-image counts = paper",
+      "ok": true,
+      "got": {
+        "car": 109567,
+        "van": 20534,
+        "truck": 11297,
+        "bus": 5233
+      },
+      "expected": {
+        "car": 109567,
+        "van": 20534,
+        "truck": 11297,
+        "bus": 5233
+      }
+    },
+    {
+      "check": "xView first 5,000 chips counts = paper",
+      "ok": true,
+      "got": {
+        "car": 1269,
+        "truck": 3694,
+        "bus": 903,
+        "van": 25
+      },
+      "expected": {
+        "car": 1269,
+        "truck": 3694,
+        "bus": 903,
+        "van": 25
+      }
+    },
+    {
+      "check": "xView first 500 chips building = paper",
+      "ok": true,
+      "got": {
+        "building": 3711
+      },
+      "expected": {
+        "building": 3711
+      }
+    },
+    {
+      "check": "UAVid building counts = paper",
+      "ok": true,
+      "got": {
+        "building": 1199
+      },
+      "expected": {
+        "building": 1199
+      }
+    }
+  ],
+  "seconds": 122
+}

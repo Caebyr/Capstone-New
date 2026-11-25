@@ -18,6 +18,7 @@ scipy==1.13.1          # UAVid connected components (src/dataset.py)
 matplotlib==3.9.4
 pillow==11.3.0
 tqdm==4.70.1
+pycocotools==2.0.8     # COCO-style mAP for the detection experiments (added Nov 2026)
 
 # Headless notebook execution + VS Code kernel
 nbconvert==7.17.1
