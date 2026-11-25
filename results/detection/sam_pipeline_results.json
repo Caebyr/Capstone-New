@@ -1,0 +1,1335 @@
+{
+ "subset_sizes": {
+  "dota_tiles": 120,
+  "visdrone_ho_D1": 150,
+  "visdrone_ho_D2": 150,
+  "xview_val": 300,
+  "uavid_tv": 150
+ },
+ "background_prompts": [
+  "background",
+  "road",
+  "tree",
+  "grass",
+  "ground"
+ ],
+ "sets": {
+  "dota_tiles": {
+   "sam_clip": {
+    "class_aware": {
+     "small-vehicle": {
+      "AP": 0.09482590682977494,
+      "AP50": 0.14798871399894498,
+      "AR": 0.17881591119333948,
+      "n_gt": 1081
+     },
+     "large-vehicle": {
+      "AP": 0.0002582866982350409,
+      "AP50": 0.00043047783039173483,
+      "AR": 0.002054794520547945,
+      "n_gt": 292
+     },
+     "mean": {
+      "AP": 0.04754209676400499,
+      "AP50": 0.07420959591466836,
+      "AR": 0.09043535285694371
+     }
+    },
+    "agnostic": {
+     "AP": 0.08287288797074892,
+     "AP50": 0.13265010128369073,
+     "AR": 0.15396941005098325,
+     "n_gt": 1373
+    },
+    "naming": {
+     "found_rate": {
+      "small-vehicle": 0.2543940795559667,
+      "large-vehicle": 0.11643835616438356
+     },
+     "naming_accuracy_of_found": {
+      "small-vehicle": 1.0,
+      "large-vehicle": 0.029411764705882353
+     },
+     "overall_found_rate": 0.22505462490895847,
+     "overall_naming_accuracy": 0.8932038834951457,
+     "confusion": {
+      "small-vehicle": {
+       "small-vehicle": 275,
+       "large-vehicle": 0,
+       "not found": 806
+      },
+      "large-vehicle": {
+       "small-vehicle": 33,
+       "large-vehicle": 1,
+       "not found": 258
+      }
+     }
+    }
+   },
+   "sam_remoteclip": {
+    "class_aware": {
+     "small-vehicle": {
+      "AP": 0.045643754794030524,
+      "AP50": 0.07629036035343222,
+      "AR": 0.14014801110083258,
+      "n_gt": 1081
+     },
+     "large-vehicle": {
+      "AP": 0.011310348610997204,
+      "AP50": 0.024810612851292015,
+      "AR": 0.05205479452054795,
+      "n_gt": 292
+     },
+     "mean": {
+      "AP": 0.028477051702513863,
+      "AP50": 0.05055048660236212,
+      "AR": 0.09610140281069027
+     }
+    },
+    "agnostic": {
+     "AP": 0.05218569237519055,
+     "AP50": 0.09142061354741966,
+     "AR": 0.15608157319737798,
+     "n_gt": 1373
+    },
+    "naming": {
+     "found_rate": {
+      "small-vehicle": 0.25809435707678074,
+      "large-vehicle": 0.1267123287671233
+     },
+     "naming_accuracy_of_found": {
+      "small-vehicle": 0.7885304659498208,
+      "large-vehicle": 0.7027027027027027
+     },
+     "overall_found_rate": 0.23015294974508377,
+     "overall_naming_accuracy": 0.7784810126582279,
+     "confusion": {
+      "small-vehicle": {
+       "small-vehicle": 220,
+       "large-vehicle": 59,
+       "not found": 802
+      },
+      "large-vehicle": {
+       "small-vehicle": 11,
+       "large-vehicle": 26,
+       "not found": 255
+      }
+     }
+    }
+   },
+   "owlv2": {
+    "class_aware": {
+     "small-vehicle": {
+      "AP": 0.17184577608156457,
+      "AP50": 0.3321077194735317,
+      "AR": 0.5555966697502313,
+      "n_gt": 1081
+     },
+     "large-vehicle": {
+      "AP": 0.09274077411219256,
+      "AP50": 0.16762472411988788,
+      "AR": 0.33184931506849313,
+      "n_gt": 292
+     },
+     "mean": {
+      "AP": 0.13229327509687855,
+      "AP50": 0.24986622179670978,
+      "AR": 0.4437229924093622
+     }
+    },
+    "agnostic": {
+     "AP": 0.17749596788128696,
+     "AP50": 0.3454736615344871,
+     "AR": 0.5388929351784413,
+     "n_gt": 1373
+    },
+    "naming": {
+     "found_rate": {
+      "small-vehicle": 0.6077705827937095,
+      "large-vehicle": 0.547945205479452
+     },
+     "naming_accuracy_of_found": {
+      "small-vehicle": 0.9786910197869102,
+      "large-vehicle": 0.64375
+     },
+     "overall_found_rate": 0.5950473415877641,
+     "overall_naming_accuracy": 0.9130966952264382,
+     "confusion": {
+      "small-vehicle": {
+       "small-vehicle": 643,
+       "large-vehicle": 14,
+       "not found": 424
+      },
+      "large-vehicle": {
+       "small-vehicle": 57,
+       "large-vehicle": 103,
+       "not found": 132
+      }
+     }
+    }
+   },
+   "gdino": {
+    "class_aware": {
+     "small-vehicle": {
+      "AP": 0.0806670442934839,
+      "AP50": 0.16414405835214116,
+      "AR": 0.41174838112858464,
+      "n_gt": 1081
+     },
+     "large-vehicle": {
+      "AP": 0.00749653432060115,
+      "AP50": 0.01491267816439575,
+      "AR": 0.17294520547945205,
+      "n_gt": 292
+     },
+     "mean": {
+      "AP": 0.044081789307042527,
+      "AP50": 0.08952836825826846,
+      "AR": 0.29234679330401836
+     }
+    },
+    "agnostic": {
+     "AP": 0.06924310849617306,
+     "AP50": 0.14299746269626612,
+     "AR": 0.45375091041514926,
+     "n_gt": 1373
+    },
+    "naming": {
+     "found_rate": {
+      "small-vehicle": 0.5004625346901017,
+      "large-vehicle": 0.4041095890410959
+     },
+     "naming_accuracy_of_found": {
+      "small-vehicle": 0.8817005545286506,
+      "large-vehicle": 0.4322033898305085
+     },
+     "overall_found_rate": 0.47997086671522216,
+     "overall_naming_accuracy": 0.8012139605462822,
+     "confusion": {
+      "small-vehicle": {
+       "small-vehicle": 477,
+       "large-vehicle": 64,
+       "not found": 540
+      },
+      "large-vehicle": {
+       "small-vehicle": 67,
+       "large-vehicle": 51,
+       "not found": 174
+      }
+     }
+    }
+   }
+  },
+  "visdrone_ho_D1": {
+   "sam_clip": {
+    "class_aware": {
+     "small-vehicle": {
+      "AP": 0.21617931036475926,
+      "AP50": 0.3021024996898823,
+      "AR": 0.35300395256916994,
+      "n_gt": 2530
+     },
+     "large-vehicle": {
+      "AP": 0.015175938687638689,
+      "AP50": 0.02449338807398526,
+      "AR": 0.032089552238805975,
+      "n_gt": 938
+     },
+     "mean": {
+      "AP": 0.11567762452619898,
+      "AP50": 0.16329794388193378,
+      "AR": 0.19254675240398797
+     }
+    },
+    "agnostic": {
+     "AP": 0.23121241393286976,
+     "AP50": 0.3271195798731018,
+     "AR": 0.3325259515570934,
+     "n_gt": 3468
+    },
+    "naming": {
+     "found_rate": {
+      "small-vehicle": 0.4509881422924901,
+      "large-vehicle": 0.36353944562899787
+     },
+     "naming_accuracy_of_found": {
+      "small-vehicle": 0.9938650306748467,
+      "large-vehicle": 0.12903225806451613
+     },
+     "overall_found_rate": 0.4273356401384083,
+     "overall_naming_accuracy": 0.7948717948717948,
+     "confusion": {
+      "small-vehicle": {
+       "small-vehicle": 1134,
+       "large-vehicle": 7,
+       "not found": 1389
+      },
+      "large-vehicle": {
+       "small-vehicle": 297,
+       "large-vehicle": 44,
+       "not found": 597
+      }
+     }
+    }
+   },
+   "sam_remoteclip": {
+    "class_aware": {
+     "small-vehicle": {
+      "AP": 0.12448536745969388,
+      "AP50": 0.17755347319333137,
+      "AR": 0.18644268774703557,
+      "n_gt": 2530
+     },
+     "large-vehicle": {
+      "AP": 0.10331730538086863,
+      "AP50": 0.14395737286724974,
+      "AR": 0.13720682302771856,
+      "n_gt": 938
+     },
+     "mean": {
+      "AP": 0.11390133642028125,
+      "AP50": 0.16075542303029056,
+      "AR": 0.16182475538737706
+     }
+    },
+    "agnostic": {
+     "AP": 0.14461153944192018,
+     "AP50": 0.2089400925346625,
+     "AR": 0.1967993079584775,
+     "n_gt": 3468
+    },
+    "naming": {
+     "found_rate": {
+      "small-vehicle": 0.2557312252964427,
+      "large-vehicle": 0.2505330490405117
+     },
+     "naming_accuracy_of_found": {
+      "small-vehicle": 0.9273570324574961,
+      "large-vehicle": 0.6936170212765957
+     },
+     "overall_found_rate": 0.25432525951557095,
+     "overall_naming_accuracy": 0.8650793650793651,
+     "confusion": {
+      "small-vehicle": {
+       "small-vehicle": 600,
+       "large-vehicle": 47,
+       "not found": 1883
+      },
+      "large-vehicle": {
+       "small-vehicle": 72,
+       "large-vehicle": 163,
+       "not found": 703
+      }
+     }
+    }
+   },
+   "owlv2": {
+    "class_aware": {
+     "small-vehicle": {
+      "AP": 0.34185141817153203,
+      "AP50": 0.5805509998770422,
+      "AR": 0.6085770750988142,
+      "n_gt": 2530
+     },
+     "large-vehicle": {
+      "AP": 0.16347792509602738,
+      "AP50": 0.2787979997320172,
+      "AR": 0.27889125799573566,
+      "n_gt": 938
+     },
+     "mean": {
+      "AP": 0.2526646716337797,
+      "AP50": 0.42967449980452965,
+      "AR": 0.44373416654727493
+     }
+    },
+    "agnostic": {
+     "AP": 0.4189621221540727,
+     "AP50": 0.7119789870380882,
+     "AR": 0.6081026528258361,
+     "n_gt": 3468
+    },
+    "naming": {
+     "found_rate": {
+      "small-vehicle": 0.8857707509881423,
+      "large-vehicle": 0.8422174840085288
+     },
+     "naming_accuracy_of_found": {
+      "small-vehicle": 0.9857206604194556,
+      "large-vehicle": 0.46962025316455697
+     },
+     "overall_found_rate": 0.8739907727797002,
+     "overall_naming_accuracy": 0.8512042230287034,
+     "confusion": {
+      "small-vehicle": {
+       "small-vehicle": 2209,
+       "large-vehicle": 32,
+       "not found": 289
+      },
+      "large-vehicle": {
+       "small-vehicle": 419,
+       "large-vehicle": 371,
+       "not found": 148
+      }
+     }
+    }
+   },
+   "gdino": {
+    "class_aware": {
+     "small-vehicle": {
+      "AP": 0.3611276539845382,
+      "AP50": 0.5484967063446435,
+      "AR": 0.5548221343873518,
+      "n_gt": 2530
+     },
+     "large-vehicle": {
+      "AP": 0.15962050797850064,
+      "AP50": 0.2188854712260809,
+      "AR": 0.34424307036247337,
+      "n_gt": 938
+     },
+     "mean": {
+      "AP": 0.26037408098151943,
+      "AP50": 0.38369108878536223,
+      "AR": 0.4495326023749126
+     }
+    },
+    "agnostic": {
+     "AP": 0.46102136908452723,
+     "AP50": 0.6845580964410086,
+     "AR": 0.617329873125721,
+     "n_gt": 3468
+    },
+    "naming": {
+     "found_rate": {
+      "small-vehicle": 0.7873517786561265,
+      "large-vehicle": 0.7388059701492538
+     },
+     "naming_accuracy_of_found": {
+      "small-vehicle": 0.8534136546184738,
+      "large-vehicle": 0.5339105339105339
+     },
+     "overall_found_rate": 0.7742214532871973,
+     "overall_naming_accuracy": 0.770949720670391,
+     "confusion": {
+      "small-vehicle": {
+       "small-vehicle": 1700,
+       "large-vehicle": 292,
+       "not found": 538
+      },
+      "large-vehicle": {
+       "small-vehicle": 323,
+       "large-vehicle": 370,
+       "not found": 245
+      }
+     }
+    }
+   }
+  },
+  "visdrone_ho_D2": {
+   "sam_clip": {
+    "class_aware": {
+     "car": {
+      "AP": 0.2595786470773321,
+      "AP50": 0.3606393645269821,
+      "AR": 0.3438735177865612,
+      "n_gt": 2530
+     },
+     "bus": {
+      "AP": 0.09047924087122486,
+      "AP50": 0.10804476621319505,
+      "AR": 0.17941176470588235,
+      "n_gt": 136
+     },
+     "truck": {
+      "AP": 0.05080956526533046,
+      "AP50": 0.08372938742108924,
+      "AR": 0.1031802120141343,
+      "n_gt": 283
+     },
+     "mean": {
+      "AP": 0.13362248440462915,
+      "AP50": 0.1841378393870888,
+      "AR": 0.2088218315021926
+     }
+    },
+    "agnostic": {
+     "AP": 0.18799373000787048,
+     "AP50": 0.2608942895377969,
+     "AR": 0.3422177009155646,
+     "n_gt": 2949
+    },
+    "naming": {
+     "found_rate": {
+      "car": 0.46126482213438735,
+      "bus": 0.3382352941176471,
+      "truck": 0.26501766784452296
+     },
+     "naming_accuracy_of_found": {
+      "car": 0.9468723221936589,
+      "bus": 0.6086956521739131,
+      "truck": 0.56
+     },
+     "overall_found_rate": 0.43675822312648355,
+     "overall_naming_accuracy": 0.9122670807453416,
+     "confusion": {
+      "car": {
+       "car": 1105,
+       "bus": 40,
+       "truck": 22,
+       "not found": 1363
+      },
+      "bus": {
+       "car": 14,
+       "bus": 28,
+       "truck": 4,
+       "not found": 90
+      },
+      "truck": {
+       "car": 24,
+       "bus": 9,
+       "truck": 42,
+       "not found": 208
+      }
+     }
+    }
+   },
+   "sam_remoteclip": {
+    "class_aware": {
+     "car": {
+      "AP": 0.2515396469562046,
+      "AP50": 0.3524861114929431,
+      "AR": 0.323399209486166,
+      "n_gt": 2530
+     },
+     "bus": {
+      "AP": 0.15964121880338103,
+      "AP50": 0.20129904641676719,
+      "AR": 0.2573529411764706,
+      "n_gt": 136
+     },
+     "truck": {
+      "AP": 0.04843404528313307,
+      "AP50": 0.07534821395843527,
+      "AR": 0.06925795053003533,
+      "n_gt": 283
+     },
+     "mean": {
+      "AP": 0.1532049703475729,
+      "AP50": 0.20971112395604852,
+      "AR": 0.21667003373089067
+     }
+    },
+    "agnostic": {
+     "AP": 0.16611913702870718,
+     "AP50": 0.23377438380241466,
+     "AR": 0.32634791454730416,
+     "n_gt": 2949
+    },
+    "naming": {
+     "found_rate": {
+      "car": 0.41541501976284584,
+      "bus": 0.3602941176470588,
+      "truck": 0.18021201413427562
+     },
+     "naming_accuracy_of_found": {
+      "car": 0.9819219790675547,
+      "bus": 0.8775510204081632,
+      "truck": 0.5098039215686274
+     },
+     "overall_found_rate": 0.3903017972193964,
+     "overall_naming_accuracy": 0.9565595134665508,
+     "confusion": {
+      "car": {
+       "car": 1032,
+       "bus": 17,
+       "truck": 2,
+       "not found": 1479
+      },
+      "bus": {
+       "car": 6,
+       "bus": 43,
+       "truck": 0,
+       "not found": 87
+      },
+      "truck": {
+       "car": 19,
+       "bus": 6,
+       "truck": 26,
+       "not found": 232
+      }
+     }
+    }
+   },
+   "owlv2": {
+    "class_aware": {
+     "car": {
+      "AP": 0.4911333946666652,
+      "AP50": 0.7986818245755565,
+      "AR": 0.6128853754940711,
+      "n_gt": 2530
+     },
+     "bus": {
+      "AP": 0.3185040027881643,
+      "AP50": 0.4687047220641689,
+      "AR": 0.47573529411764703,
+      "n_gt": 136
+     },
+     "truck": {
+      "AP": 0.19616861707818561,
+      "AP50": 0.3645612934526188,
+      "AR": 0.3957597173144876,
+      "n_gt": 283
+     },
+     "mean": {
+      "AP": 0.3352686715110051,
+      "AP50": 0.5439826133641147,
+      "AR": 0.4947934623087353
+     }
+    },
+    "agnostic": {
+     "AP": 0.3931169411894023,
+     "AP50": 0.6438409137807817,
+     "AR": 0.6107154967785691,
+     "n_gt": 2949
+    },
+    "naming": {
+     "found_rate": {
+      "car": 0.891699604743083,
+      "bus": 0.8455882352941176,
+      "truck": 0.8056537102473498
+     },
+     "naming_accuracy_of_found": {
+      "car": 0.9867021276595744,
+      "bus": 0.7391304347826086,
+      "truck": 0.7324561403508771
+     },
+     "overall_found_rate": 0.8813157002373686,
+     "overall_naming_accuracy": 0.9534436321662177,
+     "confusion": {
+      "car": {
+       "car": 2226,
+       "bus": 11,
+       "truck": 19,
+       "not found": 274
+      },
+      "bus": {
+       "car": 6,
+       "bus": 85,
+       "truck": 24,
+       "not found": 21
+      },
+      "truck": {
+       "car": 42,
+       "bus": 19,
+       "truck": 167,
+       "not found": 55
+      }
+     }
+    }
+   },
+   "gdino": {
+    "class_aware": {
+     "car": {
+      "AP": 0.5267366580200389,
+      "AP50": 0.7636815795661869,
+      "AR": 0.6851383399209485,
+      "n_gt": 2530
+     },
+     "bus": {
+      "AP": 0.2138851654247305,
+      "AP50": 0.2579768938728319,
+      "AR": 0.3191176470588235,
+      "n_gt": 136
+     },
+     "truck": {
+      "AP": 0.14455029830945607,
+      "AP50": 0.22413400387019802,
+      "AR": 0.4031802120141343,
+      "n_gt": 283
+     },
+     "mean": {
+      "AP": 0.2950573739180751,
+      "AP50": 0.4152641591030723,
+      "AR": 0.4691453996646355
+     }
+    },
+    "agnostic": {
+     "AP": 0.46440603221429644,
+     "AP50": 0.6707120995673957,
+     "AR": 0.6853509664292982,
+     "n_gt": 2949
+    },
+    "naming": {
+     "found_rate": {
+      "car": 0.9233201581027668,
+      "bus": 0.8382352941176471,
+      "truck": 0.773851590106007
+     },
+     "naming_accuracy_of_found": {
+      "car": 0.9794520547945206,
+      "bus": 0.45614035087719296,
+      "truck": 0.6666666666666666
+     },
+     "overall_found_rate": 0.9050525601898949,
+     "overall_naming_accuracy": 0.9314349943799176,
+     "confusion": {
+      "car": {
+       "car": 2288,
+       "bus": 12,
+       "truck": 36,
+       "not found": 194
+      },
+      "bus": {
+       "car": 13,
+       "bus": 52,
+       "truck": 49,
+       "not found": 22
+      },
+      "truck": {
+       "car": 61,
+       "bus": 12,
+       "truck": 146,
+       "not found": 64
+      }
+     }
+    }
+   }
+  },
+  "xview_val": {
+   "sam_clip": {
+    "class_aware": {
+     "car": {
+      "AP": 0.00011242369026085549,
+      "AP50": 0.0002775978532432682,
+      "AR": 0.006936416184971097,
+      "n_gt": 173
+     },
+     "bus": {
+      "AP": 0.0,
+      "AP50": 0.0,
+      "AR": 0.0,
+      "n_gt": 78
+     },
+     "truck": {
+      "AP": 0.00012834616795012833,
+      "AP50": 0.00018335166850018335,
+      "AR": 0.0025362318840579713,
+      "n_gt": 276
+     },
+     "building": {
+      "AP": 0.010719819893294824,
+      "AP50": 0.01983190646430372,
+      "AR": 0.011453433678269048,
+      "n_gt": 4252
+     },
+     "mean": {
+      "AP": 0.0027401474378764517,
+      "AP50": 0.005073213996511793,
+      "AR": 0.00523152043682453
+     }
+    },
+    "agnostic": {
+     "AP": 0.012385878282700892,
+     "AP50": 0.023893694058931433,
+     "AR": 0.022703494454906884,
+     "n_gt": 4779
+    },
+    "naming": {
+     "found_rate": {
+      "car": 0.017341040462427744,
+      "bus": 0.0,
+      "truck": 0.03985507246376811,
+      "building": 0.045625587958607716
+     },
+     "naming_accuracy_of_found": {
+      "car": 1.0,
+      "bus": NaN,
+      "truck": 0.09090909090909091,
+      "building": 0.4845360824742268
+     },
+     "overall_found_rate": 0.043523749738439005,
+     "overall_naming_accuracy": 0.47115384615384615,
+     "confusion": {
+      "car": {
+       "car": 3,
+       "bus": 0,
+       "truck": 0,
+       "building": 0,
+       "not found": 170
+      },
+      "bus": {
+       "car": 0,
+       "bus": 0,
+       "truck": 0,
+       "building": 0,
+       "not found": 78
+      },
+      "truck": {
+       "car": 10,
+       "bus": 0,
+       "truck": 1,
+       "building": 0,
+       "not found": 265
+      },
+      "building": {
+       "car": 82,
+       "bus": 1,
+       "truck": 17,
+       "building": 94,
+       "not found": 4058
+      }
+     }
+    }
+   },
+   "sam_remoteclip": {
+    "class_aware": {
+     "car": {
+      "AP": 0.0026402640264026403,
+      "AP50": 0.0033003300330033,
+      "AR": 0.004624277456647398,
+      "n_gt": 173
+     },
+     "bus": {
+      "AP": 0.002376237623762376,
+      "AP50": 0.0039603960396039604,
+      "AR": 0.007692307692307693,
+      "n_gt": 78
+     },
+     "truck": {
+      "AP": 0.0,
+      "AP50": 0.0,
+      "AR": 0.0,
+      "n_gt": 276
+     },
+     "building": {
+      "AP": 0.020091468295839,
+      "AP50": 0.04130027090974625,
+      "AR": 0.029021636876763873,
+      "n_gt": 4252
+     },
+     "mean": {
+      "AP": 0.006276992486501005,
+      "AP50": 0.012140249245588378,
+      "AR": 0.01033455550642974
+     }
+    },
+    "agnostic": {
+     "AP": 0.018195747468763488,
+     "AP50": 0.03481319113692251,
+     "AR": 0.026553672316384187,
+     "n_gt": 4779
+    },
+    "naming": {
+     "found_rate": {
+      "car": 0.005780346820809248,
+      "bus": 0.02564102564102564,
+      "truck": 0.0036231884057971015,
+      "building": 0.05432737535277517
+     },
+     "naming_accuracy_of_found": {
+      "car": 1.0,
+      "bus": 0.5,
+      "truck": 0.0,
+      "building": 0.9913419913419913
+     },
+     "overall_found_rate": 0.049173467252563295,
+     "overall_naming_accuracy": 0.9829787234042553,
+     "confusion": {
+      "car": {
+       "car": 1,
+       "bus": 0,
+       "truck": 0,
+       "building": 0,
+       "not found": 172
+      },
+      "bus": {
+       "car": 0,
+       "bus": 1,
+       "truck": 0,
+       "building": 1,
+       "not found": 76
+      },
+      "truck": {
+       "car": 0,
+       "bus": 1,
+       "truck": 0,
+       "building": 0,
+       "not found": 275
+      },
+      "building": {
+       "car": 1,
+       "bus": 1,
+       "truck": 0,
+       "building": 229,
+       "not found": 4021
+      }
+     }
+    }
+   },
+   "owlv2": {
+    "class_aware": {
+     "car": {
+      "AP": 0.039575456095627466,
+      "AP50": 0.139107238423992,
+      "AR": 0.2578034682080924,
+      "n_gt": 173
+     },
+     "bus": {
+      "AP": 0.023294358660918967,
+      "AP50": 0.05986848064987782,
+      "AR": 0.18846153846153846,
+      "n_gt": 78
+     },
+     "truck": {
+      "AP": 0.031212190716492946,
+      "AP50": 0.07619567429325144,
+      "AR": 0.22173913043478258,
+      "n_gt": 276
+     },
+     "building": {
+      "AP": 0.07200042622646802,
+      "AP50": 0.16075620671961563,
+      "AR": 0.24510818438381934,
+      "n_gt": 4252
+     },
+     "mean": {
+      "AP": 0.04152060792487685,
+      "AP50": 0.10898190002168423,
+      "AR": 0.22827808037205818
+     }
+    },
+    "agnostic": {
+     "AP": 0.04498456241860605,
+     "AP50": 0.11026541945374065,
+     "AR": 0.27840552416823605,
+     "n_gt": 4779
+    },
+    "naming": {
+     "found_rate": {
+      "car": 0.6647398843930635,
+      "bus": 0.7692307692307693,
+      "truck": 0.5289855072463768,
+      "building": 0.25893697083725303
+     },
+     "naming_accuracy_of_found": {
+      "car": 0.9130434782608695,
+      "bus": 0.38333333333333336,
+      "truck": 0.6917808219178082,
+      "building": 0.8673932788374206
+     },
+     "overall_found_rate": 0.2975517890772128,
+     "overall_naming_accuracy": 0.8326300984528833,
+     "confusion": {
+      "car": {
+       "car": 105,
+       "bus": 1,
+       "truck": 5,
+       "building": 4,
+       "not found": 58
+      },
+      "bus": {
+       "car": 7,
+       "bus": 23,
+       "truck": 24,
+       "building": 6,
+       "not found": 18
+      },
+      "truck": {
+       "car": 24,
+       "bus": 18,
+       "truck": 101,
+       "building": 3,
+       "not found": 130
+      },
+      "building": {
+       "car": 12,
+       "bus": 5,
+       "truck": 129,
+       "building": 955,
+       "not found": 3151
+      }
+     }
+    }
+   },
+   "gdino": {
+    "class_aware": {
+     "car": {
+      "AP": 0.02101681822830978,
+      "AP50": 0.06228309956510604,
+      "AR": 0.3242774566473988,
+      "n_gt": 173
+     },
+     "bus": {
+      "AP": 0.0034726057371511536,
+      "AP50": 0.009101661590968806,
+      "AR": 0.11282051282051282,
+      "n_gt": 78
+     },
+     "truck": {
+      "AP": 0.0056163977309591495,
+      "AP50": 0.01218944419707714,
+      "AR": 0.11485507246376811,
+      "n_gt": 276
+     },
+     "building": {
+      "AP": 0.04752398722587543,
+      "AP50": 0.09953730348263981,
+      "AR": 0.24038099717779873,
+      "n_gt": 4252
+     },
+     "mean": {
+      "AP": 0.019407452230573878,
+      "AP50": 0.04577787720894795,
+      "AR": 0.1980835097773696
+     }
+    },
+    "agnostic": {
+     "AP": 0.04310992872361945,
+     "AP50": 0.09821717850377301,
+     "AR": 0.31111111111111106,
+     "n_gt": 4779
+    },
+    "naming": {
+     "found_rate": {
+      "car": 0.6473988439306358,
+      "bus": 0.6794871794871795,
+      "truck": 0.5072463768115942,
+      "building": 0.3306679209783631
+     },
+     "naming_accuracy_of_found": {
+      "car": 0.9553571428571429,
+      "bus": 0.18867924528301888,
+      "truck": 0.2857142857142857,
+      "building": 0.8143669985775249
+     },
+     "overall_found_rate": 0.35802469135802467,
+     "overall_naming_accuracy": 0.760958503798948,
+     "confusion": {
+      "car": {
+       "car": 107,
+       "bus": 1,
+       "truck": 2,
+       "building": 2,
+       "not found": 61
+      },
+      "bus": {
+       "car": 13,
+       "bus": 10,
+       "truck": 16,
+       "building": 14,
+       "not found": 25
+      },
+      "truck": {
+       "car": 75,
+       "bus": 17,
+       "truck": 40,
+       "building": 8,
+       "not found": 136
+      },
+      "building": {
+       "car": 64,
+       "bus": 52,
+       "truck": 145,
+       "building": 1145,
+       "not found": 2846
+      }
+     }
+    }
+   }
+  },
+  "uavid_tv": {
+   "sam_clip": {
+    "class_aware": {
+     "car": {
+      "AP": 0.18494562112785856,
+      "AP50": 0.3156302226675706,
+      "AR": 0.41395348837209306,
+      "n_gt": 43
+     },
+     "building": {
+      "AP": 0.037353778802078116,
+      "AP50": 0.06430654289351968,
+      "AR": 0.20140845070422536,
+      "n_gt": 142
+     },
+     "mean": {
+      "AP": 0.11114969996496835,
+      "AP50": 0.18996838278054515,
+      "AR": 0.3076809695381592
+     }
+    },
+    "agnostic": {
+     "AP": 0.0716348166425918,
+     "AP50": 0.12743287122346225,
+     "AR": 0.28,
+     "n_gt": 185
+    },
+    "naming": {
+     "found_rate": {
+      "car": 0.5348837209302325,
+      "building": 0.31690140845070425
+     },
+     "naming_accuracy_of_found": {
+      "car": 1.0,
+      "building": 0.9333333333333333
+     },
+     "overall_found_rate": 0.3675675675675676,
+     "overall_naming_accuracy": 0.9558823529411765,
+     "confusion": {
+      "car": {
+       "car": 23,
+       "building": 0,
+       "not found": 20
+      },
+      "building": {
+       "car": 3,
+       "building": 42,
+       "not found": 97
+      }
+     }
+    }
+   },
+   "sam_remoteclip": {
+    "class_aware": {
+     "car": {
+      "AP": 0.06383651305723138,
+      "AP50": 0.11736428481621262,
+      "AR": 0.3767441860465116,
+      "n_gt": 43
+     },
+     "building": {
+      "AP": 0.054577609152702454,
+      "AP50": 0.09590713784361507,
+      "AR": 0.2246478873239436,
+      "n_gt": 142
+     },
+     "mean": {
+      "AP": 0.059207061104966915,
+      "AP50": 0.10663571132991384,
+      "AR": 0.3006960366852276
+     }
+    },
+    "agnostic": {
+     "AP": 0.05286525174881477,
+     "AP50": 0.09938785648476552,
+     "AR": 0.2870270270270271,
+     "n_gt": 185
+    },
+    "naming": {
+     "found_rate": {
+      "car": 0.5581395348837209,
+      "building": 0.352112676056338
+     },
+     "naming_accuracy_of_found": {
+      "car": 0.875,
+      "building": 0.98
+     },
+     "overall_found_rate": 0.4,
+     "overall_naming_accuracy": 0.9459459459459459,
+     "confusion": {
+      "car": {
+       "car": 21,
+       "building": 3,
+       "not found": 19
+      },
+      "building": {
+       "car": 1,
+       "building": 49,
+       "not found": 92
+      }
+     }
+    }
+   },
+   "owlv2": {
+    "class_aware": {
+     "car": {
+      "AP": 0.09332536662958238,
+      "AP50": 0.2164491999244897,
+      "AR": 0.48139534883720936,
+      "n_gt": 43
+     },
+     "building": {
+      "AP": 0.20734520367229706,
+      "AP50": 0.3736354580608892,
+      "AR": 0.6387323943661973,
+      "n_gt": 142
+     },
+     "mean": {
+      "AP": 0.15033528515093972,
+      "AP50": 0.29504232899268945,
+      "AR": 0.5600638716017033
+     }
+    },
+    "agnostic": {
+     "AP": 0.16734897185933717,
+     "AP50": 0.3095217746395069,
+     "AR": 0.652972972972973,
+     "n_gt": 185
+    },
+    "naming": {
+     "found_rate": {
+      "car": 0.6511627906976745,
+      "building": 0.8943661971830986
+     },
+     "naming_accuracy_of_found": {
+      "car": 0.9642857142857143,
+      "building": 1.0
+     },
+     "overall_found_rate": 0.8378378378378378,
+     "overall_naming_accuracy": 0.9935483870967742,
+     "confusion": {
+      "car": {
+       "car": 27,
+       "building": 1,
+       "not found": 15
+      },
+      "building": {
+       "car": 0,
+       "building": 127,
+       "not found": 15
+      }
+     }
+    }
+   },
+   "gdino": {
+    "class_aware": {
+     "car": {
+      "AP": 0.15735220056695526,
+      "AP50": 0.29401073878334316,
+      "AR": 0.4186046511627907,
+      "n_gt": 43
+     },
+     "building": {
+      "AP": 0.22852852273752453,
+      "AP50": 0.39297066559749877,
+      "AR": 0.7084507042253521,
+      "n_gt": 142
+     },
+     "mean": {
+      "AP": 0.19294036165223988,
+      "AP50": 0.343490702190421,
+      "AR": 0.5635276776940714
+     }
+    },
+    "agnostic": {
+     "AP": 0.11813437246900468,
+     "AP50": 0.2499119881676726,
+     "AR": 0.7043243243243243,
+     "n_gt": 185
+    },
+    "naming": {
+     "found_rate": {
+      "car": 0.5581395348837209,
+      "building": 0.9225352112676056
+     },
+     "naming_accuracy_of_found": {
+      "car": 1.0,
+      "building": 1.0
+     },
+     "overall_found_rate": 0.8378378378378378,
+     "overall_naming_accuracy": 1.0,
+     "confusion": {
+      "car": {
+       "car": 24,
+       "building": 0,
+       "not found": 19
+      },
+      "building": {
+       "car": 0,
+       "building": 131,
+       "not found": 11
+      }
+     }
+    }
+   }
+  }
+ },
+ "proposal_recall": {
+  "dota_tiles": {
+   "small-vehicle": {
+    "recall": 0.5106382978723404,
+    "n_gt": 1081,
+    "median_short_side_px": 29.0
+   },
+   "large-vehicle": {
+    "recall": 0.726027397260274,
+    "n_gt": 292,
+    "median_short_side_px": 35.0
+   },
+   "_proposals_per_image": 81.30833333333334,
+   "_overall": 0.5564457392571013
+  },
+  "visdrone_ho_D1": {
+   "small-vehicle": {
+    "recall": 0.5446640316205533,
+    "n_gt": 2530,
+    "median_short_side_px": 35.0
+   },
+   "large-vehicle": {
+    "recall": 0.5330490405117271,
+    "n_gt": 938,
+    "median_short_side_px": 41.0
+   },
+   "_proposals_per_image": 105.56666666666666,
+   "_overall": 0.5415224913494809
+  },
+  "visdrone_ho_D2": {
+   "car": {
+    "recall": 0.5446640316205533,
+    "n_gt": 2530,
+    "median_short_side_px": 35.0
+   },
+   "truck": {
+    "recall": 0.45936395759717313,
+    "n_gt": 283,
+    "median_short_side_px": 38.0
+   },
+   "bus": {
+    "recall": 0.6102941176470589,
+    "n_gt": 136,
+    "median_short_side_px": 48.0
+   },
+   "_proposals_per_image": 105.56666666666666,
+   "_overall": 0.5395049169209901
+  },
+  "xview_val": {
+   "building": {
+    "recall": 0.5564440263405456,
+    "n_gt": 4252,
+    "median_short_side_px": 36.0
+   },
+   "truck": {
+    "recall": 0.5072463768115942,
+    "n_gt": 276,
+    "median_short_side_px": 21.0
+   },
+   "bus": {
+    "recall": 0.7435897435897436,
+    "n_gt": 78,
+    "median_short_side_px": 22.0
+   },
+   "car": {
+    "recall": 0.4161849710982659,
+    "n_gt": 173,
+    "median_short_side_px": 17.0
+   },
+   "_proposals_per_image": 71.65333333333334,
+   "_overall": 0.5515798284159866
+  },
+  "uavid_tv": {
+   "car": {
+    "recall": 0.8372093023255814,
+    "n_gt": 43,
+    "median_short_side_px": 37.0
+   },
+   "building": {
+    "recall": 0.5211267605633803,
+    "n_gt": 142,
+    "median_short_side_px": 62.0
+   },
+   "_proposals_per_image": 99.57333333333334,
+   "_overall": 0.5945945945945946
+  }
+ }
+}
