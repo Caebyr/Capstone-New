@@ -1,0 +1,68 @@
+{
+  "dota_tiles": {
+    "images": 284,
+    "gt_boxes": 4102,
+    "gt_per_category": {
+      "small-vehicle": 3116,
+      "large-vehicle": 986
+    }
+  },
+  "visdrone_ho_D1": {
+    "images": 1294,
+    "gt_boxes": 29709,
+    "gt_per_category": {
+      "small-vehicle": 22368,
+      "large-vehicle": 7341
+    }
+  },
+  "visdrone_ho_D2": {
+    "images": 1294,
+    "gt_boxes": 25672,
+    "gt_per_category": {
+      "car": 22368,
+      "bus": 1044,
+      "truck": 2260
+    }
+  },
+  "xview_val": {
+    "images": 2762,
+    "gt_boxes": 42997,
+    "gt_per_category": {
+      "car": 1475,
+      "bus": 763,
+      "truck": 2101,
+      "building": 38658
+    }
+  },
+  "tasks": {
+    "D1": {
+      "prompts": [
+        "small-vehicle",
+        "large-vehicle"
+      ],
+      "overhead": "dota_tiles",
+      "uav": "visdrone_ho_D1"
+    },
+    "D2": {
+      "prompts": [
+        "car",
+        "bus",
+        "truck",
+        "building"
+      ],
+      "overhead": "xview_val",
+      "uav": [
+        "visdrone_ho_D2",
+        "uavid_tv"
+      ]
+    }
+  },
+  "uavid_tv": {
+    "images": 1080,
+    "gt_boxes": 1279,
+    "gt_per_category": {
+      "car": 364,
+      "building": 915
+    }
+  }
+}
