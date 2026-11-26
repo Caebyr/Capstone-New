@@ -4,6 +4,7 @@ This is the work after the RAIT submission (paper under review). There are two s
 
 - **A:** re-test every paper claim on the full datasets and over many seeds.
 - **B:** move from ground-truth crops to real detectors.
+- **C:** three follow-ups that close the questions A and B left open (26 Nov): object-level margin vs detection, a same-backbone encoder, and a blur / colour control.
 
 All runs were on 25–26 Nov 2026, on an RTX 3050 Laptop (4 GB) in the rebuilt `hf` env. Nothing in the paper's August cache was overwritten: the full-scale embeddings live in `embeddings/full_scale/`.
 
@@ -34,6 +35,16 @@ python sam_pipeline.py name --model clip       # B4  GPU, ~10 min (then --model 
 python sam_pipeline.py evaluate                # B4  CPU
 python drift_detection_link.py owl             # B5  GPU, ~15 min: OWLv2's own embedding of every GT box
 python drift_detection_link.py link            # B5  CPU
+
+# C: follow-ups
+python object_level.py table                   # C1  CPU: B5 object sample + box size + detection outcomes
+python object_level.py encode --model clip     # C1  GPU (also --model remoteclip, ~30 min)
+python object_level.py analyze                 # C1  CPU, ~7 min (500 image-cluster bootstrap reps)
+python encode_full_scale.py encode --model clip_l14   # C2  GPU, ~70 min (RemoteCLIP's 65,052 crops)
+python same_backbone.py                        # C2  CPU, ~38 min
+python controls_quality.py calibrate           # C3  CPU
+python controls_quality.py encode --model clip # C3  GPU (also remoteclip, clip_l14)
+python controls_quality.py analyze             # C3  CPU
 ```
 
 ## New assets
@@ -43,7 +54,7 @@ python drift_detection_link.py link            # B5  CPU
 | OWLv2 B/16 (ensemble) | `google/owlv2-base-patch16-ensemble` @ `cfd3195ba4ea9592eec887ded089f4c08eff231d` |
 | Grounding DINO tiny | `IDEA-Research/grounding-dino-tiny` @ `a2bb814dd30d776dcf7e30523b00659f4f141c71` |
 | SAM ViT-B | `facebook/sam-vit-base` @ `70c1a07f894ebb5b307fd9eaaee97b9dfc16068f` |
-| CLIP ViT-L/14 (downloaded, not yet used) | `openai/clip-vit-large-patch14` @ `32bd64288804d66eefd0ccbe215aa642df71cc41` |
+| CLIP ViT-L/14 (C2) | `openai/clip-vit-large-patch14` @ `32bd64288804d66eefd0ccbe215aa642df71cc41` |
 | xView | `HichTala/xview` @ `00a1b977…`, now stored locally as parquet: train 20,881 / val 2,762 chips |
 | DOTA parts 2–3 | extracted to `data/raw/DOTA/images_part2_part3/`; part1 stays in `images/`, so the paper's replay is unchanged |
 | COCO scoring | `pycocotools==2.0.8`, the only package added (`requirements.txt`) |
@@ -265,6 +276,104 @@ The ground-truth JSONs are in `data/processed/detection/gt/` (git-ignored, about
 - The most consistent signal is the text margin: a more negative Δm goes with a larger *naming* drop for all three encoders and both detectors (ρ −0.49 to −0.77).
 - This matches the paper: drift size does not predict loss, but text misalignment tracks it. It is descriptive only.
 
+## C1. Object-level margin vs detection (`results/detection/object_level.md`)
+
+**Setup:**
+- Unit: one GT object, 28,000 objects (the B5 sample: 400 seeded images per set, non-ignored boxes, B5 pairing).
+- The replay reproduces the B5 cache order exactly (asserted).
+- Margin of an object = cos(own class text) − max cos(other class texts), "a photo of a {}", z-scored.
+  - CLIP B/32 and RemoteCLIP encode the GT crop independently of both detectors.
+  - OWLv2-internal (B5 patch embedding) is reported as a check; it is circular for OWLv2's own naming.
+- Outcomes per detector: found, named given found, success. Score ≥ 0.1, IoU ≥ 0.5, as in B3.
+- Logistic models with category fixed effects:
+  - M0: overhead;
+  - M1: + log2 √area and log2 aspect;
+  - M2: + margin;
+  - within-domain models.
+- 95% CIs from an image-cluster bootstrap, 500 reps.
+
+| | OWLv2 | Grounding DINO |
+|---|---|---|
+| Success odds per SD of margin, CLIP | 1.71 [1.55, 1.92] | 1.87 [1.72, 2.01] |
+| Success odds per SD of margin, RemoteCLIP | 1.99 [1.87, 2.13] | 1.74 [1.61, 1.86] |
+| Within overhead only (CLIP / RemoteCLIP) | 1.12 [0.91, 1.37] / 1.64 [1.43, 1.88] | 1.38 [1.15, 1.63] / 1.32 [1.16, 1.49] |
+| Within UAV only (CLIP / RemoteCLIP) | 2.33 / 2.13 | 2.11 / 1.99 |
+| Overhead AME on success: M0 → M1 (size) → M2 (size + margin, CLIP / RemoteCLIP) | −26.0 → −16.1 → −16.7 / −13.9 pp | −27.3 → −17.9 → −18.9 / −15.9 pp |
+
+**Reading:**
+- Margin predicts found, named and success for both detectors, with size and category held fixed. This replaces B5's n = 6 correlation.
+- Size accounts for about a third of the overhead penalty; margin adds 0–2 pp.
+- The best-margin quintile of overhead objects (CLIP margin) reaches 62% OWLv2 success, against 97% for UAV objects.
+- **Conclusion:** text alignment decides which objects are detected, not why overhead images are worse.
+- After size is held fixed, OWLv2's naming of found objects is no worse overhead (+2.4 pp); its overhead loss is in finding.
+
+## C2. Same-backbone control: CLIP ViT-L/14 (`results/full_scale/same_backbone.md`)
+
+OpenAI CLIP ViT-L/14 encodes exactly RemoteCLIP's 65,052 full-scale crops. RemoteCLIP vs CLIP-L/14 isolates remote-sensing training; CLIP-L/14 vs CLIP-B/32 isolates size. CLIP and RemoteCLIP reproduce A3 exactly (balanced 32.6 / 61.8 and 28.9 / 53.3).
+
+| | CLIP B/32 | CLIP L/14 | RemoteCLIP L/14 |
+|---|---|---|---|
+| cos drift P1 small / large vehicle | 0.027 / 0.029 | 0.041 / 0.050 | 0.016 / 0.021 |
+| cos drift xView car / building | 0.072 / 0.147 | 0.081 / 0.155 | 0.049 / 0.069 |
+| P2+P3 balanced accuracy O / U | 32.6 / 61.8 | 34.5 / 73.9 | 28.9 / 53.3 |
+| P1 balanced accuracy O / U | 50.8 / 54.8 | 54.6 / 59.4 | 63.1 / 68.0 |
+
+Normalised ratio, RemoteCLIP vs CLIP-L/14: P1 −17%; building −18%; car, bus and truck +3 to +5%. Every interval excludes zero.
+
+**Reading:**
+- **The lower raw drift of RemoteCLIP is the remote-sensing training, not size:** the larger general CLIP drifts more than B/32.
+- **A larger general model widens the overhead gap:** +12 pp UAV against +1.9 pp overhead.
+- Remote-sensing training improves overhead recognition in P1 (+8.6 pp [6.1, 10.5] vs CLIP-L/14). On xView it doesn't with the paper's prompt (−5.6 pp); it does with "a satellite photo of a {}" (42.0 vs 37.8).
+- The A4 levels hold for CLIP-L/14: P1 drift ≈ same-platform drift; xView vs UAV is 2–3× it.
+- **Training-data overlap.** RemoteCLIP's DET-10 / SEG-4 training data includes DOTA, VisDrone and iSAID (DOTA images); it does not include xView or UAVid (RemoteCLIP paper, arXiv 2306.11029, Table I). The paper doesn't say whether validation or test images were excluded, and our DOTA and VisDrone images come from those datasets' training splits. RemoteCLIP's advantages appear where it has likely seen the images (P1), so read them as "on familiar datasets".
+
+## C3. Image-quality control: size, blur, colour, with a placebo (`results/full_scale/controls_quality.md`)
+
+**Setup:**
+- P2+P3, the A5 UAV crops and overhead size donors.
+- Variants:
+  - S: shrink (A5);
+  - S+B: + Gaussian blur, sigma calibrated per category so median sharpness (mean squared gradient / variance) matches overhead;
+  - S+C: + per-channel mean / std transferred from the overhead donor;
+  - S+B+C: both;
+  - S+Cu: placebo, colour transferred from a random other UAV crop of the same category.
+
+**Calibration:** shrunk UAV crops are already as sharp as overhead crops, or sharper (car 0.51 vs 0.64). Sigma is 0 for car and truck, 0.25 for bus and 0.5 for building.
+
+| Balanced accuracy (%) | CLIP B/32 | RemoteCLIP | CLIP L/14 |
+|---|---|---|---|
+| overhead | 32.6 | 28.9 | 34.5 |
+| UAV original | 61.5 | 52.7 | 73.6 |
+| S | 47.7 | 45.2 | 63.4 |
+| S+C | 43.8 | 37.0 | 55.6 |
+| S+B+C | 41.2 | 37.1 | 54.6 |
+| S+Cu (placebo) | 44.3 | 38.8 | 59.5 |
+| overhead-specific colour (S+C vs S+Cu), points of the gap | 2 | 7 | 10 |
+
+**Reading:**
+- **Blur explains nothing.**
+- **Overhead colour statistics move UAV crops toward the overhead centroid beyond the placebo** (CLIP car cos 0.011 vs 0.018; RemoteCLIP 0.008 vs 0.014). But most of the accuracy change from colour transfer is generic perturbation.
+- Size closes 26–48% of the accuracy gap and overhead-specific colour 2–10 points. **A third to a half of the gap is not reachable by editing the crop.**
+- The candidates left are viewing geometry (roof vs side view) and scene context. Building keeps the largest residual drift.
+- Testing geometry directly needs altitude- and view-labelled data (UAVDT).
+
+## Threats to validity
+
+| Threat | Answer in this work |
+|---|---|
+| Small sample, one seed | A3: full scale and 20 seeds |
+| Dataset difference passed off as platform | A4: three-level baseline; P1 is not a platform effect |
+| Object size | A5: about two-thirds of the xView drift, half of the accuracy gap |
+| Blur, colour | C3, with a placebo: blur none, overhead-specific colour small |
+| Prompt wording | A5, C2: five templates; the gap holds for all |
+| Model size vs training data | C2: same-backbone CLIP-L/14 |
+| RemoteCLIP training-data overlap (DOTA, VisDrone) | Documented (C2); limits the "remote-sensing training helps" reading to familiar datasets |
+| Crop classification is not detection | B2–B4: three zero-shot pipelines |
+| n = 6 correlation | C1: 28,000 objects, size held fixed |
+| Circularity of the detector's own embedding | C1: headline margins from encoders outside the detectors |
+| Zero-shot only, small detectors | Scope (4 GB GPU); three pipelines agree on where the failure is |
+| Remaining overhead gap | Open: viewing angle / context; UAVDT |
+
 ## Figures (`results/figures_2026-11/`, made by `python scripts/plots/make_november_figures.py`)
 
 Each PNG has a CSV beside it holding the plotted numbers.
@@ -286,12 +395,15 @@ Each PNG has a CSV beside it holding the plotted numbers.
 | Overhead recognition is much worse (four-way) | Holds at full scale and with every prompt; also holds for real detectors (2–10× lower AP50) |
 | RemoteCLIP is no better than CLIP overhead | Only with "a photo of a {}"; with a satellite prompt it is better |
 | Drift size does not predict accuracy loss | Also holds for detection loss (n = 6) |
-| Drift is a platform effect | **Qualify:** P1 drift equals same-platform drift (A4); much of P2+P3 drift is object scale (A5) |
+| Drift is a platform effect | **Qualify:** P1 drift equals same-platform drift (A4); much of P2+P3 drift is object scale (A5); blur none and colour little (C3); a third to a half of the accuracy gap remains |
+| RemoteCLIP's lower drift reflects remote-sensing training | Yes at fixed architecture (C2), with the training-data overlap caveat |
+| A bigger general model would close the gap | No: CLIP-L/14 widens it (C2) |
+| Text misalignment goes with detection loss | Object level: margin predicts detection with size held fixed (C1); it does not explain the overhead penalty |
 
 ## Not done / next
 
-- **Same-backbone encoder:** CLIP ViT-L/14 is downloaded but not yet encoded.
-- **Altitude within one dataset (UAVDT):** needs a download.
+- **Viewing angle and altitude within one dataset (UAVDT):** needs a download; the one test of the residual gap left after C3.
+- **Margin-targeted adaptation** (prompt tuning or an adapter that raises the overhead margin), judged by detection AP.
 - **Fine-tuned model for P2/P3.**
 - **Distribution-level (shape) measures.**
 - **A SAM re-run with smaller point batches,** and SAM on the full sets rather than the subset.

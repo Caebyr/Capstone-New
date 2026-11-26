@@ -24,8 +24,13 @@ We measure how far a category's embedding centroid moves between overhead imager
   - Grounding DINO;
   - SAM proposals named by CLIP / RemoteCLIP.
 - Drift measured inside OWLv2's embedding space, linked to per-category detection loss.
+- Follow-up controls:
+  - an object-level test of text margin vs detection, with size held fixed (28,000 objects);
+  - a same-backbone encoder (OpenAI CLIP ViT-L/14);
+  - a blur / colour control with a placebo.
+- Limitations are listed as threats to validity in `PROJECT_EXPLAINED.md` §9.
 
-**Next** (see `PROJECT_EXPLAINED.md` §10): a same-backbone encoder (CLIP ViT-L/14), altitude within one dataset (UAVDT), and adaptation aimed at the text margin.
+**Next** (see `PROJECT_EXPLAINED.md` §10): viewing angle and altitude within one dataset (UAVDT), and adaptation aimed at the text margin.
 
 ## Repository layout
 
@@ -63,6 +68,9 @@ run_detectors.py            B2 OWLv2 / Grounding DINO zero-shot detections      
 eval_detection.py           B2/B3 COCO AP, found-vs-named, bootstrap CIs        -> results/detection
 sam_pipeline.py             B4 SAM proposals named by CLIP / RemoteCLIP         -> results/detection
 drift_detection_link.py     B5 drift in OWLv2's space; drift vs detection loss  -> results/detection
+object_level.py             C1 per-object text margin vs detection, size held fixed -> results/detection
+same_backbone.py            C2 CLIP ViT-L/14 vs RemoteCLIP (encode: encode_full_scale.py --model clip_l14) -> results/full_scale
+controls_quality.py         C3 blur / colour matched UAV crops, UAV-donor placebo -> results/full_scale
 scripts/plots/              mid-semester plots (yardstick, drift ratio, PCA/t-SNE, % of CLIP)
 
 notebooks/
