@@ -6,7 +6,7 @@ Team: Anoop Singh Sachdev · Arnav Gupta · Kabir Oberoi · Khushpreet Kaur · S
 
 This is a plain-English reference for the final presentation, for revision, and for anyone joining the work. It covers what the project asks, every concept it uses, everything we did in the order we did it, every mistake we found and fixed, every result, and what we can and cannot claim.
 
-Numbers come from the result files in `results/`. Where the paper submitted to RAIT 2026 words something differently, the paper's wording wins for the paper, but the numbers here are the same ones.
+Numbers come from the result files in `results/`. Where the paper submitted to RAIT 2027 words something differently, the paper's wording wins for the paper, but the numbers here are the same ones.
 
 *Last updated: 26 November 2026, after the full-scale checks and detection experiments (Steps 14–15, Sections 6.8–6.12).*
 
@@ -288,9 +288,9 @@ We wrote `docs/TECHNICAL_REPORT.md`, a complete factual extraction of the code, 
 
 Malware forced a Windows reset. The project survived on the D drive. All work was pushed to a new GitHub repository, `Caebyr/Capstone-New`, and the environment was rebuilt (`environment.yml`, `requirements.txt`).
 
-### Step 10: The RAIT 2026 paper review and new experiments (12–13 Oct)
+### Step 10: The RAIT 2027 paper review and new experiments (12–13 Oct)
 
-A teammate wrote a 6-page IEEE paper for RAIT 2026: *"Toward Measuring Visual Drift of Vision-Language Embeddings Between Overhead and UAV Imagery"*. We reviewed it against the code and results and produced two edit lists:
+A teammate wrote a 6-page IEEE paper for RAIT 2027: *"Toward Measuring Visual Drift of Vision-Language Embeddings Between Overhead and UAV Imagery"*. We reviewed it against the code and results and produced two edit lists:
 
 - **`docs/paper/RAIT_PAPER_CORRECTIONS.md`**: wording-only fixes. These were:
   - a clearer abstract;
@@ -745,7 +745,7 @@ Large files are not in git: `data/`, `embeddings/` and `models/`.
 | early Oct | Laptop reset #1; new repo `Caebyr/Capstone-New`; environment rebuilt |
 | 12 Oct | RAIT paper reviewed; corrections list; crop manifests, permutation tests, bootstrap, crop classification, A_c/Δm_c |
 | 13–14 Oct | Fact sheet; original environment recovered; JPEG-decoder cause found; crop identity proven exact |
-| by 19 Oct | Paper submitted to RAIT 2026 (under review) |
+| by 19 Oct | Paper submitted to RAIT 2027 (under review) |
 | 25 Nov | Laptop reset #2; `hf` environment rebuilt and verified; October work committed and pushed; repository cleaned up and reorganised |
 | 25–26 Nov | Full-scale pools and encoding; paper claims re-tested at full scale and over 20 seeds; same-domain baseline; resolution and prompt controls |
 | 25–26 Nov | Detection benchmark; OWLv2 and Grounding DINO; found-vs-named analysis; SAM + CLIP/RemoteCLIP detector; drift in OWLv2's space |

@@ -6,7 +6,7 @@ Team: Anoop Singh Sachdev · Arnav Gupta · Kabir Oberoi · Khushpreet Kaur · S
 We measure how far a category's embedding centroid moves between overhead imagery (DOTA, xView) and UAV imagery (VisDrone, UAVid), using one frozen encoder per comparison: CLIP ViT-B/32, RemoteCLIP ViT-L/14, and a CLIP fine-tuned on held-out VisDrone images. We then test whether that movement goes with a loss of zero-shot recognition.
 
 - **New to the project?** Read [PROJECT_EXPLAINED.md](PROJECT_EXPLAINED.md), a plain-English account of every concept, step, result and mistake fixed.
-- **The paper:** [docs/paper/RAIT_paper_submitted.pdf](docs/paper/RAIT_paper_submitted.pdf), submitted to RAIT and under review.
+- **The paper:** [docs/paper/RAIT_paper_submitted.pdf](docs/paper/RAIT_paper_submitted.pdf), submitted to RAIT 2027 and under review.
 
 ## Status (26 Nov 2026)
 

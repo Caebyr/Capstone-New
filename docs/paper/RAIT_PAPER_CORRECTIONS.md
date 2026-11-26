@@ -1,10 +1,10 @@
-# Corrections for the RAIT 2026 paper "Toward Measuring Visual Drift of Vision-Language Embeddings Between Overhead and UAV Imagery"
+# Corrections for the RAIT 2027 paper "Toward Measuring Visual Drift of Vision-Language Embeddings Between Overhead and UAV Imagery"
 
 > **Update (Oct 12):** new results have been added in a second file, `RAIT_PAPER_NEW_RESULTS.md`. Apply this file first, then that one. That file supersedes change 1 (abstract), the Table IV row in change 10, and the "Out of scope" note about significance tests and A_c/Δm_c. Its item N4a also fixes a factual error in Section III-E (the software version list).
 
 ## Instructions for Claude
 
-You are editing the source of a 6-page IEEE conference paper (two-column IEEEtran format) before submission to RAIT 2026. Apply the numbered changes below to the paper source.
+You are editing the source of a 6-page IEEE conference paper (two-column IEEEtran format) before submission to RAIT 2027. Apply the numbered changes below to the paper source.
 
 **What this list is.** A teammate reviewed the PDF against the project's code and result files. Every change here is wording only: corrections, clarifications and cuts. None of them needs a new experiment or new numbers.
 

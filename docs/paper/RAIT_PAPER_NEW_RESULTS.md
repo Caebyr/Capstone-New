@@ -1,4 +1,4 @@
-# New results for the RAIT 2026 paper: significance tests, crop classification, text alignment
+# New results for the RAIT 2027 paper: significance tests, crop classification, text alignment
 
 ## Instructions for Claude
 

@@ -1,6 +1,6 @@
 # Uncertainty, crop classification and text alignment (October 2026)
 
-Added for the RAIT 2026 submission. Everything here reuses the cached embeddings behind Tables II–III; no image was re-embedded for any reported number.
+Added for the RAIT 2027 submission. Everything here reuses the cached embeddings behind Tables II–III; no image was re-embedded for any reported number.
 
 ## Commands (hf env, from the repo root, in this order)
 
