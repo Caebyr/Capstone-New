@@ -44,6 +44,9 @@ EMB = "embeddings/full_scale"
 CAP, SEED, SHARD = 5000, 20261125, 2000
 REMOTECLIP_CKPT = "models/RemoteCLIP/RemoteCLIP-ViT-L-14.pt"
 FINETUNED_CKPT = "models/finetuned_clip_visdrone_heldout/finetuned_clip_visdrone_heldout_epoch3.pt"
+# Same-backbone control for RemoteCLIP (ViT-L/14, 224 px): encodes exactly RemoteCLIP's rows (checkpoint C2)
+CLIP_L14, CLIP_L14_REV = "openai/clip-vit-large-patch14", "32bd64288804d66eefd0ccbe215aa642df71cc41"
+ROWS_OF = {"clip_l14": "remoteclip"}
 P1_MAP = {"small-vehicle": "small-vehicle", "large-vehicle": "large-vehicle",
           "car": "small-vehicle", "van": "large-vehicle", "truck": "large-vehicle", "bus": "large-vehicle"}
 
@@ -110,6 +113,10 @@ def load_model(name, device):
     from src.embeddings import load_clip, load_remoteclip
     if name == "remoteclip":
         return load_remoteclip(REMOTECLIP_CKPT, device)
+    if name == "clip_l14":
+        from transformers import CLIPModel, CLIPProcessor
+        return (CLIPModel.from_pretrained(CLIP_L14, revision=CLIP_L14_REV).to(device).eval(),
+                CLIPProcessor.from_pretrained(CLIP_L14, revision=CLIP_L14_REV))
     model, proc = load_clip(device)
     if name == "finetuned":
         model.load_state_dict(torch.load(FINETUNED_CKPT, map_location=device))
@@ -130,7 +137,7 @@ def encode_batch(name, model, pre, crops, device):
 def cmd_encode(name):
     device = "cuda"
     with gzip.open(MANIFEST, "rt", newline="", encoding="utf-8") as f:
-        rows = [r for r in csv.DictReader(f) if name in r["models"].split("|")]
+        rows = [r for r in csv.DictReader(f) if ROWS_OF.get(name, name) in r["models"].split("|")]
     out_dir = f"{EMB}/{name}"
     os.makedirs(out_dir, exist_ok=True)
     n_shards = (len(rows) + SHARD - 1) // SHARD
@@ -188,7 +195,7 @@ def finalize(name, rows, out_dir, n_shards):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=["sample", "encode"])
-    ap.add_argument("--model", choices=["clip", "remoteclip", "finetuned"])
+    ap.add_argument("--model", choices=["clip", "remoteclip", "finetuned", "clip_l14"])
     a = ap.parse_args()
     if a.cmd == "sample":
         cmd_sample()
